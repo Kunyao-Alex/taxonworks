@@ -75,3 +75,4 @@ require('../vue/tasks/administration/data/index.js')
 require('../vue/tasks/graph/object_graph/main.js')
 require('../vue/tasks/otu/filter/main.js')
 
+require('../vue/tasks/biological_associations/filter/main.js')

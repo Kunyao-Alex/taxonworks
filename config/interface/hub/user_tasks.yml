@@ -665,3 +665,11 @@ object_graph_task:
   categories:
   status: prototype
   description: 'TODO: Task description'
+
+index_filter_task:
+  hub: true
+  name: 'TODO: Task name'
+  related:
+  categories:
+  status: prototype
+  description: 'TODO: Task description'

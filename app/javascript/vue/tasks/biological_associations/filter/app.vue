@@ -1,0 +1,185 @@
+<template>
+  <div>
+    <div class="flex-separate middle">
+      <h1>Filter biological associations</h1>
+      <ul class="context-menu">
+        <li>
+          <label>
+            <input
+              type="checkbox"
+              v-model="activeFilter">
+            Show filter
+          </label>
+        </li>
+        <li>
+          <label>
+            <input
+              type="checkbox"
+              v-model="activeJSONRequest">
+            Show JSON Request
+          </label>
+        </li>
+        <li>
+          <label>
+            <input
+              type="checkbox"
+              v-model="append">
+            Append results
+          </label>
+        </li>
+        <li>
+          <label>
+            <input
+              type="checkbox"
+              v-model="showList">
+            Show list
+          </label>
+        </li>
+      </ul>
+    </div>
+    <div
+      v-show="activeJSONRequest"
+      class="panel content separate-bottom">
+      <div class="flex-separate middle">
+        <span>
+          JSON Request: {{ urlRequest }}
+        </span>
+      </div>
+    </div>
+
+    <div class="horizontal-left-content align-start">
+      <filter-component
+        class="separate-right"
+        ref="filterComponent"
+        v-show="activeFilter"
+        @urlRequest="urlRequest = $event"
+        @result="loadList"
+        @pagination="pagination = getPagination($event)"
+        @reset="resetTask"/>
+      <div class="full_width">
+        <div
+          v-if="list.length"
+          class="horizontal-left-content flex-separate separate-left separate-bottom">
+          <div class="horizontal-left-content">
+            <csv-button
+              :list="list"/>
+          </div>
+        </div>
+        <div
+          class="flex-separate margin-medium-bottom"
+          v-if="pagination">
+          <pagination-component
+            v-if="pagination"
+            @nextPage="loadPage"
+            :pagination="pagination"/>
+          <pagination-count
+            :pagination="pagination"
+            v-model="per"/>
+        </div>
+
+        <div class="full_width">
+          <map-component
+            class="panel content margin-small-left full_width"
+            v-if="showMap"
+            :geojson="geojson" />
+          <list-component
+            v-if="showList"
+            v-model="ids"
+            :class="{ 'separate-left': activeFilter }"
+            :list="list"
+            @onRowHover="setRowHover"
+            @onSort="list.data = $event"/>
+        </div>
+
+        <h2
+          v-if="alreadySearch && !list"
+          class="subtle middle horizontal-center-content no-found-message">No records found.
+        </h2>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+
+import FilterComponent from './components/Filter.vue'
+import CsvButton from 'components/csvButton'
+import PaginationComponent from 'components/pagination'
+import PaginationCount from 'components/pagination/PaginationCount'
+import getPagination from 'helpers/getPagination'
+
+export default {
+  components: {
+    PaginationComponent,
+    FilterComponent,
+    CsvButton,
+    PaginationCount
+  },
+
+  data () {
+    return {
+      list: [],
+      georeferences: [],
+      urlRequest: '',
+      activeFilter: true,
+      activeJSONRequest: false,
+      append: false,
+      alreadySearch: false,
+      ids: [],
+      pagination: undefined,
+      maxRecords: [50, 100, 250, 500, 1000],
+      per: 500,
+      showList: true,
+      showMap: false,
+      rowHover: undefined
+    }
+  },
+
+  watch: {
+    per (newVal) {
+      this.$refs.filterComponent.params.settings.per = newVal
+      this.loadPage(1)
+    }
+  },
+
+  methods: {
+    resetTask () {
+      this.alreadySearch = false
+      this.list = []
+      this.urlRequest = ''
+      this.pagination = undefined
+      history.pushState(null, null, '/tasks/collecting_events/filter')
+    },
+
+    loadList (newList) {
+      if (this.append && this.list) {
+        let concat = newList.concat(this.list)
+
+        concat = concat.filter((item, index, self) =>
+          index === self.findIndex((i) => (
+            i.id === item.id
+          ))
+        )
+        newList = concat
+      }
+      this.list = newList
+      this.alreadySearch = true
+    },
+
+    loadPage (event) {
+      this.$refs.filterComponent.loadPage(event.page)
+    },
+
+    setRowHover (item) {
+      this.rowHover = item
+    },
+
+    getPagination
+  }
+}
+</script>
+<style scoped>
+  .no-found-message {
+    height: 70vh;
+  }
+</style>
