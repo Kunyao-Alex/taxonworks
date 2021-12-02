@@ -310,30 +310,14 @@ const refresh = (forceUpdate = false) => {
   AjaxCall('get', `/${props.model}/select_options`, { params }).then(response => {
     lists.value = response.body
     addCustomElements()
-    options.value = Object.keys(lists.value)
-
-    if (firstTime.value) {
-      view.value = SelectFirst(lists.value, options.value)
-      firstTime.value = false
-    }
-
-    options.value = options.value.concat(props.addTabs)
+    options.value = Object.keys(lists.value).concat(props.addTabs)
     options.value = OrderSmart(options.value)
+    view.value = SelectFirst(lists.value, options.value)
   }).catch(() => {
     options.value = []
     lists.value = []
     view.value = undefined
   })
-}
-
-const addToList = (listName, item) => {
-  const index = lists.value[listName].findIndex(({ id }) => id === item.id)
-
-  if (index > -1) {
-    lists.value[listName][index] = item
-  } else {
-    lists.value[listName].push(item)
-  }
 }
 
 const addCustomElements = () => {

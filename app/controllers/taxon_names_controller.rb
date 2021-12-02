@@ -1,7 +1,7 @@
 class TaxonNamesController < ApplicationController
   include DataControllerConfiguration::ProjectDataControllerConfiguration
 
-  before_action :set_taxon_name, only: [:show, :edit, :update, :destroy, :browse, :original_combination, :catalog, :api_show]
+  before_action :set_taxon_name, only: [:show, :edit, :update, :destroy, :browse, :original_combination, :catalog, :api_show, :api_status]
   after_action -> { set_pagination_headers(:taxon_names) }, only: [:index, :api_index], if: :json_request?
 
   # GET /taxon_names
@@ -233,6 +233,11 @@ class TaxonNamesController < ApplicationController
     render '/taxon_names/api/v1/show'
   end
 
+  # GET /api/v1/taxon_names/:id/status
+  def api_status
+    render '/taxon_names/api/v1/status'
+  end
+
   def api_parse
     @combination = Combination.where(project_id: sessions_current_project_id).find(params[:combination_id]) if params[:combination_id]
     @result = TaxonWorks::Vendor::Biodiversity::Result.new(
@@ -316,6 +321,7 @@ class TaxonNamesController < ApplicationController
       :user_target,
       :validity,
       :year,
+      combination_taxon_name_id: [],
       keyword_id_and: [],
       keyword_id_or: [],
       parent_id: [],
@@ -352,6 +358,7 @@ class TaxonNamesController < ApplicationController
       :updated_since,
       :validity,
       :year,
+      combination_taxon_name_id: [],
       keyword_id_and: [],
       keyword_id_or: [],
       parent_id: [],

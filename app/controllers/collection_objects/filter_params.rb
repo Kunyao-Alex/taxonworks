@@ -70,12 +70,13 @@ module CollectionObjects
         biocuration_class_ids: [],
         biological_relationship_ids: [],
         collecting_event_ids: [],
-        collector_ids: [], #
+        collector_id: [], #
         determiner_id: [],
         geographic_area_id: [],
         is_type: [],
         keyword_id_and: [],
         keyword_id_or: [],
+        loan_id: [],
         otu_ids: [],
         preparation_type_id: []
         #  user_id: []
@@ -154,6 +155,7 @@ module CollectionObjects
         is_type: [],
         keyword_id_and: [],
         keyword_id_or: [],
+        loan_id: [],
         otu_ids: [],
         preparation_type_id: [],
 

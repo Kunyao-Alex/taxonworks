@@ -195,7 +195,6 @@ class Source < ApplicationRecord
   include Shared::SharedAcrossProjects
   include Shared::Tags
   include Shared::Documentation
-  include Shared::HasRoles
   include Shared::IsData
   include Shared::HasPapertrail
   include SoftValidation
@@ -235,6 +234,12 @@ class Source < ApplicationRecord
     name: 'Cached names',
     description: 'Check if cached values need to be updated' )
 
+  soft_validate(
+    :sv_html_tags,
+    set: :html_tags,
+    name: 'html tags',
+    description: 'Check if html has both open and close tags' )
+
     # Redirect type here
   # @param [String] file
   # @return [[Array, message]]
@@ -255,7 +260,13 @@ class Source < ApplicationRecord
     end
   end
 
-  # @param [String] file
+    # @return [String] A string that represents the authors last_names and year (no suffix)
+  def author_year
+    return 'not yet calculated' if new_record?
+    [cached_author_string, year].compact.join(', ')
+  end
+
+    # @param [String] file
   # @return [Array, Boolean]
   def self.batch_create(file)
     sources = []
@@ -286,23 +297,14 @@ class Source < ApplicationRecord
   # @return [Scope]
   #    the max 10 most recently used (1 week, could parameterize) TaxonName, as used 
   def self.used_recently(user_id, project_id, used_on = 'TaxonName')
-    t = Citation.arel_table
-    p = Source.arel_table
-
-    # i is a select manager
-    i = t.project(t['source_id'], t['created_at']).from(t)
-      .where(t['created_at'].gt(1.weeks.ago))
-      .where(t['citation_object_type'].eq(used_on))
-      .where(t['created_by_id'].eq(user_id))
-      .where(t['project_id'].eq(project_id))
-      .order(t['created_at'].desc)
-
-    # z is a table alias
-    z = i.as('recent_t')
-
-    Source.joins(
-      Arel::Nodes::InnerJoin.new(z, Arel::Nodes::On.new(z['source_id'].eq(p['id'])))
-    ).select(:id).distinct.pluck(:id)
+   Source.joins(:citations).merge(
+        Citation.where(
+          created_by_id: user_id,
+          project_id: project_id,
+          citation_object_type: used_on,
+          created_at: 1.week.ago..
+        ).order(created_at: :desc)
+      ).pluck(:source_id).uniq.first(10)
   end
 
   # @params target [String] a citable model name
@@ -409,6 +411,13 @@ class Source < ApplicationRecord
       true
     rescue
       false
+    end
+  end
+
+  def sv_html_tags
+    unless title.blank?
+      str = title.squish.gsub(/\<i>[^<>]*?<\/i>/, '')
+      soft_validations.add(:title, 'The title contains unmatched html tags') if str.include?('<i>') || str.include?('</i>')
     end
   end
 end

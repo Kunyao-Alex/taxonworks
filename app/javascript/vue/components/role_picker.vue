@@ -14,7 +14,7 @@
           @getInput="setInput"
           ref="autocomplete"
           @getItem="addCreatedPerson"
-          :clear-after="true"
+          clear-after="true"
           placeholder="Family name, given name"
           param="term"/>
         <default-pin
@@ -397,10 +397,12 @@ export default {
 
     li {
       margin: 0px;
-      padding: 6px;
+      padding: 1em 0;
       display: flex;
       justify-content: space-between;
-      border-top: 1px solid #f5f5f5;
+      border-bottom: 1px solid #f5f5f5;
     }
+
+
   }
 </style>

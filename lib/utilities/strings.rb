@@ -83,14 +83,14 @@ module Utilities::Strings
     a.to_s.gsub(/\n|\t/, ' ')
   end
 
-  #   return nil if content.nil?, else wrap and return string if provided
   # @param [String] pre
   # @param [String] content
   # @param [String] post
-  # @return [String]
+  # @return [String, nil]
+  #   return nil if content.nil?, else wrap and return string if provided
   def self.nil_wrap(pre = nil, content = nil, post = nil)
     return nil if content.blank?
-    [pre, content, post].compact.join.html_safe
+    [pre, content, post].compact.join
   end
 
   # @param last_names [Array]
@@ -111,7 +111,12 @@ module Utilities::Strings
   #   whitespace and special character split, then any string containing a digit eliminated
   def self.alphabetic_strings(string)
     return [] if string.nil? || string.length == 0
-    string.split(/\W/).select { |b| !(b =~ /\d/) }.reject { |b| b.empty? }
+    string.split(/[^[[:word:]]]+/).select { |b| !(b =~ /\d/) }.reject { |b| b.empty? }
+  end
+
+  def self.alphanumeric_strings(string)
+    return [] if string.nil? || string.length == 0
+    string.split(/[^[[:word:]]]+/).reject { |b| b.empty? }
   end
 
   # @param string [String]
@@ -160,24 +165,12 @@ module Utilities::Strings
   # @param [String] authorship
   # @return [Array] [author_name, year]
   def self.parse_authorship(authorship)
-    return [] if authorship.to_s.strip.empty?
-    if (authorship_matchdata = authorship.match(/\(?(?<author>.+?),? (?<year>\d{4})?\)?/))
+    return [] if (authorship = authorship.to_s.strip).empty?
 
-      author_name = authorship_matchdata[:author]
-      year = authorship_matchdata[:year]
+    year_match = /(,|\s)\s*(?<year>\d+)(?<paren>\))?$/.match(authorship)
+    author_name = "#{authorship[..(year_match&.offset(0)&.first || 0)-1]}#{year_match&.[](:paren)}"
 
-      # author name should be wrapped in parentheses if the verbatim authorship was
-      if authorship.start_with?('(') and authorship.end_with?(')')
-        author_name = '(' + author_name + ')'
-      end
-
-    else
-      # Fall back to simple name + date parsing
-      author_name = verbatim_author(authorship)
-      year = year_of_publication(authorship)
-    end
-
-    [author_name, year]
+    [author_name, year_match&.[](:year)]
   end
 
   # @param [String] author_year

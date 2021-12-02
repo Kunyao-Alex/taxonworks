@@ -11,6 +11,11 @@ module CollectingEventsHelper
     end
   end
 
+  def label_for_collecting_event(collecting_event)
+    return nil if collecting_event.nil?
+    collecting_event.cached
+  end
+
   def collecting_event_autocomplete_tag(collecting_event, join_string = '<br>')
     return nil if collecting_event.nil?
     [ collecting_event_identifiers_tag(collecting_event),
@@ -134,8 +139,8 @@ module CollectingEventsHelper
   def elevation_tag(collecting_event)
     return nil if collecting_event.nil?
     [
-      Utilities::Strings.nil_wrap(nil, [collecting_event.minimum_elevation, collecting_event.maximum_elevation].compact.join('-'), 'm'),
-      Utilities::Strings.nil_wrap(' +/-', collecting_event.elevation_precision, nil)
+      Utilities::Strings.nil_wrap(nil, [collecting_event.minimum_elevation, collecting_event.maximum_elevation].compact.join('-'), 'm')&.html_safe,
+      Utilities::Strings.nil_wrap(' +/-', collecting_event.elevation_precision, nil)&.html_safe
     ].compact.join.html_safe
   end
 
@@ -152,16 +157,16 @@ module CollectingEventsHelper
     return if collecting_event.nil?
     [collecting_event.verbatim_latitude,
      collecting_event.verbatim_longitude,
-     Utilities::Strings.nil_wrap(' (+/-', collecting_event.verbatim_geolocation_uncertainty, ')'),
-     Utilities::Strings.nil_wrap(' [via ', collecting_event.verbatim_datum, ']'),
+     Utilities::Strings.nil_wrap(' (+/-', collecting_event.verbatim_geolocation_uncertainty, ')')&.html_safe,
+     Utilities::Strings.nil_wrap(' [via ', collecting_event.verbatim_datum, ']')&.html_safe,
     ].compact.join(', ')
   end
 
+  # TODO: remove
   # @return [HTML] a pre tag formatting a label
   def collecting_event_label_tag(label_text)
     content_tag(:pre, label_text, class: [:large_type, :word_break] ) # large_type needs to be larger
   end
-
 
   # Navigation
 

@@ -426,6 +426,91 @@ describe 'DatasetRecord::DarwinCore::Taxon', type: :model do
 
   end
 
+  context 'when importing a file with an original combination subspecies and protonym species' do
+    before :all do
+      DatabaseCleaner.start
+      import_dataset = ImportDataset::DarwinCore::Checklist.create!(
+        source: fixture_file_upload((Rails.root + 'spec/files/import_datasets/checklists/oc_as_subspecies.tsv'), 'text/plain'),
+        description: 'subspecies oc and species protonym'
+      ).tap { |i| i.stage }
+
+      4.times { |_|
+        import_dataset.import(5000, 100)
+      }
+    end
+
+    after :all do
+      DatabaseCleaner.clean
+    end
+
+    # should be 5 protonyms (Root, Aphaenogaster, Atta, curiosa, gemella)
+    it 'should have 5 protonyms' do
+      expect(Protonym.all.length).to eq 5
+    end
+
+    it 'creates and imports 6 records' do
+      verify_all_records_imported(6)
+    end
+
+    # cached oc of curiosa should be Aphaenogaster gemella curiosa
+    it 'cached OC of "Aphaenogaster curiosa" should be "Aphaenogaster gemella curiosa"' do
+      expect(Protonym.find_by(name: 'curiosa').cached_original_combination).to eq 'Aphaenogaster gemella curiosa'
+    end
+
+    # there should be no Combinations, only Original Combinations
+    it 'should have no Combinations' do
+      expect(Combination.count).to eq 0
+    end
+
+  end
+
+  context 'when importing subspecies with OC that is a combination' do
+    before :all do
+      DatabaseCleaner.start
+      import_dataset = ImportDataset::DarwinCore::Checklist.create!(
+        source: fixture_file_upload((Rails.root + 'spec/files/import_datasets/checklists/oc_is_combination.tsv'), 'text/plain'),
+        description: 'oc is combination'
+      ).tap { |i| i.stage }
+
+      7.times { |_|
+        import_dataset.import(5000, 100)
+      }
+    end
+
+    after :all do
+      DatabaseCleaner.clean
+    end
+
+    # Root, Leptothorax, Temnothorax, flavispinus, nigritus, amilcaris
+    it 'should have 6 protonyms' do
+      expect(Protonym.all.length).to eq 6
+    end
+
+    it 'imports 9 records' do
+      verify_all_records_imported(9)
+    end
+
+    # Leptothorax flavispinus (André, 1883)
+    it 'should have 1 combination' do
+      expect(Combination.count).to eq 1
+      expect(Combination.find_by_cached("Leptothorax flavispinus")).to_not be_nil
+    end
+
+    it 'cached OC of Temnothorax flavispinus amilcaris should be Leptothorax flavispinus amilcaris' do
+      expect_original_combination(Protonym.find_by(name: "Leptothorax"), Protonym.find_by(name: "amilcaris"), "genus")
+      expect_original_combination(Protonym.find_by(name: "flavispinus"), Protonym.find_by(name: "amilcaris"), "species")
+    end
+
+    # should be Leptothorax nigrita flavispinus, but because of import process we don't properly handle gender properly
+    # As a result, we end up using nigritus from Temnothorax nigritus instead.
+    it 'cached OC of Temnothorax flavispinus should be Leptothorax nigrita flavispinus' do
+      expect_original_combination(Protonym.find_by(name: "Leptothorax"), Protonym.find_by(name: "flavispinus"), "genus")
+      expect_original_combination(Protonym.find_by(name: "nigritus"), Protonym.find_by(name: "flavispinus"), "species")
+
+    end
+
+  end
+
   # TODO test missing parent
   #
   # TODO test protonym is unavailable --- set classification on unsaved TaxonName

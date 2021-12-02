@@ -432,7 +432,6 @@ class Source::Bibtex < Source
   # @todo if there is an ISSN it should look up to see it the serial already exists.
   def self.new_from_bibtex(bibtex_entry = nil)
     return false if !bibtex_entry.kind_of?(::BibTeX::Entry)
-
     s = Source::Bibtex.new(bibtex_type: bibtex_entry.type.to_s)
 
     import_attributes = []
@@ -474,12 +473,6 @@ class Source::Bibtex < Source
   #   returns "" if neither :year or :year_suffix are set.
   def year_with_suffix
     [year, year_suffix].compact.join
-  end
-
-  # @return [String] A string that represents the authors last_names and year (no suffix)
-  def author_year
-    return 'not yet calculated' if new_record?
-    [cached_author_string, year].compact.join(', ')
   end
 
   # TODO: Not used
@@ -769,7 +762,8 @@ class Source::Bibtex < Source
     a['original-date'] = {"date-parts" => [[ stated_year ]]} unless stated_year.blank?
     a['language'] = Language.find(language_id).english_name.to_s unless language_id.nil?
     a['translated-title'] = alternate_values.where(type: "AlternateValue::Translation", alternate_value_object_attribute: 'title').pluck(:value).first
-    a['note'] = note.to_s
+    a['note'] = note
+    a.reject! { |k| k == 'note' } if note.blank?
     a
   end
 
@@ -811,7 +805,7 @@ class Source::Bibtex < Source
   def cached_string(format = 'text')
     return nil unless (format == 'text') || (format == 'html')
     str = render_with_style(DEFAULT_CSL_STYLE, format)
-    str.sub('(0ADAD)', '') # citeproc renders year 0000 as (0ADAD)
+    #str.sub('(0ADAD)', '') # citeproc renders year 0000 as (0ADAD)
   end
 
   # @return [String, nil]

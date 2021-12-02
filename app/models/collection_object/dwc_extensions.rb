@@ -28,6 +28,9 @@ module CollectionObject::DwcExtensions
       verbatimEventDate: :dwc_verbatim_event_date,
       verbatimLocality: :dwc_verbatim_locality,
       waterBody: :dwc_water_body,
+      minimumDepthInMeters: :dwc_minimum_depth_in_meters,
+      maximumDepthInMeters: :dwc_maximum_depth_in_meters,
+      verbatimDepth: :dwc_verbatim_depth,
       identifiedBy: :dwc_identified_by,
       identifiedByID: :dwc_identified_by_id,
       dateIdentified: :dwc_date_identified,
@@ -54,8 +57,8 @@ module CollectionObject::DwcExtensions
       verbatimCoordinates: :dwc_verbatim_coordinates,
       verbatimLatitude: :dwc_verbatim_latitude,
       verbatimLongitude: :dwc_verbatim_longitude,
-      decimalLatitude: :dwc_latitude,
-      decimalLongitude: :dwc_longitude,
+      decimalLatitude: :dwc_decimal_latitude,
+      decimalLongitude: :dwc_decimal_longitude,
       footprintWKT: :dwc_footprint_wkt,
 
       coordinateUncertaintyInMeters: :dwc_coordinate_uncertainty_in_meters,
@@ -84,8 +87,12 @@ module CollectionObject::DwcExtensions
 
     # @return [Hash]
     # getter returning georeference related attributes
-    def georeference_attributes
-      @georeference_attributes ||= set_georeference_attributes
+    def georeference_attributes(force = false)
+      if force
+        @georeference_attributes = set_georeference_attributes
+      else
+        @georeference_attributes ||= set_georeference_attributes
+      end
     end
   end
 
@@ -201,27 +208,51 @@ module CollectionObject::DwcExtensions
     a.collect{|d| ApplicationController.helpers.label_for_taxon_determination(d)}.join(CollectionObject::DWC_DELIMITER).presence
   end
 
-  def dwc_water_body
-    return nil unless collecting_event
-    collecting_event.internal_attributes.includes(:predicate)
-      .where(
-        controlled_vocabulary_terms: {uri: ::DWC_ATTRIBUTE_URIS[:waterBody] })
-      .pluck(:value)&.join(', ').presence
+  def dwc_internal_attribute_for(target = :collection_object, dwc_term_name)
+    return nil if dwc_term_name.nil?
+
+    case target
+    when  :collecting_event
+      return nil unless collecting_event
+      collecting_event.internal_attributes.includes(:predicate)
+        .where(
+          controlled_vocabulary_terms: {uri: ::DWC_ATTRIBUTE_URIS[dwc_term_name.to_sym] })
+        .pluck(:value)&.join(', ').presence
+    when :collection_object
+      internal_attributes.includes(:predicate)
+        .where(
+          controlled_vocabulary_terms: {uri: ::DWC_ATTRIBUTE_URIS[dwc_term_name.to_sym] })
+        .pluck(:value)&.join(', ').presence
+    else
+      nil
+    end
   end
 
-  # TODO: consider CVT attributes with predicates linked to URIs
+  def dwc_water_body
+    dwc_internal_attribute_for(:collecting_event, :waterBody)
+  end
+
+  def dwc_minimum_depth_in_meters
+    dwc_internal_attribute_for(:collecting_event, :minimumDepthInMeters)
+  end
+
+  def dwc_maximum_depth_in_meters
+    dwc_internal_attribute_for(:collecting_event, :maximumDepthInMeters)
+  end
+
+  def dwc_verbatim_depth
+    dwc_internal_attribute_for(:collecting_event, :verbatimDepth)
+  end
+
+  # TODO: consider CVT attributes with Predicates linked to URIs
   def dwc_life_stage
-    biocuration_classes
-      .where(
-        controlled_vocabulary_terms: {uri: ::DWC_ATTRIBUTE_URIS[:lifeStage] })
+    biocuration_classes.tagged_with_uri(::DWC_ATTRIBUTE_URIS[:lifeStage])
       .pluck(:name)&.join(', ').presence # `.presence` is a Rails extension
   end
 
-  # TODO: consider CVT attributes with predicates linked to URIs
+  # TODO: consider CVT attributes with Predicates linked to URIs
   def dwc_sex
-    biocuration_classes
-      .where(
-        controlled_vocabulary_terms: {uri: ::DWC_ATTRIBUTE_URIS[:sex] })
+    biocuration_classes.tagged_with_uri(::DWC_ATTRIBUTE_URIS[:sex])
       .pluck(:name)&.join(', ').presence
   end
 
@@ -314,24 +345,30 @@ module CollectionObject::DwcExtensions
   #
   # This was interpreted as collectors (in the field in this context), not those who recorded other aspectes of the data.
   def dwc_recorded_by
+    v = nil
     if collecting_event
-      collecting_event.collectors
+      v = collecting_event.collectors
         .order('roles.position')
         .pluck(:cached)
         .join(CollectionObject::DWC_DELIMITER)
         .presence
+      v = collecting_event.verbatim_collectors.presence if v.blank?
     end
+    v
   end
 
   # See dwc_recorded_by
   def dwc_recorded_by_id
+
     if collecting_event
       collecting_event.collectors
         .order('roles.position')
         .map(&:orcid)
+        .compact
         .join(CollectionObject::DWC_DELIMITER)
         .presence
     end
+
   end
 
   def dwc_identified_by
@@ -376,12 +413,12 @@ module CollectionObject::DwcExtensions
     collecting_event.try(:verbatim_locality)
   end
 
-  def dwc_latitude
-    georeference_attributes[:dwcLatitude]
+  def dwc_decimal_latitude
+    georeference_attributes[:decimalLatitude]
   end
 
-  def dwc_longitude
-    georeference_attributes[:dwcLongitude]
+  def dwc_decimal_longitude
+    georeference_attributes[:decimalLongitude]
   end
 
   def dwc_verbatim_locality

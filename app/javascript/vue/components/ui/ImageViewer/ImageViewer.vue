@@ -184,10 +184,12 @@ import RadialNavigation from 'components/radials/navigation/radial.vue'
 import { capitalize } from 'helpers/strings.js'
 import { Image, Depiction } from 'routes/endpoints'
 import { imageSVGViewBox, imageScale } from 'helpers/images'
+import { getFullName } from 'helpers/people/people'
 
 const CONVERT_IMAGE_TYPES = ['image/tiff']
 const ROLE_TYPES = ['creator_roles', 'owner_roles', 'copyright_holder_roles', 'editor_roles']
 const roleLabel = (role) => capitalize(role.replace('_roles', '').replaceAll('_', ' '))
+
 
 const IMG_MAX_SIZES = {
   thumb: 100,
@@ -224,11 +226,11 @@ export default {
     attributionsList () {
       return this.attributions.map(attr =>
         ROLE_TYPES.map(role =>
-          attr[role] ? `${roleLabel(role)}: <b>${attr[role].map(item => item?.person?.object_tag || item.organization.name).join('; ')}</b>` : []).filter(arr => arr.length))
+          attr[role] ? `${roleLabel(role)}: <b>${attr[role].map(item => item?.person ? getFullName(item.person) : item.organization.name).join('; ')}</b>` : []).filter(arr => arr.length))
     },
 
     originalCitation () {
-      return this.citations.filter(citation => citation.is_original).map(citation => [citation.source.cached, citation.pages].filter(item => item).join(':')).join('; ')
+      return this.citations.filter(citation => citation.is_original).map(citation => [citation.source.object_label, citation.pages].filter(item => item).join(':')).join('; ')
     },
 
     urlSrc () {
@@ -286,8 +288,8 @@ export default {
   methods: {
     async loadData () {
       const imageId = this.depiction.image.id
-      this.attributions = (await Image.attributions(imageId)).body
-      this.citations = (await Image.citations(imageId)).body
+      this.attributions = (await Image.attributions(imageId, { extend: ['roles'] })).body
+      this.citations = (await Image.citations(imageId, { extend: ['source'] })).body
     },
 
     updateDepiction () {
