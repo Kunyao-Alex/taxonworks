@@ -1,5 +1,8 @@
 <template>
-  <div class="switch-radio">
+  <div
+    ref="switch"
+    class="switch-radio"
+  >
     <template
       v-for="(item, index) in options.concat(addOption)"
       :key="index">
@@ -75,6 +78,16 @@ export default {
   methods: {
     emitEvent (index) {
       this.$emit('index', index)
+    },
+
+    setFocus () {
+      const element = this.$refs.switch.querySelector('input:checked')
+
+      if (element) {
+        element.focus()
+      } else {
+        this.$refs.switch.querySelector('input').focus()
+      }
     }
   }
 }

@@ -12,23 +12,42 @@
         @click="deleteDepiction()"
       >
         <v-icon
-          name="trash"
           x-small
+          color="white"
+          name="trash"
         />
       </v-btn>
 
       <v-btn
-        class="figures-edit "
+        class="figures-link"
         circle
         medium
-        :color="edit ? 'update' : 'primary'"
+        color="primary"
+        @click="linkDepiction()"
+      >
+        <v-icon
+          small
+          color="white"
+          name="link"
+        />
+      </v-btn>
+
+      <v-btn
+        class="figures-edit"
+        circle
+        medium
+        :color="edit
+          ? 'update'
+          : 'primary'"
         @click="editChange()"
       >
         <v-icon
-          name="pencil"
           x-small
+          color="white"
+          name="pencil"
         />
       </v-btn>
+
       <input
         class="figures-label horizontal-center-content middle"
         v-if="edit"
@@ -58,6 +77,11 @@ import VBtn from 'components/ui/VBtn/index.vue'
 import VIcon from 'components/ui/VIcon/index.vue'
 
 export default {
+  components: {
+    VBtn,
+    VIcon
+  },
+
   name: 'FigureItem',
 
   components: {
@@ -71,6 +95,8 @@ export default {
       required: true
     }
   },
+
+  emits: ['link'],
 
   data () {
     return {
@@ -112,6 +138,10 @@ export default {
       Depiction.update(this.depiction.id, { depiction }).then(() => {
         TW.workbench.alert.create('Depiction was successfully updated.', 'notice')
       })
+    },
+
+    linkDepiction () {
+      this.$emit('link', this.depiction)
     }
   }
 }

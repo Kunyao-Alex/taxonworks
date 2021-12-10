@@ -1,11 +1,50 @@
 # Changelog
-
 All (hopefully) notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 This project <em>does not yet</em> adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) as the API is evolving and MINOR patches may be backwards incompatible.
 
 ## [unreleased]
+
+### Changed
+- Add space on navbar in New taxon name [#2701]
+- Updated ruby gems and node packages.
+
+### Fixed
+- Character order selector sends null value on blank selection [#2707]
+- Interactive keys is loading two matrices on autocomplete search [#2706]
+- `Select observation matrix` is not displaying all observation matrices [#2708]
+- Crashing when attempting to download DwC results from Filter Collection Objects task with 'Treat geographic areas as spatial' set.
+- Stats response contains `projects` count when project token is set.
+- Menu options broken when right-click on matrices in Observation matrix hub [#2716]
+- Copy rows from matrix in New observation matrix
+- GnFinder playground incompatibility with current GnFinder API
+- DwC checklist importer issue with synonyms have wrong rank [#2715]
+- Scientific name not cached properly when the taxon name is classified as part of speech [#2721]
+
+[#2701]: https://github.com/SpeciesFileGroup/taxonworks/issues/2701
+[#2706]: https://github.com/SpeciesFileGroup/taxonworks/issues/2706
+[#2707]: https://github.com/SpeciesFileGroup/taxonworks/issues/2707
+[#2708]: https://github.com/SpeciesFileGroup/taxonworks/issues/2708
+[#2715]: https://github.com/SpeciesFileGroup/taxonworks/pull/2715
+[#2716]: https://github.com/SpeciesFileGroup/taxonworks/issues/2716
+[#2721]: https://github.com/SpeciesFileGroup/taxonworks/pull/2721
+
+## [0.22.3] - 2021-12-03
+
+### Added
+- Ability to inject links into Content via hot-key searching [#1674]
+
+### Changed
+- Upgraded to Postgres 12 in Docker Compose development environment. Postgres 10 container and volume are still present to allow for automatic data migration.
+
+### Fixed
+- Identifier form elements on SQED breakdown [#2700]
+
+[#2700]: https://github.com/SpeciesFileGroup/taxonworks/issues/2700
+[#1674]: https://github.com/SpeciesFileGroup/taxonworks/issues/1674
+
+## [0.22.2] - 2021-12-02
 
 ### Changed
 - Upped from 40 to 500 the cutoff point at which updating a collecing event will trigger a DwcOccurrence rebuild
@@ -31,6 +70,7 @@ This project <em>does not yet</em> adheres to [Semantic Versioning](https://semv
 - API -added extend character_state option to /observations
 
 ### Fixed 
+- Updated reference string for 'classified as' relationship in Browse nomenclature
 - Custom attributes are not cleared on new record [#2692]
 - API - /api/v1/observation_matrices with no params failed
 - Asserted distribution link wasn't HTML safe
@@ -2122,7 +2162,9 @@ This project <em>does not yet</em> adheres to [Semantic Versioning](https://semv
 
 [#1532]: https://github.com/SpeciesFileGroup/taxonworks/issues/1532
 
-[unreleased]: https://github.com/SpeciesFileGroup/taxonworks/compare/v0.22.1...development
+[unreleased]: https://github.com/SpeciesFileGroup/taxonworks/compare/v0.22.3...development
+[0.22.3]: https://github.com/SpeciesFileGroup/taxonworks/compare/v0.22.2...v0.22.3
+[0.22.2]: https://github.com/SpeciesFileGroup/taxonworks/compare/v0.22.1...v0.22.2
 [0.22.1]: https://github.com/SpeciesFileGroup/taxonworks/compare/v0.22.0...v0.22.1
 [0.22.0]: https://github.com/SpeciesFileGroup/taxonworks/compare/v0.21.3...v0.22.0
 [0.21.3]: https://github.com/SpeciesFileGroup/taxonworks/compare/v0.21.2...v0.21.3
