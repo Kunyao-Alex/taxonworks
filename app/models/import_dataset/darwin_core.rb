@@ -116,12 +116,14 @@ class ImportDataset::DarwinCore < ImportDataset
   #   Maximum number of records to be processed.
   # @param [Boolean] retry_errored
   #   Also looks up for errored records when importing (default is looking for records with Status=Ready)
+  # @param [Array] statuses
+  #   Array of statuses to filter with. Note that if provided the array must contain "Ready" and/or "Errored" for something to be imported.
   # @param [Hash] filters
   #   (Column-index, value) pairs of filters to apply when searching for records to import (default none)
   # @param [Integer] record_id
   #   Indicates the record to be imported (default none). When used filters are ignored.
   # Returns the updated dataset records. Do not call if there are changes that have not been persisted
-  def import(max_time, max_records, retry_errored: false, filters: nil, record_id: nil)
+  def import(max_time, max_records, retry_errored: false, statuses: nil, filters: nil, record_id: nil)
     imported = []
 
     lock_time = Time.now
@@ -134,6 +136,8 @@ class ImportDataset::DarwinCore < ImportDataset
 
       status = ["Ready"]
       status << "Errored" if retry_errored
+      status &= statuses unless statuses.nil?
+
       records = add_filters(core_records.where(status: status), filters).order(:id).limit(max_records) #.preload_fields
 
       records = records.where(id: start_id..) if start_id
@@ -178,8 +182,8 @@ class ImportDataset::DarwinCore < ImportDataset
 
   # @return [Hash]
   # Returns a hash with the record counts grouped by status
-  def progress(filters: nil)
-    add_filters(core_records, filters).group(:status).count
+  def progress(statuses: nil, filters: nil)
+    add_filters(statuses.nil? ? core_records : core_records.where(status: statuses), filters).group(:status).count
   end
 
   # Stages DwC-A records into DB.

@@ -22,6 +22,7 @@ class ImportDatasetsController < ApplicationController
     @filters = params[:filter]
     @results = @import_dataset.import(5000, 100,
       retry_errored: params[:retry_errored],
+      statuses: params[:status].blank? ? nil : params[:status],
       filters: params[:filter],
       record_id: params[:record_id]
     )
