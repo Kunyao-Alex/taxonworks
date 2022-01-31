@@ -1,26 +1,22 @@
 
 #task_carrousel {
-  @include themify($themes) {
-    .task_card, .task_description {
-      background-color: themed('backgroundPanelColor');
-      color: themed('textColor');  
-    }
+  .task_card, .task_description {
+    background-color: var(--background-panel-color);
+    color: var(--text-color);  
+  }
 
-    .navigation {
-      background-color: themed('backgroundPanelColor');
-    }
+  .navigation {
+    background-color: var(--background-panel-color);
+  }
 
-    .task_name {
-      font-weight: tw-font-weight('medium');
-    }
+  .task_name {
+    font-weight: tw-font-weight('medium');
   }
 }
 
 #quick_bar {
-  @include themify($themes) {
-    background-color: themed('quickBarColor');
-    color: themed('textColor');
-  }
+  background-color: var(--quick-bar-color);
+  color: var(--text-color);
 }
 
 
@@ -35,12 +31,11 @@
   flex-direction: column;
   flex-grow: 1;
 
-  @include themify($themes) {
-    .data_card {
-      background-color: themed('backgroundPanelColor');
-      a {
-        color: themed('textColor');
-      }
+  .data_card {
+    background-color: var(--background-panel-color);
+
+    a {
+      color: var(--text-color);
     }
   }
 
@@ -91,10 +86,7 @@
   .data_section_label h3 {
     font-size: tw-font-size('normal');
     text-transform: uppercase;
-
-    @include themify($themes) {
-      color: themed('textColor');
-    }
+    color: var(--text-color);
   }
 
   [data-attribute="empty"] {
@@ -166,7 +158,7 @@
     left: 0px;
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
-    background-color: tw-color('primary');
+    background-color: var(--primary-color);
     position: absolute;
   }
 
@@ -180,7 +172,7 @@
     align-items:center;
     justify-content:space-between;
     border-radius: 15px;
-    background-color: tw-color('backgroundPanel');
+    background-color: var(--background-panel-color);
     padding:  tw-whitespace('default');
     padding-left:  tw-whitespace('default') + 2.5;
     box-shadow: rgba(36, 37, 38, 0.08) 4px 4px 15px 0px;
@@ -188,12 +180,8 @@
                 box-shadow 0.3s ease,
                 transform 0.3s ease;
 
-    @include themify($themes) {
-      background-color: themed('backgroundPanelColor');
-    }
-
     a {
-      color: tw-color('textColor');
+      color: var(--text-color);
     }
   }
 

@@ -1,72 +1,70 @@
 @import '../mixins/themify.scss';
 
 body {
-
-  @include themify($themes) {
-    color-scheme: dark;
-    color: themed('textColor');  
-    background-color: themed('backgroundColor');
+  color-scheme: var(--color-scheme);
+  background-color: var(--background-color);
+  color: var(--text-color);  
     
-    .radial-annotator {
-      color: themed('textColor');
-    }
-    table {
-      .even {
-        background-color: themed('backgroundPanelColor');
-      }
+  .radial-annotator {
+    color: var(--text-color);
+  }
 
-      .contextMenuCells td {
-        border-bottom-color: themed('borderColor');
-        border-left-color: themed('borderColor');
-      }
+  table {
+    .even {
+      background-color: var(--background-panel-color);
     }
 
-    .action-line {
-      border-bottom-color: themed('borderColor');
+    .contextMenuCells td {
+      border-bottom-color: var(--border-color);
+      border-left-color: var(--border-color);
     }
+  }
 
-    #model_index {
-      background-color: themed('backgroundPanelColor');
-    }
+  .action-line {
+    border-bottom-color: var(--border-color);
+  }
 
-    .navigation-controls {
-      .navigation-item {
-        border-color: themed('borderColor');
+  #model_index {
+    background-color: var(--background-panel-color);
+  }
 
-        .dropdown {
-          background-color: themed('backgroundPanelColor');
-        }
-      }
-      .navigation-item:hover {
-        background-color: themed('hover');
+  .navigation-controls {
+    .navigation-item {
+      border-color: var(--border-color);
+
+      .dropdown {
+        background-color: var(--background-panel-color);
       }
     }
-
-    .circle-button {
-      box-shadow: themed('boxShadowButton');
+    .navigation-item:hover {
+      background-color: var(--hover);
     }
+  }
 
-    .table-entrys-list li {
-      border-top-color: themed('borderColor');
+  .circle-button {
+    box-shadow: var(--box-shadow-button);
+  }
+
+  .table-entrys-list li {
+    border-top-color: var(--border-color);
+  }
+
+  .block-layout {
+    &> .header {
+      border-bottom-color: var(--border-color);
     }
+  }
 
-    .block-layout {
-      &> .header {
-        border-bottom-color: themed('borderColor');
-      }
-    }
+  .current_hub_category a {
+    color: var(--text-color);
+  }
+  // New taxon name 
 
-    .current_hub_category a {
-      color: themed('textColor');
-    }
-    // New taxon name 
-
-    .original-combination {
-      .combination {
-        background-color: themed('backgroundInputColor');
-        color: themed('textColor');
-        border-color: themed('borderColor');
-      }
+  .original-combination {
+    .combination {
+      background-color: var(--input-background-color);
+      color: var(--text-color);
+      border-color: var(--border-color);
     }
   }
 }

@@ -44,10 +44,8 @@
 }
 
 .button {
-  @include themify($themes) {
-    &:disabled {
-      color: themed('textColor');  
-      background-color: themed('backgroundColor');
-    }
+  &:disabled {
+    color: var(--text-color);  
+    background-color: var(--background-color);
   }
 }

@@ -110,6 +110,8 @@ import DwcReindex from './components/dwcReindex.vue'
 import SelectAll from './components/selectAll.vue'
 
 export default {
+  name: 'FilterCollectionObject',
+
   components: {
     PaginationComponent,
     FilterComponent,

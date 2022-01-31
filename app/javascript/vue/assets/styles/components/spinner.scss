@@ -1,21 +1,13 @@
 .box-spinner {
   box-shadow: 0px 1px 1px 0px rgba(0,0,0,.2);
   background-image: none !important;
-  background-color: tw-color('backgroundPanel');
+  background-color: var(--background-panel-color);
   z-index: 999999;
   height: 100%;
 
   &__legend {
-    color: tw-color('textColor');
+    color: var(--text-color);
     text-align: center;
-
-    @include themify($themes) {
-      color: themed('textColor');
-    }
-  }
-
-  @include themify($themes) {
-    background-color: themed('backgroundPanelColor');
   }
 }
 
@@ -32,67 +24,53 @@
       height: 30px;
       margin: 0px auto;
   }
-      #Tail {
-        opacity: 0;
-        animation: tail 2s ease infinite;
-        fill:#41BA8D;
 
-        @include themify($themes) {
-          fill: themed('tailColor');
-        }
-      }
-      #LeftBottom {
-        fill:#00845D;
-        opacity: 0;
-        animation: spinner 1s ease alternate infinite;
-        animation-delay: 0s;
+  #Tail {
+    opacity: 0;
+    animation: tail 2s ease infinite;
+    fill: var(--spinner-tail-color);
+  }
 
-        @include themify($themes) {
-          fill: themed('LeftBottomColor');
-        }
-      }
-      #LeftMid {
-        fill:#28221B;
-        opacity: 0;
-        animation: spinner 1s ease alternate infinite;
-        animation-delay: 0.2s;
+  #LeftBottom {
+    fill: var(--spinner-left-bottom-color);
+    opacity: 0;
+    animation: spinner 1s ease alternate infinite;
+    animation-delay: 0s;
+  }
 
-        @include themify($themes) {
-          fill: themed('LeftMidColor');
-        }
-      }
-      #LeftTop {
-        fill:#342D25;
-        opacity: 0;
-        animation: spinner 1s ease alternate infinite;
-        animation-delay: 0.4s;
+  #LeftMid {
+    fill: var(--spinner-left-mid-color);
+    opacity: 0;
+    animation: spinner 1s ease alternate infinite;
+    animation-delay: 0.2s;
+  }
 
-        @include themify($themes) {
-          fill: themed('LeftTopColor');
-        }
-      }
-      #Head {
-        fill:#342D25;
-        opacity: 0;
-        animation: spinner 1s ease alternate infinite;
-        animation-delay: 0.6s;
+  #LeftTop {
+    fill: var(--spinner-left-top-color);
+    opacity: 0;
+    animation: spinner 1s ease alternate infinite;
+    animation-delay: 0.4s;
+  }
 
-        @include themify($themes) {
-          fill: themed('HeadColor');
-        }
-      }
-    
-    @keyframes spinner {
-      0% { opacity: 0; }
-      30% { opacity: 0; }
-      90% { opacity: 1; }
-      100% { opacity: 1; }
-    }
-    @keyframes tail {
-      0% { opacity: 0; }
-      30% { opacity: 1; }
-      50% { opacity: 1; }
-      90% { opacity: 0; }
-      100% { opacity: 0; }
-    }  
+  #Head {
+    fill: var(--spinner-head-color);
+    opacity: 0;
+    animation: spinner 1s ease alternate infinite;
+    animation-delay: 0.6s;
+  }
+  
+  @keyframes spinner {
+    0% { opacity: 0; }
+    30% { opacity: 0; }
+    90% { opacity: 1; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes tail {
+    0% { opacity: 0; }
+    30% { opacity: 1; }
+    50% { opacity: 1; }
+    90% { opacity: 0; }
+    100% { opacity: 0; }
+  }  
 }

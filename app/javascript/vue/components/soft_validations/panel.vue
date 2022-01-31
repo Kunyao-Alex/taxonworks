@@ -124,14 +124,12 @@ export default {
 </script>
 <style lang="scss" scope>
 
-@import "assets/styles/mixins/themify.scss";
-
 .soft-validation-box.validation-warning {
   border-left: 4px solid #ff8c00;
 }
 
 .soft-validation-box {
-  background-color: #FFF9F9 !important;
+  background-color: var(--background-panel-color) !important;
 
   .body {
     padding: 12px;
@@ -149,10 +147,6 @@ export default {
   }
   li:first-letter {
     text-transform: capitalize;
-  }
-
-  @include themify($themes) {
-    background-color: themed('backgroundPanelColor') !important;
   }
 }
 

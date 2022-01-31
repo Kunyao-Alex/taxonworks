@@ -1,40 +1,40 @@
 #hub {
-  @include themify($themes) {
-    #filter {
-      .navigation-controls-type {
-        .navigation-item {
-          border-color: themed('borderColor');
-        }
-      }
 
-      .activated {
-        background-color: themed('activeInput');
-      }
-
-      .status-name {
-        color: themed('textColor');
-        background-color: themed('backgroundInputColor');
-        border-color: themed('borderColor');
-      }
-
-      .switch, .filter-category {
-        border-color: themed('borderColor');
-        color: themed('textColor');
-        box-shadow: none;
-        background-color: themed('backgroundInputColor');
-      }
-
-      .slider:before {
-        border-color: themed('borderColor');
-        background-color: themed('backgroundPanelColor');
+  #filter {
+    .navigation-controls-type {
+      .navigation-item {
+        border-color: var(--border-color);
       }
     }
 
-    #hub_tabs {
-      a:hover,
-      .current_hub_category a {
-        color: themed('textColor');
-      }
+    .activated {
+      color: var(--input-background-color-active-text);
+      background-color: var(--input-background-color-active);
+    }
+
+    .status-name {
+      color: var(--text-color);
+      background-color: var(--input-background-color);
+      border-color: var(--border-color);
+    }
+
+    .switch, .filter-category {
+      border-color: var(--border-color);
+      color: var(--text-color);
+      box-shadow: none;
+      background-color: var(--input-background-color);
+    }
+
+    .slider:before {
+      border-color: var(--border-color);
+      background-color: var(--background-panel-color);
+    }
+  }
+
+  #hub_tabs {
+    a:hover,
+    .current_hub_category a {
+      color: var(--text-color);
     }
   }
 
@@ -51,67 +51,35 @@
 
 
   .source {
-    background-image: url("assets/images/icons/book.svg");
-
-    @include themify($themes) {
-      background-image: themed('iconSource');
-    }
+    background-image: var(--icon-source);
   }
 
   .collecting_event {
-    background-image: url("assets/images/icons/geolocation.svg");
-
-    @include themify($themes) {
-      background-image: themed('iconCollectingEvent');
-    }
+    background-image: var(--icon-collecting-event);
   }
 
   .biology {
-    background-image: url("assets/images/icons/biology.svg");
-
-    @include themify($themes) {
-      background-image: themed('iconBiology');
-    }
+    background-image: var(--icon-biology);
   }
 
   .collection_object {
-    background-image: url("assets/images/icons/picking.svg");
-
-    @include themify($themes) {
-      background-image: themed('iconCollectionObject');
-    }
+    background-image: var(--icon-collection-object)
   }
 
   .matrix {
-    background-image: url("assets/images/icons/matrix.svg");
-
-    @include themify($themes) {
-      background-image: themed('iconMatrix');
-    }
+    background-image: var(--icon-matrix);
   }
 
   .dna {
-    background-image: url("assets/images/icons/helix.svg");
-
-    @include themify($themes) {
-      background-image: themed('iconDNA');
-    }
+    background-image: var(--icon-DNA);
   }
 
   .image {
-    background-image: url("assets/images/icons/image.svg");
-
-    @include themify($themes) {
-      background-image: themed('iconImage');
-    }
+    background-image: var(--icon-image);
   }
 
   .taxon_name,
   .nomenclature {
-    background-image: url("assets/images/icons/new.svg");
-
-    @include themify($themes) {
-      background-image: themed('iconNew');
-    }
+    background-image: var(--icon-new);
   }
 }

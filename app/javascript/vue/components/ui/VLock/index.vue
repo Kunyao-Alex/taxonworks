@@ -40,8 +40,6 @@ export default {
 </script>
 <style lang="scss">
 
-@import "assets/styles/mixins/themify.scss";
-
 $primary: #FFDA44;
 $lightGrey: #99A3BA;
 
@@ -76,20 +74,15 @@ $lightGrey: #99A3BA;
         background: #E4ECFA;
         border-style: solid;
         border-width: 1px;
-        border-color: transparent;
-        @include themify($themes) {
-          border-color: themed('borderColor');
-          background: themed('backgroundInputColor');
-        }
+        border-color: var(--border-color);
+        background: var(--input-background-color);
+
         transition: all .3s ease;
       }
       &:after {
         width: 22px;
         height: 22px;
-        background: #fff;
-        @include themify($themes) {
-          background: themed('backgroundPanelColor');
-        }
+        background: var(--background-panel-color);
         top: 4px;
         left: 5px;
         box-shadow: 0 1px 3px rgba(#121621, .1);
@@ -111,10 +104,7 @@ $lightGrey: #99A3BA;
           width: 2px;
           height: 2px;
           border-radius: 1px;
-          background: #fff;
-          @include themify($themes) {
-            background: themed('backgroundPanelColor');
-          }
+          background: var(--background-panel-color);
           position: absolute;
           display: block;
           left: 50%;
@@ -175,10 +165,7 @@ $lightGrey: #99A3BA;
           background: rgba($primary, 1);
         }
         &:after {
-          background: #fff;
-          @include themify($themes) {
-            background: themed('backgroundPanelColor');
-          }
+          background: var(--background-panel-color);
           transform: translate(18px, 0);
         }
         em {

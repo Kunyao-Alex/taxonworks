@@ -5,7 +5,7 @@
   }
 
   .pinboard-default-item {
-    border-left: 5px solid tw-color('update');
+    border-left: 5px solid var(--update-color);
   }
 
   .slide-panel-category-content {
@@ -47,33 +47,28 @@
     a {
       cursor: pointer;
       display: inline-block;
-      background-image: url('assets/images/icons/pdf.svg');
+      background-image: var(--icon-pdf);
       font-size: 0px;
-      background-color: tw-color('primary');
+      background-color: var(--primary-color);
     }
-  }
-  .itemOptions {
   }
 
   .pinboard-dropdown-content {
     display: none;
   }
+
   .pinboard-dropdown {
     margin-right: 6px;
     margin-left: 6px;
   }
 
   .button-pinboard-default {
-    background-image: url('assets/images/icons/w_ok.svg');
+    background-image: var(--icon-ok);
     background-size: 12px;
   }
 
   .pinboard-dropdown:hover {
-    background-color: white;
-
-    @include themify($themes) {
-      background-color: themed('backgroundPanelColor');
-    }
+    background-color: var(--background-panel-color);
   }
 
   .pinboard-dropdown:hover .pinboard-dropdown-content {
@@ -82,22 +77,18 @@
     z-index: 9999;
     right: 0px;
     top: 0px;
-    border-left: 1px solid tw-color('navigationBorder');
+    border-left: 1px solid var(--border-color);
     height: 100%;
     align-items: center;
     padding-left: tw-whitespace('small');
     padding-right: tw-whitespace('small');
-    background-color: #FFF;
-
-    @include themify($themes) {
-      background-color: themed('backgroundPanelColor');
-      border-left-color: themed('borderColor');
-    }
+    background-color: var(--background-panel-color);
   }
+
   .pinboard-menu-bar {
     width: 14px;
     height: 3px;
-    background-color: tw-color('primary');
+    background-color: var(--primary-color);
     margin: 2px 0;
     transition: 0.4s;
   }
@@ -105,7 +96,7 @@
   .remove {
     display: none;
     font-size: 0px;
-    background-image: url('assets/images/icons/w_trash.svg');
+    background-image: var(--icon-trash);
     background-position: left, center, top 8px;
     background-repeat: no-repeat;
   }
@@ -117,21 +108,18 @@
 
   li {
     position: relative;
-    border-bottom: 1px solid #FAFAFA;
+    border-bottom: 1px solid var(--border-color);
     border-left: 5px solid transparent;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: tw-whitespace('small');
     padding-left: tw-whitespace('large');
-
-    @include themify($themes) {
-      border-bottom-color: themed('borderColor');
-    }
   }
   li:hover {
     opacity: 1;
-    background-color: tw-color('navigationColor');
+    background-color: var(--border-color);
+
     .remove {
       display: inline-block;
     }

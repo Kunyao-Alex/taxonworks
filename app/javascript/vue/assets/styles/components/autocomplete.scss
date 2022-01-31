@@ -2,7 +2,7 @@
   padding: 0px;
   padding-left: 1em*0.9;
   border-radius: 2px;
-  border: 1px solid tw-colors('inputBorder');
+  border: 1px solid var(--input-border-color);
   min-height: tw-input-sizes('medium');
   box-sizing: border-box;
   padding-right: 24px;
@@ -31,34 +31,24 @@
     padding: 0px;
     list-style: none;
     min-width: 300px;
-    border: 1px solid tw-color('navigationBorder');
+    border: 1px solid var(--border-color);
     box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.2);
     border-top: none;
-    border-bottom: 2px solid tw-color('navigationBorder');
+    border-bottom: 2px solid var(--border-color);
 
-    @include themify($themes) {
-      background-color: themed('backgroundPanelColor');
-      border-color: themed('borderColor');
-      border-bottom-color: themed('borderColor');
-    }
+    background-color: var(--background-panel-color);
+    border-color: var(--border-color);
+    border-bottom-color: var(--border-color);
   }
 
   .vue-autocomplete-item {
     cursor: pointer;
     padding: tw-whitespace('small');
-    border-top: 1px solid tw-color('navigationBorder');
-
-    @include themify($themes) {
-      border-top-color: themed('borderColor');
-    }
+    border-top: 1px solid var(--border-color);
   }
 
   .active {
-    background-color: tw-color('navigationBorder');
-
-    @include themify($themes) {
-      background-color: themed('hover');
-    }
+    background-color: var(--hover);
   }
 
 }

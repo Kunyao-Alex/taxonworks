@@ -4,20 +4,14 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: tw-color('backgroundPanel');
-    @include themify($themes) {
-      background-color: themed('backgroundPanelColor');
-    }
+    background-color: var(--background-panel-color)
   }
 
   .otu-cell {
     display: flex;
     align-items: center;
     justify-content: left;
-    background-color: tw-color('backgroundPanel');
-    @include themify($themes) {
-      background-color: themed('backgroundPanelColor');
-    }
+    background-color: var(--background-panel-color)
   }
 
   .header-label {

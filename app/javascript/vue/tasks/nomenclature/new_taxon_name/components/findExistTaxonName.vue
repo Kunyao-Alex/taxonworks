@@ -161,15 +161,9 @@ export default {
     margin-top: 1.2em;
     box-sizing: border-box;
     min-width: auto;
-    border: 1px solid #f5f5f5;
+    border: 1px solid var(--border-color);
     padding: 12px;
     border-radius: 3px;
-    .header {
-      border-bottom: 1px solid #f5f5f5;
-    }
-    .body {
-      padding: 12px;
-    }
 
     li {
       margin-bottom: 8px;

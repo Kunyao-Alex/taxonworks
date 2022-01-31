@@ -22,56 +22,34 @@
   label {
     display: inline-block;
     width: 60px;
-    color: tw-color('textColor');
+    color: var(--text-color);
     text-align: center;
     padding: 6px 14px;
     transition: all 0.1s ease-in-out;
     width: 100%;
-    border-bottom: 1px solid tw-color('navigationBorder');
+    border-bottom: 1px solid var(--border-color);
     font-weight: tw-font-weight('medium');
     font-size: tw-font-sizes('small');
     border-top-left-radius: 0.9em;
     border-top-right-radius: 0.9em;
     border-top: 4px solid transparent;
-
-    @include themify($themes) {
-      color: themed('textColor');
-      border-bottom-color: themed('borderColor');
-    }
-  
   }
 
   label:hover {
     cursor: pointer;
-    background-color: tw-color('hover');
-
-    @include themify($themes) {
-      background-color: themed('hover');
-    }
+    background-color: var(--hover);
   }
 
   input:checked + label {
-
-    color: tw-color('primary');
-    border: 1px solid tw-color('navigationBorder');
+    color: var(--input-background-color-active-text);
+    border: 1px solid var(--border-color);
     border-width: 1px 1px 0 1px;
-    border-top: 4px solid tw-color('primary');
+    border-top: 4px solid var(--primary-color);
     padding-bottom: 2px;
-    background-color: tw-color('active');
-
-    @include themify($themes) {
-      color: themed('active');
-      border-color: themed('borderColor');
-      border-bottom-color: themed('active');
-      background-color: themed('activeInput');
-    }
+    background-color: var(--input-background-color-active);
   }
 
   input:focus + label {
-    background-color: tw-color('active');
-
-    @include themify($themes) {
-      background-color: themed('activeInput');
-    }
+    background-color: var(--input-background-color-active);
   }
 }

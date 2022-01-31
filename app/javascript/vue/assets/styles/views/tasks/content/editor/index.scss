@@ -131,26 +131,18 @@
 
     .menu-item {
       cursor: pointer;
-      border-left: 1px solid tw-color('navigationBorder');
-      border-bottom: 1px solid tw-color('navigationBorder');
+      border-left: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+
       .big-icon {
         opacity: 0.8;
       }
-
-      @include themify($themes) {
-        border-bottom-color: themed('borderColor');
-        border-left-color: themed('borderColor');
-      }
     }
     .menu-item:last-child {
-      border-right: 1px solid tw-color('navigationBorder');
-
-      @include themify($themes) {
-        border-right-color: themed('borderColor');
-      }
+      border-right: 1px solid var(--border-color);
     }
     .menu-item:hover {
-      background-color: tw-color('hover');
+      background-color: var(--hover);
     }
 
     .menu-button {
@@ -159,7 +151,8 @@
     }
 
     .active {
-      background-color: tw-color('active');
+      color: var(--input-background-color-active-text);
+      background-color: var(--input-background-color-active);
     }
   }
 
@@ -175,31 +168,22 @@
     .compare {
       margin: 0px;
       flex: 1;
-      border: 1px solid tw-color('navigationBorder');
+      border: 1px solid var(--border-color);
       border-top: none;
       font-size: 14px;
       padding: tw-whitespace('small');
       white-space: pre-wrap;
       word-break: break-all;
       word-wrap: break-word;
-      background-color: #F5F5F5;
       border-left: none;
       box-sizing: border-box;
-
-      @include themify($themes) {
-        background-color: themed('backgroundInputColor');
-        border-color: themed('borderColor');
-      }
+      background-color: var(--input-background-color);
     }
     .compare-toolbar {
-      border: 1px solid tw-color('navigationBorder');
+      border: 1px solid var(--border-color);
       border-left: none;
       height: 50px;
       padding: 0 10px;
-
-      @include themify($themes) {
-        border-color: themed('borderColor');
-      }
     }
     .title {
       align-items: center;
@@ -220,7 +204,7 @@
       padding: tw-whitespace('small');
       padding-left: tw-whitespace('default');
       padding-right: tw-whitespace('default');
-      border-bottom: 1px solid tw-color('navigationBorder');
+      border-bottom: 1px solid var(--border-color);
     }
   }
 

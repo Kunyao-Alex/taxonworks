@@ -68,7 +68,7 @@
     min-height: 160px;
     border-top-right-radius: .9rem;
     border-bottom-right-radius: .9rem;
-    background-color: tw-color('backgroundPanel');
+    background-color: var(--background-panel-color);
     box-shadow: rgba(36, 37, 38, 0.08) 4px 4px 15px 0px;
     transition: transform 0.3s ease,
                 box-shadow 0.3s ease; 
@@ -117,14 +117,10 @@
     width: 34px;
     display: flex;
     position: absolute;
-    border-bottom: 1px solid tw-color('navigationBorder');
     padding: tw-whitespace('small');
     padding-left: tw-whitespace('default');
     padding-right: tw-whitespace('default');
-
-    @include themify($themes) {
-      border-bottom: 1px solid themed('borderColor');
-    }
+    border-bottom: 1px solid var(--border-color);
 
     .status:first-letter {
       text-transform: uppercase;
@@ -149,7 +145,7 @@
     padding-left: tw-whitespace('default'); 
     padding-top: tw-whitespace('default'); 
     a {
-      color: tw-color('link');
+      color: var(--link-color);
     }
 
   }
@@ -175,13 +171,13 @@
     font-weight: 400;
     line-height: 20px;
     max-width: 350px;
-    color: tw-color('textColor');
+    color: var(--text-color);
     padding-left: tw-whitespace('medium');
   }
 
   .navigation {
     display: flex;
-    background-color: tw-color('backgroundPanel');
+    background-color: var(--background-panel-color);
     box-shadow: 0px 1px 1px rgba(0,0,0,.2);
     flex-direction:row;
     justify-content:center;
@@ -197,10 +193,12 @@
     display: flex;
     cursor: pointer;
   }
+
   .navigation-arrows {
     display: flex;
     flex-direction: row;
   }
+
   .navigation-arrow {
     display: flex;
     padding: 5px;
@@ -229,24 +227,18 @@
     align-items: center;
 
     .task-nav-item {
-      background-color: tw-color('navigationBorder');
+      background-color: var(--border-color);
       border-radius: 2px;
       width: 15px;
       height: 15px;
       margin: 5px;
       cursor: pointer;
-
-      @include themify($themes) {
-        background-color: themed('textColor');
-      }
     }
     .active {
-      background-color: tw-color('textColor');
+      color: var(--input-background-color-active-text);
       width: 15px;
       height: 15px;
-      @include themify($themes) {
-        background-color: themed('activeInput');
-      }
+      background-color: var(--input-background-color-active);
     }
   }
   @media screen and (min-height:1000px) {

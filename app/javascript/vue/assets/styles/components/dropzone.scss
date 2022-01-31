@@ -4,23 +4,18 @@
   width: 100%;
   border-radius: 5px;
   border-style: dashed;
-  border-color: tw-color('primary');
+  border-color: var(--primary-color);
 
   .dz-details, span {
     cursor: pointer;
   }
 
-  @include themify($themes) {
-    color: themed('textColor');  
-    background-color: themed('backgroundInputColor');
-    border-color: themed('borderColor');
-  }
+  color: var(--text-color);
+  background-color: var(--input-background-color);
 }
 
 .dz-default {
   font-weight: 300 !important;
   font-size: 1.5em;
-  @include themify($themes) {
-    color: themed('textColor');  
-  }
+  color: var(--text-color);
 }

@@ -12,15 +12,11 @@ $default-padding: 2em;
   transition: all 0.5s ease;
   width: 400px;
   height: 100vh;
-  background-color: #FFF;
   box-shadow: 0px 1px 2px 0px #888;
-  @include themify($themes) {
-    background-color: themed('backgroundColor');
-    color: themed('textColor');
-    box-shadow: none;
-    border-left: 1px solid;
-    border-left-color: themed('borderColor');
-  }
+  background-color: var(--background-color);
+  color: var(--text-color);
+  box-shadow: none;
+  border-left: 1px solid var(--border-color);
   font-weight: tw-font-weight('normal');
   
   a {
@@ -58,19 +54,14 @@ $default-padding: 2em;
 
   .slide-panel-category-header {
     padding: 0.8em;
-    color: #828282;
+    color: var(--text-color);
     cursor: pointer;
-    background-color: #F9F9F9;
+    background-color: var(--background-panel-color);
     padding-left: tw-whitespace('large');
     border-left: 5px solid $category-header-color;
     background-image: url('assets/images/icons/arrow-down.svg');
     background-position: right 1em center;
     background-repeat: no-repeat;
-
-    @include themify($themes) {
-      background-color: themed('backgroundPanelColor');
-      color: themed('textColor');
-    }
   }
 
   .slide-panel-circle-icon {
@@ -104,8 +95,8 @@ $default-padding: 2em;
     font-size: tw-font('small');
     white-space: nowrap;
     padding: tw-whitespace('small');
-    background-color: tw-color('black');
-    color: tw-color('white');
+    background-color: var(--black-color);
+    color: var(--white-color);
     box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
     right: 70px;
     top: 13px;
@@ -186,7 +177,5 @@ $default-padding: 2em;
 
 
 #pdfViewerContainer {
-  @include themify($themes) {
-    background-color: themed('backgroundPanelColor');
-  }
+  background-color: var(--background-panel-color);
 }

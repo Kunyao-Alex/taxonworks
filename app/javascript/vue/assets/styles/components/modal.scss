@@ -19,16 +19,12 @@
   width: 300px;
   margin: 0px auto;
   padding: 20px 30px;
-  background-color: tw-color('backgroundPanel');
+  background-color: var(--background-panel-color);
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
   transition: all .3s ease;
   font-family: IBM Plex Sans, Helvetica, Arial, sans-serif;
   max-height: 90vh;
-
-  @include themify($themes) {
-    background-color: themed('backgroundPanelColor');
-  }
 }
 
 .modal-close {
@@ -38,13 +34,9 @@
   right:30px;
   width: 10px;
   height: 10px;
-  background-image: url('assets/images/icons/close.svg');
+  background-image: var(--icon-close);
   background-size: 10px 10px;
   opacity: 0.4;
-
-  @include themify($themes) {
-    background-image: url('assets/images/icons/w_close.svg');
-  }
 }
 
 .modal-close:hover {
@@ -97,7 +89,7 @@
       right: 42px;
       top:30px;
       color: rgba(255, 255, 255, .5);
-      background-image: url('assets/images/icons/w_close.svg');
+      background-image: var(--icon-close);
     }
     .modal-container {
       width: 70%;

@@ -15,7 +15,7 @@
     #search-filter {
       width: 100%;
       box-sizing: border-box;
-      background-image: url("assets/images/icons/search.svg");
+      background-image: var(--icon-search);
       background-size: 18px;
       background-repeat: no-repeat;
       background-position: right 4px center;
@@ -24,7 +24,7 @@
 
     .navigation-controls-type  {
       .navigation-item {
-        border: 1px solid tw-color('navigationBorder');
+        border: 1px solid var(--border-color);
         justify-content: center;
         border-right: 0px;
       }
@@ -73,12 +73,9 @@
     }
 
     .activated {
-      background-color: tw-color('active');
+      color: var(--input-background-color-active-text);
+      background-color: var(--input-background-color-active);
       opacity: 1 !important;
-
-      @include themify($themes) {
-        background-color: themed('active');
-      }
     } 
     .activated.status {
       box-shadow:none !important;
@@ -130,9 +127,9 @@
       padding-left: tw-whitespace('tiny');
       padding-right: tw-whitespace('tiny');
       margin-left: 90px;
-      border:1px solid tw-color('navigationBorder');
-      background-color: tw-color('backgroundPanel');
-      box-shadow:inset 0px 1px 4px 0px tw-color('navigationBorder'); 
+      border:1px solid var(--border-color);
+      background-color: var(--background-panel-color);
+      box-shadow:inset 0px 1px 4px 0px var(--border-color); 
       border-top-left-radius: 0px;
       border-bottom-left-radius: 0px;
       .status {
@@ -167,8 +164,8 @@
       left: 4px;
       bottom: 4px;
       border-radius: 3px;
-      border:1px solid tw-color('navigationBorder');
-      background-color: tw-color('backgroundPanel');
+      border:1px solid var(--border-color);
+      background-color: var(--background-panel-color);
       transition: .3s;
     }
 
@@ -187,8 +184,8 @@
       border-radius: 3px;
       border-bottom-left-radius: 0px;
       border-top-left-radius: 0px;  
-      border: 1px solid tw-color('navigationBorder');
-      background-color: tw-color('backgroundPanel');
+      border: 1px solid var(--border-color);
+      background-color: var(--background-panel-color);
     }
 
     input:checked ~ .filter-category {
@@ -197,7 +194,8 @@
 
     input:checked + .slider:before {
       transform: translateX(16px);
-      background-color: tw-color('active');
+      color: var(--input-background-color-active-text);
+      background-color: var(--input-background-color-active);
     }
 
     .switch {
@@ -209,15 +207,15 @@
       border-radius: 3px;
       border-bottom-right-radius: 0px;
       border-top-right-radius: 0px;
-      border:1px solid tw-color('navigationBorder');
+      border:1px solid var(--border-color);
       border-right: 0px;    
-      background-color: tw-color('backgroundColor'); 
-      box-shadow:inset 0px 1px 4px 0px tw-color('navigationBorder'); 
+      background-color: var(--background-color); 
+      box-shadow:inset 0px 1px 4px 0px var(--border-color); 
     }  
   }
 
   .status {
-    box-shadow: 0 0 3px 0 tw-color('navigationBorder');
+    box-shadow: 0 0 3px 0 var(--border-color);
     border-radius: 50%;
     font-size: 0px;
     width: 12px;

@@ -34,12 +34,8 @@
     grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    background-color: tw-color('backgroundPanel');
+    background-color: var(--background-panel-color);
     grid-gap: 1px;
-
-    @include themify($themes) {
-      //background-color: themed('backgroundPanelColor');
-    }
   }
 
   .grid-icon {
@@ -51,12 +47,8 @@
   }
 
   .grid-item {
-    background-color: tw-color('backgroundPanel');
+    background-color: var(--background-panel-color);
     overflow: scroll;
-
-    @include themify($themes) {
-      background-color: themed('backgroundPanelColor');
-    }
   }
   
   .layout-mode-1 {

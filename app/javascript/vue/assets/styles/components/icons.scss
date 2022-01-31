@@ -45,19 +45,11 @@
     }
 
     [data-icon="biology"] {
-      background-image: url("assets/images/icons/biology.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconBiology');
-      }
+      background-image: var(--icon-biology);
     }         
 
     [data-icon="annotate"] {
-      background-image: url("assets/images/icons/annotate.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconAnnotate');
-      }
+      background-image: var(--icon-annotate);
     } 
 
     [data-icon="batch"] {
@@ -73,11 +65,7 @@
     }           
 
     [data-icon="expand"] {
-      background-image: url("assets/images/icons/expand.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconExpand');
-      }
+      background-image: var(--icon-expand);
     }
 
     [data-icon="w_expand"] {
@@ -85,35 +73,19 @@
     }
 
     [data-icon="citation"] {
-      background-image: url("assets/images/icons/citation.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconCitation');
-      }
+      background-image: var(--icon-citation);
     }          
 
     [data-icon="clone"] {
-      background-image: url("assets/images/icons/clone.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconClone');
-      }
+      background-image: var(--icon-clone);
     } 
 
     [data-icon="compare"] {
-      background-image: url("assets/images/icons/compare.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconCompare');
-      }
+      background-image: var(--icon-compare);
     }   
 
     [data-icon="contract"] {
-      background-image: url("assets/images/icons/contract.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconContract');
-      }
+      background-image: var(--icon-contract);
     }
     
     [data-icon="w_contract"] {
@@ -133,11 +105,7 @@
     }      
 
     [data-icon="list"] {
-      background-image: url("assets/images/icons/list.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconList');
-      }
+      background-image: var(--icon-list);
     }         
 
     [data-icon="scroll-v"] {
@@ -157,19 +125,11 @@
     }     
 
     [data-icon="download"] {
-      background-image: url("assets/images/icons/download.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconDownload');
-      }
+      background-image: var(--icon-download);
     }     
 
     [data-icon="add"] {
-      background-image: url("assets/images/icons/add.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconAdd');
-      }
+      background-image: var(--icon-add);
     }
 
     [data-icon="w_plus"] {
@@ -185,12 +145,8 @@
     }          
 
     [data-icon="image"] {
-      background-image: url("assets/images/icons/image.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconImage');
-      }
-    }          
+      background-image: var(--icon-image);
+    }
 
     [data-icon="pin"] {
       background-image: url("assets/images/icons/pin.svg");
@@ -201,27 +157,15 @@
     }     
 
     [data-icon="edit"] {
-      background-image: url("assets/images/icons/new.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconNew');
-      }
+      background-image: var(--icon-new);
     }      
 
     [data-icon="new"] {
-      background-image: url("assets/images/icons/new.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconNew');
-      }
+      background-image: var(--icon-new);
     }              
 
     [data-icon="trash"] {
-      background-image: url("assets/images/icons/trash.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconTrash');
-      }
+      background-image: var(--icon-trash);
     }      
 
     [data-icon="favorite"] {
@@ -229,35 +173,19 @@
     }      
 
     [data-icon="arrow-right"] {
-      background-image: url("assets/images/icons/arrow-right.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconArrowRight');
-      }
+      background-image: var(--icon-arrow-right);
     }     
 
     [data-icon="arrow-left"] {
-      background-image: url("assets/images/icons/arrow-left.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconArrowLeft');
-      }
+      background-image: var(--icon-arrow-left);
     }
     
     [data-icon="arrow-up"] {
-      background-image: url("assets/images/icons/arrow-up.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconArrowUp');
-      }
+      background-image: var(--icon-arrow-up);
     }
 
     [data-icon="arrow-down"] {
-      background-image: url("assets/images/icons/arrow-down.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconArrowDown');
-      }
+      background-image: var(--icon-arrow-down);
     }
 
     [data-icon="w-arrow-right"] {
@@ -277,19 +205,11 @@
     }
 
     [data-icon="recent"] {
-      background-image: url("assets/images/icons/recent.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconRecent');
-      }
+      background-image: var(--icon-recent);
     }        
 
     [data-icon="reset"] {
-      background-image: url("assets/images/icons/restart.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconRestart');
-      }
+      background-image: var(--icon-restart);
     }
 
     [data-icon="w_reset"] {
@@ -305,19 +225,11 @@
     }  
 
     [data-icon="task"] {
-      background-image: url("assets/images/icons/task.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconTask');
-      }
+      background-image: var(--icon-task);
     }            
 
     [data-icon="data"] {
-      background-image: url("assets/images/icons/data.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconData');
-      }
+      background-image: var(--icon-data);
     }            
 
     [data-icon="related"] {
@@ -325,27 +237,15 @@
     }                    
 
     [data-icon="show"] {
-      background-image: url("assets/images/icons/show.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconShow');
-      }
+      background-image: var(--icon-show);
     }
 
     [data-icon="hide"] {
-      background-image: url("assets/images/icons/hide.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconHide');
-      }
+      background-image: var(--icon-hide);
     }  
 
     [data-icon="openFolder"] {
-      background-image: url("assets/images/icons/open_folder.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconOpenFolder');
-      }
+      background-image: var(--icon-open-folder)
     }   
 
     [data-icon="users"] {
@@ -353,19 +253,11 @@
     }       
 
     [data-icon="folders"] {
-      background-image: url("assets/images/icons/folders.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconFolders');
-      }
+      background-image: var(--icon-folders)
     }  
 
     [data-icon="options"] {
-      background-image: url("assets/images/icons/options.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconOptions');
-      }
+      background-image: var(--icon-options)
     }   
 
     [data-icon="close"] {
@@ -381,11 +273,7 @@
     }   
 
     [data-icon="savedb"] {
-      background-image: url("assets/images/icons/savedb.svg");
-
-      @include themify($themes) {
-        background-image: themed('iconSaveDB');
-      }
+      background-image: var(--icon-save-DB);
     }
 
     [data-icon="warning"] {

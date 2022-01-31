@@ -22,11 +22,7 @@
     justify-content: center;
     padding-left: tw-whitespace('default');
     padding-right: tw-whitespace('default');
-    border-right: 1px solid tw-color('navigationBorder');
-
-    @include themify($themes) {
-      border-right-color: themed('borderColor');
-    }
+    border-right: 1px solid var(--border-color);
   }
 
   &> li a {
@@ -53,7 +49,7 @@
       display: flex;
       width: 1040px;
       padding: 5px;
-      border-bottom:1px solid tw-color('navigationBorder');
+      border-bottom: 1px solid var(--border-color);
       text-align: right;
       align-items: center;
       font-size: 12px;
@@ -61,14 +57,10 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-
-      @include themify($themes) {
-        border-bottom-color: themed('borderColor');
-      }
     }
 
     li:hover {
-      background-color: tw-color('hover');
+      background-color: var(--hover);
       opacity: 1 !important;
     }
     a {

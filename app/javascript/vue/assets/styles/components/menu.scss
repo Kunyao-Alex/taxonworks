@@ -11,7 +11,7 @@
     border-left:none;
   }
   .navigation-item {
-    border-bottom:1px solid tw-color('navigationBorder');
+    border-bottom:1px solid var(--border-color);
     cursor: pointer;
     width: 100%;
     display: flex;
@@ -22,7 +22,7 @@
     align-items: center;
     padding-top: tw-whitespace('default');
     padding-bottom: tw-whitespace('default');
-    border-left: 1px solid tw-color('navigationBorder');
+    border-left: 1px solid var(--border-color);
     text-align: center;
     a {
        text-decoration: none;
@@ -60,9 +60,9 @@
         }
       }
       li:hover {
-        background-color: tw-color('hover');
+        background-color: var(--hover);
         a {
-          color: tw-color('backgroundColor');
+          color: var(--background-color);
         }
       }
       li:last-child {
@@ -72,13 +72,9 @@
   }
 
   .menu-drop {
-    background-image: url("assets/images/icons/arrow-down.svg");
+    background-image: var(--icon-arrow-down);
     background-position: 95%,center;
     background-repeat: no-repeat;
-
-    @include themify($themes) {
-      background-image: themed('iconArrowDown');
-    }
   }
 
   .menu-drop:hover {
@@ -87,13 +83,13 @@
   } 
 
   .navigation-item:hover {
-    background-color: tw-color('hover');
+    background-color: var(--hover);
     img {
       opacity: 1;
     }
     .dropdown {
       display: flex;
-      background-color: #FFF;
+      background-color: var(--background-panel-color);
     }
   }
 }
