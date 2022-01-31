@@ -34,9 +34,9 @@
             label="label_html"
             :clear-after="clear"
             display="label"
-            autofocus
-            @keyEvent="changeTab"
-            @getItem="getObject($event.id)"/>
+            :autofocus="autofocus"
+            @key-event="changeTab"
+            @get-item="getObject($event.id)"/>
           <otu-picker
             v-if="otuPicker"
             :input-id="inputId"
@@ -57,69 +57,18 @@
                 :src="image.alternatives.thumb.image_file_url">
             </div>
           </div>
-          <slot name="body"/>
-          <template v-if="isImageModel">
-            <div class="flex-wrap-row">
-              <div
-                v-for="image in lists[view]"
-                :key="image.id"
-                class="thumbnail-container margin-small cursor-pointer"
-                @click="sendObject(image)">
-                <img
-                  :width="image.alternatives.thumb.width"
-                  :height="image.alternatives.thumb.height"
-                  :src="image.alternatives.thumb.image_file_url">
-              </div>
-            </div>
-          </template>
-          <template v-else>
-            <ul
-              v-if="view"
-              class="no_bullets smart__selector__ul"
-              :class="{ 'flex-wrap-row': inline }">
-              <template
-                v-for="item in lists[view]"
-                :key="item.id">
-                <li
-                  v-if="filterItem(item)"
-                  class="smart__selector__line">
-                  <template
-                    v-if="buttons">
-                    <button
-                      type="button"
-                      class="button normal-input tag_button"
-                      :class="buttonClass"
-                      v-html="item[label]"
-                      @click.prevent="sendObject(item)"/>
-                  </template>
-                  <template
-                    v-else>
-                    <label
-                      class="cursor-pointer"
-                      :title="DOMPurify.sanitize(item[label], { FORBID_TAGS: ['i'] })">
-                      <input
-                        :name="name"
-                        @click="sendObject(item)"
-                        :value="item"
-                        :checked="selectedItem && item.id == selectedItem.id"
-                        type="radio">
-                      <span v-html="showLabel(item[label])"/>
-                    </label>
-                  </template>
-                </li>
-              </template>
-            </ul>
-          </template>
         </template>
         <template v-else>
           <ul
-            v-if="view && view != 'search'"
+            v-if="view"
             class="no_bullets smart__selector__ul"
             :class="{ 'flex-wrap-row': inline }">
             <template
               v-for="item in lists[view]"
               :key="item.id">
-              <li v-if="filterItem(item)">
+              <li
+                v-if="filterItem(item)"
+                class="smart__selector__line">
                 <template
                   v-if="buttons">
                   <button
@@ -133,16 +82,14 @@
                   v-else>
                   <label
                     class="cursor-pointer"
-                    @mousedown="sendObject(item)">
+                    :title="DOMPurify.sanitize(item[label], { FORBID_TAGS: ['i'] })">
                     <input
                       :name="name"
-                      @keyup="changeTab"
-                      @keyup.enter="sendObject(item)"
-                      @keyup.space="sendObject(item)"
+                      @click="sendObject(item)"
                       :value="item"
                       :checked="selectedItem && item.id == selectedItem.id"
                       type="radio">
-                    <span v-html="item[label]"/>
+                    <span v-html="showLabel(item[label])"/>
                   </label>
                 </template>
               </li>
@@ -150,9 +97,47 @@
           </ul>
         </template>
       </template>
+      <template v-else>
+        <ul
+          v-if="view && view != 'search'"
+          class="no_bullets smart__selector__ul"
+          :class="{ 'flex-wrap-row': inline }">
+          <template
+            v-for="item in lists[view]"
+            :key="item.id">
+            <li v-if="filterItem(item)">
+              <template
+                v-if="buttons">
+                <button
+                  type="button"
+                  class="button normal-input tag_button"
+                  :class="buttonClass"
+                  v-html="item[label]"
+                  @click.prevent="sendObject(item)"/>
+              </template>
+              <template
+                v-else>
+                <label
+                  class="cursor-pointer"
+                  @mousedown="sendObject(item)">
+                  <input
+                    :name="name"
+                    @keyup="changeTab"
+                    @keyup.enter="sendObject(item)"
+                    @keyup.space="sendObject(item)"
+                    :value="item"
+                    :checked="selectedItem && item.id == selectedItem.id"
+                    type="radio">
+                  <span v-html="item[label]"/>
+                </label>
+              </template>
+            </li>
+          </template>
+        </ul>
+      </template>
       <slot :name="view" />
       <slot />
-      <slot name="footer"/>
+      <slot name="footer" />
     </div>
   </div>
 </template>
@@ -169,7 +154,6 @@ import DefaultPin from 'components/getDefaultPin'
 import OtuPicker from 'components/otu/otu_picker/otu_picker'
 import DOMPurify from 'dompurify'
 import { shorten } from 'helpers/strings.js'
-import getPlatformKey from 'helpers/getPlatformKey'
 
 const props = defineProps({
   modelValue: {
