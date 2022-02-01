@@ -44,6 +44,42 @@
       cursor: pointer;
     }
 
+    .icon-color-primary {
+      fill: var(--primary-color);
+    }
+
+    .icon-color-update {
+      fill: var(--update-color);
+    }
+
+    .icon-color-black {
+      fill: var(--black-color);
+    }
+
+    .icon-color-create {
+      fill: var(--create-color);
+    }
+
+    .icon-color-destroy {
+      fill: var(--destroy-color);
+    }
+
+    .icon-color-secondary {
+      fill: var(--secondary-color);
+    }
+
+    .icon-color-warning {
+      fill: var(--warning-color);
+    }
+
+    .icon-color-attention {
+      fill: var(--attention-color);
+    }
+
+    .icon-color-white {
+      fill: var(--white-color);
+    }
+
     [data-icon="biology"] {
       background-image: var(--icon-biology);
     }         

@@ -17,10 +17,6 @@
 
   label {
     float: left;
-  }
-
-  label {
-    display: inline-block;
     width: 60px;
     color: var(--text-color);
     text-align: center;
@@ -41,7 +37,6 @@
 
   input:checked + label {
     color: var(--input-background-color-active-text);
-    border: 1px solid var(--border-color);
     border-width: 1px 1px 0 1px;
     padding-bottom: 2px;
     background-color: var(--input-background-color-active);

@@ -15,6 +15,7 @@
     </title>
     <g
       ref="svggroup"
+      :class="iconColor"
       :fill="selectedColor">
       <path
         v-for="(path, index) in iconPaths"
@@ -28,18 +29,21 @@
 <script>
 
 import mixinSizes from '../mixins/sizes.js'
-import mixinColors from '../mixins/colors.js'
 import { Icons } from './icons.js'
 
 export default {
   name: 'VIcon',
 
   mixins: [
-    mixinSizes,
-    mixinColors
+    mixinSizes
   ],
 
   props: {
+    color: {
+      type: String,
+      default: 'default'
+    },
+
     disabled: {
       type: Boolean,
       default: false
@@ -69,6 +73,10 @@ export default {
 
     showTitle () {
       return this.title || `${this.name} icon`
+    },
+
+    iconColor () {
+      return `icon-color-${this.color}`
     }
   },
 

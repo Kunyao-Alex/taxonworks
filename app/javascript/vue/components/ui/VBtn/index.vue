@@ -15,14 +15,12 @@
 <script>
 
 import mixinSizes from '../mixins/sizes.js'
-import mixinColor from '../mixins/colors.js'
 
 export default {
   name: 'VBtn',
 
   mixins: [
-    mixinSizes,
-    mixinColor
+    mixinSizes
   ],
 
   props: {
@@ -74,10 +72,9 @@ export default {
       const isLink = !!this.href
 
       return [
-        'button',
         `btn-${this.color}`,
         isLink ? 'btn-link' : 'btn',
-        this.buttonSize,
+        this.buttonSize
       ]
     }
   }
