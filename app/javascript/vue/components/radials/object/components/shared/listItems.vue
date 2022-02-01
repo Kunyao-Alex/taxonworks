@@ -132,7 +132,7 @@ export default {
   }
 
   .highlight {
-    background-color: #E3E8E3;
+    background-color: var(--input-background-color-active);
   }
 
   .list-item {

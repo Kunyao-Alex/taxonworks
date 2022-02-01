@@ -466,7 +466,7 @@ export default {
 
     .radial-annotator-template {
       border-radius: 3px;
-      background: #FFFFFF;
+      background: var(--background-panel-color);
       padding: 1em;
       width: 100%;
       max-width: 100%;

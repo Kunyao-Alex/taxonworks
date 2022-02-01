@@ -38,11 +38,11 @@ option,
 textarea {
   background-color: var(--input-background-color);
   color: var(--text-color);
-  border-color: var(--border-color);
+  border-color: var(--input-border-color);
 }
 
 input[type="checkbox"] {
-  border-color: var(--border-color);
+  border-color: var(--input-border-color);
 }
 
 button:disabled {

@@ -69,7 +69,7 @@ table {
     padding-right: tw-whitespace('default');
     font-weight: 500;
     font-size: 12px;
-    border-bottom: 4px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
     text-align: left;
 
     a {
@@ -97,6 +97,6 @@ table {
   }
 
   .highlight {
-    background-color: var(--hover);
+    background-color: var(--input-background-color-active);
   }
 }

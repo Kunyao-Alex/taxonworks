@@ -34,12 +34,14 @@
             title="Remove citation"
             class="circle-button button-delete btn-undo"
             v-if="getCitation(item)"
-            @click="removeCitation(item)"/>
+            @click="removeCitation(item)"
+          />
           <span
             v-if="edit"
             type="button"
             class="circle-button btn-edit"
-            @click="$emit('edit', item)"/>
+            @click="$emit('edit', item)"
+          />
           <span
             type="button"
             class="circle-button btn-delete"
@@ -55,60 +57,62 @@
 import RadialAnnotator from 'components/radials/annotator/annotator.vue'
 
 export default {
+  name: 'ListEntrys',
+
   components: {
     RadialAnnotator
   },
+
   props: {
-    list: { 
+    list: {
       type: Array,
-      default: () => { return [] }
-    }, 
+      default: () => []
+    },
+
     display: {
       type: Array
     },
+
     edit: {
       type: Boolean,
       default: false
     }
   },
-  name: 'ListEntrys',
+
+  emits: [
+    'addCitation',
+    'delete',
+    'update'
+  ],
+
   methods: {
     composeLink (item, show) {
       return show.link + item[show.param]
     },
+
     isLink (show) {
-      if (typeof show === 'string' || show instanceof String) {
-        return false
-      } else {
-        return true
-      }
+      return !(typeof show === 'string' || show instanceof String)
     },
+
     update () {
       this.$emit('update')
     },
-    remove(item) {
-      if(window.confirm(`You're trying to delete this record. Are you sure want to proceed?`)) {
+
+    remove (item) {
+      if (window.confirm('You\'re trying to delete this record. Are you sure want to proceed?')) {
         this.$emit('delete', item)
       }
     },
-    getCitation: function (item) {
-      return (item.hasOwnProperty('origin_citation') ? item.origin_citation.citation_source_body : undefined)
+
+    getCitation (item) {
+      return item?.origin_citation?.citation_source_body || undefined
     },
-    sendCitation (sourceId, item) {
-      let citation = {
-        id: item.id,
-        origin_citation_attributes: {
-          id: (item.hasOwnProperty('origin_citation') ? item.origin_citation.id : null),
-          source_id: sourceId
-        }
-      }
-      this.$emit('addCitation', citation)
-    },
+
     removeCitation (item) {
-      let citation = {
+      const citation = {
         id: item.id,
         origin_citation_attributes: {
-          id: (item.hasOwnProperty('origin_citation') ? item.origin_citation.id : null),
+          id: item?.origin_citation.id || null,
           _destroy: true
         }
       }
@@ -117,51 +121,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.pages {
-  margin-left: 8px;
-  width: 70px;
-}
-.list-controls {
-  display: flex;
-  align-items:center;
-  flex-direction:row;
-  justify-content: flex-end;
-  width: 550px;
-}
-.pages:disabled {
-  background-color: #F5F5F5;
-}
-.list-item {
-  a {
-    padding-left: 4px;
-    padding-right: 4px;
-  }
-}
-.table-entrys-list {
-  padding: 0px;
-  position: relative;
-
-  li {
-    margin: 0px;
-    padding: 1em 0;
-    border-bottom: 1px solid #f5f5f5;
-  }
-}
-.list-complete-item {
-  transition: all 1s, opacity 0.2s;
-
-}
-.list-complete-enter, .list-complete-leave-to
-{
-  opacity: 0;
-  font-size: 0px;
-  border:none;
-  transform: scale(0.0);
-}
-.list-complete-leave-active {
-  width: 100%;
-  position: absolute;
-}
-</style>

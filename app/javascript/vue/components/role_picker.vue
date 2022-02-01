@@ -390,19 +390,3 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-  .table-entrys-list {
-    padding: 0px;
-    position: relative;
-
-    li {
-      margin: 0px;
-      padding: 1em 0;
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid #f5f5f5;
-    }
-
-
-  }
-</style>
