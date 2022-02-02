@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Repository</h2>
+    <h3>Repository</h3>
     <fieldset class="fieldset">
       <legend>Repository</legend>
       <div class="horizontal-left-content align-start separate-bottom">

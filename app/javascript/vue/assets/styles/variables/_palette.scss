@@ -1,3 +1,84 @@
+:root {
+  --color-scheme: light;
+  --background-color: #f7f8fc;
+  --background-panel-color: #FFFFFF;
+  --input-background-color: #FFFFFF;
+  --input-border-color: #d5d5d5;
+
+  --primary-color: #5d99c6;
+  --update-color: #8ac65d;
+  --black-color: #444444;
+  --create-color: #8ac65d;
+  --data-color: #006ebf;
+  --destroy-color: #F44336;
+  --secondary-color: #5a1321;
+  --warning-color: #ff8c00;
+  --attention-color: #FFDA44;
+  --white-color: #FFFFFF;
+
+  --text-color: #000000;
+  --quick-bar-color: #FFFFFF;
+
+  --border-color: #e5e5e5;
+  --box-shadow-button: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+
+  --hover: #f3f4f6;
+
+  --input-background-color-active: #deecf9;
+  --input-background-color-active-text: #000000;
+
+  --link-color: #5D9ECE;
+
+  --table-row-even: #f8f8f8;
+  --table-row-odd: #FFFFFF;
+
+  --spinner-tail-color: #41BA8D;
+  --spinner-left-bottom-color: #00845D;
+  --spinner-left-mid-color: #999999;
+  --spinner-left-top-color: #c9c9c9;
+  --spinner-head-color: #f5f5f5;
+
+  --logo-taxonworks: url('assets/images/logo/taxonworks_logo_full.svg');
+
+  --icon-biology: url("assets/images/icons/biology.svg");
+  --icon-new: url("assets/images/icons/new.svg");
+  --icon-source: url("assets/images/icons/book.svg");
+  --icon-matrix: url("assets/images/icons/matrix.svg");
+  --icon-DNA: url("assets/images/icons/helix.svg");
+  --icon-collecting-event: url("assets/images/icons/geolocation.svg");
+  --icon-collection-object: url("assets/images/icons/picking.svg");
+  --icon-image: url("assets/images/icons/image.svg");
+  --icon-trash: url("assets/images/icons/trash.svg");
+  --icon-search: url("assets/images/icons/search.svg");
+  --icon-ok: url("assets/images/icons/w_ok.svg");
+  --icon-pdf: url("assets/images/icons/pdf.svg");
+  --icon-recent: url("assets/images/icons/recent.svg");
+
+  --icon-arrow-up: url("assets/images/icons/arrow-up.svg");
+  --icon-arrow-down: url("assets/images/icons/arrow-down.svg");
+  --icon-arrow-left: url("assets/images/icons/arrow-left.svg");
+  --icon-arrow-right: url("assets/images/icons/arrow-right.svg");
+  --icon-restart: url("assets/images/icons/restart.svg");
+  --icon-show: url("assets/images/icons/show.svg");
+  --icon-hide: url("assets/images/icons/hide.svg");
+  --icon-options: url("assets/images/icons/options.svg");
+  --icon-folders: url("assets/images/icons/folders.svg");
+  --icon-data: url("assets/images/icons/data.svg");
+  --icon-download: url("assets/images/icons/download.svg");
+  --icon-list: url("assets/images/icons/list.svg");
+  --icon-open-folder: url("assets/images/icons/open_folder.svg");
+  --icon-task: url("assets/images/icons/task.svg");
+  --icon-annotate: url("assets/images/icons/annotate.svg");
+  --icon-add: url("assets/images/icons/add.svg");
+  --icon-expand: url("assets/images/icons/expand.svg");
+  --icon-contract: url("assets/images/icons/contract.svg");
+  --icon-clone: url("assets/images/icons/citation.svg");
+  --icon-compare: url("assets/images/icons/citation.svg");
+  --icon-save-DB: url("assets/images/icons/savedb.svg");
+  --icon-citation: url("assets/images/icons/citation.svg");
+  --icon-close: url("assets/images/icons/close.svg");
+}
+
 $tw-colors: (
   'background': #f7f8fc,
   'black': #444444,

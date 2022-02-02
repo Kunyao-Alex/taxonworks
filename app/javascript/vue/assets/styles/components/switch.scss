@@ -24,8 +24,8 @@
     transition: all 0.1s ease-in-out;
     width: 100%;
     border-bottom: 1px solid var(--border-color);
-    font-weight: tw-font-weight('medium');
-    font-size: tw-font-sizes('small');
+    font-weight: var(--font-normal);
+    font-size: var(--text-sm);
     border-top-left-radius: 0.9em;
     border-top-right-radius: 0.9em;
   }

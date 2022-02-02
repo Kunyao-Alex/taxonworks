@@ -68,7 +68,6 @@
 
   input[type="text"] {
     flex-grow: 1;
-    margin-right: $standard_margin*0.25;
   }
 
   .fav-link {
@@ -76,8 +75,6 @@
   }
 
   .item {
-    padding-left: $standard_padding*0.25;
-    padding-right: $standard_padding*0.25;
     text-align: center;
     display: flex;
     flex-direction: row;

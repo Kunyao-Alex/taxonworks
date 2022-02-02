@@ -1,0 +1,141 @@
+#browse-view {
+
+  #browse-nomenclature-taxon-name {
+    h3 {
+      display: flex;
+    }
+  }
+
+  .filter {
+    position: relative;
+    .active {
+      background-color: var(--input-background-color-active) !important;
+      box-shadow: inset 0px 1px 2px 0px var(--input-background-color-active) !important;
+      opacity: 1 !important;
+    }
+  
+    .open {
+      position: absolute;
+      left: calc(50% - 24px);
+      bottom: -24px;
+      background-image: var(--icon-show);
+      background-color: var(--primary-color);
+      background-size: 14px;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 40px;
+      border-radius: 0px 0px 30px 30px;
+      height: 20px;
+      margin-top: -1px;
+      transform-origin: 50% 0%;
+      transform: rotate(0deg);
+      transition: transform 0.5s ease;
+    }
+
+    .filter-button-open {
+      transform: rotate(180deg);
+    }
+  
+  }
+  
+  [data-filter-slide] {
+    z-index: 5;
+    box-shadow: 0px 2px 3px 0px var(--border-color);
+  }
+  
+  [data-filter-slide="down"] {
+    display: block;
+  }
+  
+  [data-filter-slide="close"] {
+    display: none;
+  }
+
+  #vue-browse-validation-panel {
+    .soft-validation-box {
+      height: 100%;
+      box-sizing: border-box;
+    }
+    margin-bottom: 1em;
+  }
+
+  .nav-column {
+    width: 400px;
+    min-width: 270px
+  }
+
+  .citations {
+    word-break: break-word;
+  }
+
+  #third-column {
+    max-width: 400px;
+  }
+  .name {
+    font-size: 18px;
+    color: #000;
+  }
+
+  .ui-autocomplete {
+    width: 500px;
+    white-space: normal;
+  }
+  .ui-autocomplete-input {
+    box-sizing: border-box !important;
+    min-width: 300px !important;
+    max-width: 300px !important;
+  }
+
+  @media screen and (min-width: 980px) {
+    .ui-autocomplete {
+      width: auto;
+      white-space: nowrap;
+    }
+  }
+  .soft_validation_anchor {
+    cursor: pointer;
+    margin-left: 5px;
+  }
+  .annotation__note {
+    display: none;
+  }
+  .modal-container {
+    width: 600px;
+  }
+  .history__origin {
+    color: #FFF;
+    padding-left: 7px;
+    padding-right: 7px;
+    margin-right: 4px;
+    border-radius: 3px;
+    &.protonym {
+      background-color: #7986CB;
+    }
+    &.combination {
+      background-color: #FFB74D;
+    }
+    &.taxon_name_relationship {
+      background-color: #9575CD;
+    }
+    &.error {
+      background-color: #A1887F;
+    }
+  }
+
+  #filterBrowse {
+    transition: opacity 1s ease-out;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+  }
+
+  #filterBrowse.active {
+    opacity: 1;
+    height: auto;
+  }
+}
+
+.history__citation_notes p {
+  display: inline;
+  font-weight: normal;
+}

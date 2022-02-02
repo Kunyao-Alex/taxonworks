@@ -3,13 +3,13 @@
    #navigation_list { 
     flex-direction: row !important;
     align-items: flex-start !important;
-    margin-top: tw-whitespace('default') !important;
+    margin-top: var(--space-4) !important;
     justify-content: flex-start !important;
   } 
 
   #filter {
     margin-top: 0px;
-    margin-right: tw-whitespace('default');
+    margin-right: var(--space-4);
     position:relative;
 
     #search-filter {
@@ -37,7 +37,8 @@
       border: 0px;
       box-sizing: border-box;
       width: 100%;
-      padding: tw-whitespace('default');
+      height: 40px;
+      padding: var(--space-2);
       justify-content: flex-start;
       border-left:4px solid transparent;
     }
@@ -49,7 +50,8 @@
       flex-direction: row;
       align-items: center;
       opacity: 0.5;
-      right: tw-whitespace('default');
+      right: var(--space-4);
+      font-size: var(--text-sm);
     }
 
     .reset:hover {
@@ -64,7 +66,7 @@
     justify-content: flex-start;
   }
     .filter-status {
-      margin: tw-whitespace('default');
+      margin: var(--space-4);
       margin-top: 0px;
       display: flex;
       align-items: left;
@@ -124,8 +126,8 @@
       border-radius: 3px;
       height: 24px;
       align-items: center;
-      padding-left: tw-whitespace('tiny');
-      padding-right: tw-whitespace('tiny');
+      padding-left: var(--space-1);
+      padding-right: var(--space-1);
       margin-left: 90px;
       border:1px solid var(--border-color);
       background-color: var(--background-panel-color);
@@ -231,18 +233,19 @@
   .status.stable {
     box-shadow: 0 0 1px 0 #de9f34;
     border:0.5px solid #de9f34;
-    background-color: #fdbd41;
+    background: linear-gradient(0deg,#f19a1a,#ffc73c);
   }    
 
   .status.prototype {
     box-shadow: 0 0 1px 0 #ef4b47;
     border:0.5px solid #ef4b47;      
-    background-color: #fc615d;
+    //background-color: #fc615d;
+    background: linear-gradient(180deg,#f44881,#ec454f)
   }   
 
   .status.complete {
     box-shadow: 0 0 1px 0 #27aa35;
     border:0.5px solid #27aa35;
-    background-color: #35c94a;
+    background: linear-gradient(180deg,#6edcc4,#1aab8b);
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Catalog number</h2>
+    <h3>Catalog number</h3>
     <div
       class="flex-wrap-column middle align-start full_width"
     >

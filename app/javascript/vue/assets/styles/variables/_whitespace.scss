@@ -4,4 +4,12 @@ $tw-whitespace: (
   default: 1em,
   medium: 1.5em,
   large: 2em
-)
+);
+
+:root {
+  --space-05: 0.125;
+
+  @for $i from 0 through 12 {
+    --space-#{$i}: #{$i * 0.25}rem;
+  }
+}

@@ -61,8 +61,8 @@
     flex-direction: row;
     position: relative;
     margin-left: 0px; 
-    margin-top: tw-whitespace('default'); 
-    margin-right: tw-whitespace('default');
+    margin-top: var(--space-4); 
+    margin-right: var(--space-4);
     width: 420px;
     max-height: 180px;
     min-height: 160px;
@@ -73,7 +73,7 @@
     transition: transform 0.3s ease,
                 box-shadow 0.3s ease; 
     .task_header {
-      opacity: 0.2;
+      opacity: 0.7;
       overflow: hidden;
     }
   }
@@ -110,16 +110,16 @@
   .fav-link {
     position: absolute;
     right: 14px;
-    top: tw-whitespace('small');
+    top: var(--space-2);
   }
 
   .task_header {
-    width: 34px;
+    width: 40px;
     display: flex;
     position: absolute;
-    padding: tw-whitespace('small');
-    padding-left: tw-whitespace('default');
-    padding-right: tw-whitespace('default');
+    padding: var(--space-0);
+    padding-left: var(--space-1);
+    //padding-right: var(--space-1);
     border-bottom: 1px solid var(--border-color);
 
     .status:first-letter {
@@ -141,9 +141,9 @@
   .task_name {
     font-size: 18px;
     max-width: 330px;
-    padding: tw-whitespace('small');
-    padding-left: tw-whitespace('default'); 
-    padding-top: tw-whitespace('default'); 
+    padding: var(--space-2);
+    padding-left: var(--space-6); 
+    padding-top: var(--space-4); 
     a {
       color: var(--link-color);
     }
@@ -172,7 +172,7 @@
     line-height: 20px;
     max-width: 350px;
     color: var(--text-color);
-    padding-left: tw-whitespace('medium');
+    padding-left: var(--space-6);
   }
 
   .navigation {

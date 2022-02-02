@@ -13,7 +13,7 @@
 
   .figures-container, .dropzone-card {
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
-    margin: tw-whitespace('default');
+    margin: var(--space-4);
     width: 270px;
     min-height: 300px;
     img {
@@ -27,7 +27,7 @@
       position: relative;
       margin-top: 2.5em;
       height: 120px;
-      padding: tw-whitespace('default');
+      padding: var(--space-4);
       padding-top: 0em;
       color: #444;
       overflow-y: scroll;
@@ -51,7 +51,7 @@
         width: 50px;
         height: 50px;
         bottom: -23px;
-        left: tw-whitespace('default');
+        left: var(--space-4);
         box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
       }
 
@@ -102,9 +102,9 @@
       @include arrow-box-top(17px);
       display: none;
       position: absolute;
-      padding: tw-whitespace('small');
-      padding-left: tw-whitespace('default');
-      padding-right: tw-whitespace('default');
+      padding: var(--space-2);
+      padding-left: var(--space-4);
+      padding-right: var(--space-4);
       box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
       left: -10px;
       top: 20px;
@@ -171,7 +171,7 @@
       border: 1px solid var(--border-color);
       border-top: none;
       font-size: 14px;
-      padding: tw-whitespace('small');
+      padding: var(--space-2);
       white-space: pre-wrap;
       word-break: break-all;
       word-wrap: break-word;
@@ -194,16 +194,16 @@
   }
 
   .citation-list {
-    margin-top: tw-whitespace('small');
+    margin-top: var(--space-2);
     padding: 0px;
     ul {
       margin: 0px;
       padding: 0px;
     }
     li {
-      padding: tw-whitespace('small');
-      padding-left: tw-whitespace('default');
-      padding-right: tw-whitespace('default');
+      padding: var(--space-2);
+      padding-left: var(--space-4);
+      padding-right: var(--space-4);
       border-bottom: 1px solid var(--border-color);
     }
   }

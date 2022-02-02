@@ -15,13 +15,13 @@
   &> li:last-child {
     border-right: none;
     padding-right: 0px;
-    padding-left: tw-whitespace('default');
+    padding-left: var(--space-4);
   }
 
   &> li {
     justify-content: center;
-    padding-left: tw-whitespace('default');
-    padding-right: tw-whitespace('default');
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
     border-right: 1px solid var(--border-color);
   }
 

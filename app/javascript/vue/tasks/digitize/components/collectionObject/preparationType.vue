@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Preparation</h2>
+    <h3>Preparation</h3>
     <div class="horizontal-left-content align-start">
       <ul
         v-for="(itemsGroup, index) in chunkList"

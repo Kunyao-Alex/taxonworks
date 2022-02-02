@@ -19,28 +19,31 @@
         <div id="collection-object-form">
           <catalogue-number
             v-if="showCatalogNumber"
-            class="panel content" />
+            class="panel content" 
+          />
           <repository-component
             v-if="showRepository"
-            class="panel content" />
+            class="panel content" 
+          />
           <preparation-type
             v-if="showPreparation"
-            class="panel content" />
+            class="panel content" 
+          />
           <div
             v-if="showBuffered"
             class="panel content">
-            <h2 class="flex-separate">
+            <h3 class="flex-separate">
               Buffered
-            </h2>
+            </h3>
             <buffered-component
               class="field"/>
           </div>
           <div
             v-if="showDepictions"
             class="panel content column-depictions">
-            <h2 class="flex-separate">
+            <h3 class="flex-separate">
               Depictions
-            </h2>
+            </h3>
             <depictions-component
               v-if="showDepictions"
               :object-value="collectionObject"
@@ -59,17 +62,17 @@
           <div
             v-if="showCitations"
             class="panel content column-citations">
-            <h2 class="flex-separate">
+            <h3 class="flex-separate">
               Citations
-            </h2>
+            </h3>
             <citation-component/>
           </div>
           <div
             v-if="showAttributes"
             class="panel content column-attribute">
-            <h2 class="flex-separate">
+            <h3 class="flex-separate">
               Attributes
-            </h2>
+            </h3>
             <div>
               <spinner-component
                 v-if="!collectionObject.id"

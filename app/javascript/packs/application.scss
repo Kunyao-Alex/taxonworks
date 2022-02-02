@@ -1,4 +1,5 @@
 $font-prefix: '../../../node_modules/@ibm/plex';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
 @import 'node_modules/@ibm/plex/scss/sans/light/_latin1.scss';
 @import 'node_modules/@ibm/plex/scss/sans/regular/_latin1.scss';
@@ -37,6 +38,7 @@ $font-prefix: '../../../node_modules/@ibm/plex';
 @import '../vue/assets/styles/views/tasks/content/editor/index.scss';
 @import '../vue/assets/styles/views/tasks/matrices/observation_matrices.scss';
 @import '../vue/assets/styles/views/tasks/matrices/image.scss';
+@import '../vue/assets/styles/views/tasks/nomenclature/browse.scss';
 
 @import '../vue/assets/styles/filter.scss';
 @import '../vue/assets/styles/labels.scss';

@@ -22,17 +22,21 @@
     align-items:center;
     position: relative;
     align-items: center;
-    padding-top: tw-whitespace('default');
-    padding-bottom: tw-whitespace('default');
+    padding-top: var(--space-3);
+    padding-bottom: var(--space-3);
     border-left: 1px solid var(--border-color);
     text-align: center;
+    font-size: var(--text-sm);
+  
     a {
       color: var(--text-color);
       text-decoration: none;
     }
+  
     em:first-letter {
       text-transform: uppercase;
     }
+  
     .dropdown {
       display: none;
       z-index: 100;
@@ -58,16 +62,18 @@
           height: 100%;
           display:block;
           font-weight: 500;
-          padding: tw-whitespace('small');
-          padding-left: tw-whitespace('default');
+          padding: var(--space-2);
+          padding-left: var(--space-4);
         }
       }
+  
       li:hover {
         background-color: var(--hover);
         a {
           color: var(--background-color);
         }
       }
+
       li:last-child {
         border-bottom: none;
       }

@@ -4,6 +4,10 @@
     .navigation-controls-type {
       .navigation-item {
         border-color: var(--border-color);
+
+        .filter-category-icon {
+          margin-right: var(--space-4)
+        }
       }
     }
 
@@ -40,6 +44,7 @@
 
   .filter-title {
     color: gray;
+    font-size: var(--text-sm);
   }
 
 

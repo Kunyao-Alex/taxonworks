@@ -20,15 +20,15 @@ table {
 
   th.headerSortUp { 
     background-image: var(--icon-arrow-up);
-    background-position: right tw-whitespace('default') center;
-    padding-right: tw-whitespace('default');
+    background-position: right var(--space-4) center;
+    padding-right: var(--space-4);
     background-repeat: no-repeat;
   } 
 
   th.headerSortDown { 
     background-image: var(--icon-arrow-down);
-    background-position: right tw-whitespace('default') center;
-    padding-right: tw-whitespace('default');
+    background-position: right var(--space-4) center;
+    padding-right: var(--space-4);
     background-repeat: no-repeat;  
   }
 
@@ -48,8 +48,8 @@ table {
   }
 
   td {
-    padding-left: tw-whitespace('default');
-    padding-right: tw-whitespace('default');
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
     border-bottom: 1px solid var(--border-color);
   }
 
@@ -65,8 +65,8 @@ table {
 
   th {
     background-color: var(--background-panel-color);
-    padding-left: tw-whitespace('default');
-    padding-right: tw-whitespace('default');
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
     font-weight: 500;
     font-size: 12px;
     border-bottom: 2px solid var(--border-color);

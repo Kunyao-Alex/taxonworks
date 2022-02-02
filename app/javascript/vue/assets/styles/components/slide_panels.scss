@@ -16,8 +16,7 @@ $default-padding: 2em;
   background-color: var(--background-color);
   color: var(--text-color);
   box-shadow: none;
-  border-left: 1px solid var(--border-color);
-  font-weight: tw-font-weight('normal');
+  font-weight: var(--font-normal);
   
   a {
     text-decoration: none;
@@ -31,6 +30,8 @@ $default-padding: 2em;
     overflow-x: auto;
     width: 100%;
     height: calc(100vh - 60px) !important;
+    border-left-style: inset;
+    border-left: 1px solid var(--border-color);
   }
 
   .slide-panel-header {
@@ -40,7 +41,7 @@ $default-padding: 2em;
     font-size: tw-font-sizes('title');
     color: #FFF;
     align-items: center;
-    padding-left: tw-whitespace('default');
+    padding-left: var(--space-4);
   }
 
   .slide-panel-category-item {
@@ -49,7 +50,7 @@ $default-padding: 2em;
   }
 
   .slide-panel-category-content {
-    padding-left: tw-whitespace('default');
+    padding-left: var(--space-4);
   }
 
   .slide-panel-category-header {
@@ -57,7 +58,7 @@ $default-padding: 2em;
     color: var(--text-color);
     cursor: pointer;
     background-color: var(--background-panel-color);
-    padding-left: tw-whitespace('large');
+    padding-left: var(--space-8);
     border-left: 5px solid $category-header-color;
     background-image: url('assets/images/icons/arrow-down.svg');
     background-position: right 1em center;
@@ -90,18 +91,18 @@ $default-padding: 2em;
   .slide-panel-description {
     @include arrow-box-right(50%);
     display: none;
-    font-weight: tw-font-weight('normal');
+    font-weight: var(--font-normal);
     position: absolute;
     font-size: tw-font('small');
     white-space: nowrap;
-    padding: tw-whitespace('small');
+    padding: var(--space-2);
     background-color: var(--black-color);
     color: var(--white-color);
     box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
     right: 70px;
     top: 13px;
-    padding-left: tw-whitespace('medium');
-    padding-right: tw-whitespace('medium');
+    padding-left: var(--space-6);
+    padding-right: var(--space-6);
     border-radius: 3px;
   }
 
@@ -137,7 +138,7 @@ $default-padding: 2em;
     .message {
       text-align: center;
       font-weight: 300;
-      font-size: tw-whitespace('medium');
+      font-size: var(--space-6);
     }
   }
 }

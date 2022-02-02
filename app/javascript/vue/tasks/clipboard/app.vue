@@ -1,7 +1,5 @@
 <template>
-  <div
-    id="vue-clipboard-app"
-    class="full_width">
+  <div class="slide-panel-content">
     <ul class="slide-panel-category-content">
       <li
         v-for="(clip, index) in clipboard"

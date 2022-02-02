@@ -10,7 +10,7 @@
   }
 
   .task_name {
-    font-weight: tw-font-weight('medium');
+    font-weight: var(--font-medium);
   }
 }
 
@@ -27,7 +27,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: top;
-  margin-bottom: tw-whitespace('default');
+  margin-bottom: var(--space-4);
   flex-direction: column;
   flex-grow: 1;
 
@@ -35,7 +35,7 @@
     background-color: var(--background-panel-color);
 
     a {
-      color: var(--text-color);
+      color: var(--text-color); 
     }
   }
 
@@ -79,8 +79,8 @@
     justify-content:space-between;
     flex-direction:flex-start;
     align-items:center;    
-    margin-left: tw-whitespace('default');
-    margin-right:  tw-whitespace('default');
+    margin-left: var(--space-4);
+    margin-right:  var(--space-4);
     text-align: center;
   }
   .data_section_label h3 {
@@ -112,7 +112,7 @@
     flex-direction:row;
     justify-content:flex-start;
     flex-flow: row wrap;
-    padding:  tw-whitespace('small');
+    padding: var(--space-2);
   }
 
   .hide {
@@ -131,7 +131,8 @@
     animation-duration: 0.2s;
     animation-timing-function: linear;
     animation-fill-mode: forwards;
-    margin:  tw-whitespace('small');
+    margin: var(--space-2);
+
     [data-method="post"] {
       position: absolute;
       right:12px;   
@@ -153,35 +154,40 @@
 
   .card-categories {
     width: 26px;
-    height: 44px;
+    height: 100%;
     display: flex;
     left: 0px;
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
-    background-color: var(--primary-color);
+    background: linear-gradient(180deg, rgba(93,134,198,1) 0%, rgba(93,174,198,1) 100%);
     position: absolute;
   }
 
   .data_card {
     position: relative;
     cursor: pointer; 
-    width: 210px;
+    width: 270px;
     min-height: 26px;
     display: flex;
     flex-direction:row-reverse;
     align-items:center;
     justify-content:space-between;
     border-radius: 15px;
+    font-size: var(--text-sm);
     background-color: var(--background-panel-color);
-    padding:  tw-whitespace('default');
-    padding-left:  tw-whitespace('default') + 2.5;
+    padding:  var(--space-4);
+    padding-left:  var(--space-12);
     box-shadow: rgba(36, 37, 38, 0.08) 4px 4px 15px 0px;
     transition: background-color 0.5s ease,
                 box-shadow 0.3s ease,
                 transform 0.3s ease;
 
-    a {
+    a:first-of-type {
       color: var(--text-color);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 190px;
     }
   }
 
@@ -194,8 +200,9 @@
   }
 
   .filter_data {
+    width: 34px;
     opacity: 0.6;
-    padding: 4px;
+    padding: 0 var(--space-2);
     display: flex;
     flex-direction:column;
     justify-content: center;

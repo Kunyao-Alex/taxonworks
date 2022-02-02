@@ -35,7 +35,6 @@
     box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.2);
     border-top: none;
     border-bottom: 2px solid var(--border-color);
-
     background-color: var(--background-panel-color);
     border-color: var(--border-color);
     border-bottom-color: var(--border-color);
@@ -43,7 +42,7 @@
 
   .vue-autocomplete-item {
     cursor: pointer;
-    padding: tw-whitespace('small');
+    padding: var(--space-2);
     border-top: 1px solid var(--border-color);
   }
 

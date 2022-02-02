@@ -80,26 +80,29 @@ export default {
   .validation-warning {
     border-left: 4px solid #ff8c00 !important;
   }
+
   .create-button {
     min-width: 100px;
   }
 
   .header {
     border-left: 4px solid green;
-    h3 {
-      font-weight: 300;
-      margin: 0px;
-    }
-    padding: 1.5em 0;
-    padding-left: 1.5em;
+    padding: var(--space-5) 0;
+    padding-left: var(--space-5);
     padding-right: 1em;
     border-bottom: 1px solid #f5f5f5;
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--font-light);
+      margin: 0px;
+    }
   }
 
   .body {
-    padding: 2em;
-    padding-top: 1em;
-    padding-bottom: 1em;
+    padding: var(--space-6);
+    padding-top: var(--space-2);
+    padding-bottom: var(--space-2);
   }
 
   .taxonName-input,#error_explanation {
