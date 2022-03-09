@@ -2,21 +2,25 @@
   <div class="qualitative-descriptor">
     <summary-view
       :index="index"
-      :descriptor="descriptor">
+      :descriptor="descriptor"
+      :observations="observations"
+      is-qualitative
+    >
       <ul>
         <li
           class="horizontal-left-content qualitative-descriptor__descriptor-li"
-          v-for="(characterState, index) in descriptor.characterStates">
+          v-for="(characterState, index) in descriptor.characterStates"
+          :key="characterState.id"
+        >
           <label>
             <input
               type="checkbox"
               :checked="isStateChecked(characterState.id)"
               @change="updateStateChecked(characterState.id, $event)">
-              {{ characterState.label }}: {{ characterState.name }}
+            {{ characterState.label }}: {{ characterState.name }}
           </label>
           <template v-if="getObservationFromCharacterId(characterState.id)">
-            <radial-annotator 
-            :global-id="getObservationFromCharacterId(characterState.id).global_id"/>
+            <radial-annotator :global-id="getObservationFromCharacterId(characterState.id).global_id"/>
           </template>
         </li>
       </ul>
@@ -34,28 +38,17 @@ import { GetterNames } from '../../store/getters/getters'
 import summaryView from '../SummaryView/SummaryView.vue'
 import RadialAnnotator from 'components/radials/annotator/annotator'
 
-import descriptorDetails from '../DescriptorDetails/DescriptorDetails.vue'
-
 export default {
   name: 'QualitativeDescriptor',
   props: ['descriptor', 'index'],
   created: function () {
     const descriptorId = this.$props.descriptor.id
     const otuId = this.$store.state.taxonId
-    // this.$store.dispatch(ActionNames.RequestDescriptorDepictions, descriptorId);
-    // this.$store.dispatch(ActionNames.RequestDescriptorNotes, descriptorId);
+
     this.$store.dispatch(ActionNames.RequestObservations, { descriptorId, otuId })
       .then(_ => this.$store.getters[GetterNames.GetObservationsFor](descriptorId))
       .then(observations => {
         this.observations = observations
-        this.observations.forEach(observation => {
-          if (observation.id) {
-            //                            this.$store.dispatch(ActionNames.RequestObservationCitations, observation.id);
-            //                            this.$store.dispatch(ActionNames.RequestObservationConfidences, observation.id);
-            //                            this.$store.dispatch(ActionNames.RequestObservationDepictions, observation.id);
-            //                            this.$store.dispatch(ActionNames.RequestObservationNotes, observation.id);
-          }
-        })
       })
   },
   data: function () {
@@ -89,7 +82,6 @@ export default {
   },
   components: {
     summaryView,
-    descriptorDetails,
     RadialAnnotator
   }
 }
