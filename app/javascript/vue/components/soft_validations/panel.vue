@@ -35,7 +35,7 @@
                 inertia
                 arrow
                 :content="error.description">
-                <span data-icon="warning"/>
+                <span data-icon="warning" />
               </tippy>
               <span>
                 <button
@@ -49,7 +49,8 @@
                   <span v-html="error.message" />
                   <template
                     v-for="(resolution, rIndex) in error.resolution"
-                    :key="rIndex">
+                    :key="rIndex"
+                  >
                     <tippy
                       class="d-inline-block"
                       animation="scale"
@@ -123,11 +124,12 @@ export default {
 <style lang="scss" scope>
 
 .soft-validation-box.validation-warning {
-  border-left: 4px solid #ff8c00;
+  border-left: 4px solid var(--warning-color);
 }
 
 .soft-validation-box {
-  background-color: var(--background-panel-color) !important;
+  border-top-left-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;;
 
   .body {
     padding: 12px;

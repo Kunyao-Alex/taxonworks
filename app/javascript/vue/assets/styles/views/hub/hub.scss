@@ -1,13 +1,11 @@
 #hub {
 
   #filter {
-    .navigation-controls-type {
-      .navigation-item {
-        border-color: var(--border-color);
+    .navigation-item {
+      font-size: var(--text-xs);
 
-        .filter-category-icon {
-          margin-right: var(--space-4)
-        }
+      .filter-category-icon {
+        margin-right: var(--space-2)
       }
     }
 
@@ -44,7 +42,7 @@
 
   .filter-title {
     color: gray;
-    font-size: var(--text-sm);
+    font-size: var(--text-xs);
   }
 
 

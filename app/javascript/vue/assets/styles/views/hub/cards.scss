@@ -84,7 +84,7 @@
     text-align: center;
   }
   .data_section_label h3 {
-    font-size: tw-font-size('normal');
+    font-size: var(--text-sm);
     text-transform: uppercase;
     color: var(--text-color);
   }
@@ -159,7 +159,7 @@
     left: 0px;
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
-    background: linear-gradient(180deg, rgba(93,134,198,1) 0%, rgba(93,174,198,1) 100%);
+    background: #5D9ECE;
     position: absolute;
   }
 

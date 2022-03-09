@@ -70,10 +70,7 @@
   }
  
   .nav-line {
-    border-image-slice: 1;
-    border-image-source: linear-gradient(90deg, rgba(93,134,198,1) 0%, rgba(93,174,198,1) 100%);
-
-    border-bottom: 2px solid;
+    border-bottom: 2px solid var(--navbar-color);
   } 
 
   .action-line {
