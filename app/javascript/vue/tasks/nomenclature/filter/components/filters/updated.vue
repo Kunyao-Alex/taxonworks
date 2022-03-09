@@ -28,6 +28,7 @@ import { URLParamsToJSON } from 'helpers/url/parse.js'
 export default {
   props: {
     modelValue: {
+      type: String,
       default: undefined
     }
   },
@@ -87,7 +88,7 @@ export default {
 <style lang="scss" scoped>
 .options-label {
   display: flex;
-  width: 262px;
+  width: 300px;
   padding: 0 21px;
   margin-top: -10px;
   justify-content: space-between;
@@ -98,21 +99,16 @@ export default {
     text-align: center;
     width: 1px;
     white-space: nowrap;
-    background: #D3D3D3;
     height: 10px;
-    line-height: 40px;
+    line-height: 30px;
     margin: 0 0 20px 0;
   }
 }
   datalist {
-    display: flex;
-    justify-content: space-between;
-    margin-top: -23px;
-    padding-top: 0px;
-    width: 300px;
+    display: none;
   }
+
   input[type="range"] {
     width: 300px;
   }
-
 </style>

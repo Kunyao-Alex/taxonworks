@@ -63,13 +63,17 @@ table {
     cursor: pointer;
   }
 
+  tr:hover {
+    background-color: var(--hover)
+  }
+
   th {
     background-color: var(--background-panel-color);
     padding-left: var(--space-4);
     padding-right: var(--space-4);
     font-weight: 500;
     font-size: 12px;
-    border-bottom: 2px solid var(--border-color);
+    border-bottom: 2px solid var(--navbar-color);
     text-align: left;
 
     a {

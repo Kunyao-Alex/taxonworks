@@ -192,11 +192,11 @@
   }
 
   .shared {
-    background-color: $color-secondary-1-3;
+    background: var(--card-application-defined-color);
   }
 
   .application_defined {
-    background-color: $color-primary-4;
+    background: var(--card-shared-color);
   }
 
   .filter_data {

@@ -16,7 +16,7 @@
     <g
       ref="svggroup"
       :class="iconColor"
-      :fill="selectedColor">
+    >
       <path
         v-for="(path, index) in iconPaths"
         :key="index"

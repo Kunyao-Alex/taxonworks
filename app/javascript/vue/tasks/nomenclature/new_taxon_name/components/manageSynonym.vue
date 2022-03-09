@@ -61,11 +61,13 @@
                     :add-params="{ type: 'Protonym', 'nomenclature_group[]': 'Genus' }"
                     :placeholder="validTaxon.name"/>
                 </td>
-                <td class="horizontal-left-content">
-                  <span
-                    class="circle-button btn-edit"
-                    @click="loadTaxon(child.id)"/>
-                  <radial-annotator :global-id="child.global_id"/>
+                <td>
+                  <div class="horizontal-left-content">
+                    <span
+                      class="circle-button btn-edit"
+                      @click="loadTaxon(child.id)"/>
+                    <radial-annotator :global-id="child.global_id"/>
+                  </div>
                 </td>
                 <td>
                   <input
@@ -132,17 +134,21 @@ export default {
     Autocomplete,
     BlockLayout
   },
+
   computed: {
-    taxon() {
+    taxon () {
       return this.$store.getters[GetterNames.GetTaxon]
     },
-    isInvalid() {
+
+    isInvalid () {
       return !this.taxon.cached_is_valid
     },
-    checkInput() {
+
+    checkInput () {
       return this.moveInput.toUpperCase() !== 'MOVE'
     }
   },
+
   data() {
     return {
       childrenList: [],
@@ -156,6 +162,7 @@ export default {
       maxSelect: 10
     }
   },
+
   watch: {
     taxon: {
       handler(newVal) {
@@ -185,7 +192,7 @@ export default {
 
     loadTaxon (id) {
       if (window.confirm('Are you sure you want to load this taxon name?')) {
-        window.open(`/tasks/nomenclature/new_taxon_name/${id}`,`_self`)
+        window.open(`/tasks/nomenclature/new_taxon_name/${id}`, '_self')
       }
     },
 
@@ -199,17 +206,15 @@ export default {
       }
     },
 
-    saveTaxonNames() {
+    saveTaxonNames () {
       const promises = []
 
       this.saving = true
       this.showModal = false
       this.moveInput = ''
 
-      this.selected.forEach((id, index) => {
-        const findPreSelected = this.preSelected.find(children => {
-          return children.childrenId === id
-        })
+      this.selected.forEach(id => {
+        const findPreSelected = this.preSelected.find(children => children.childrenId === id)
 
         promises.push(TaxonName.update(id, {
           taxon_name: {
@@ -224,9 +229,8 @@ export default {
         this.childrenList = this.childrenList.filter(children => !this.selected.includes(children.id))
         this.selected = []
         this.preSelected = []
-        this.saving = false
         TW.workbench.alert.create('Taxon name was successfully moved.', 'notice')
-      }, (response) => {
+      }).finally(_ => {
         this.saving = false
       })
     },

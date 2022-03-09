@@ -24,17 +24,21 @@
         @click="searchCollectingEvents">
         Search
       </button>
+      <hr>
       <geographic-area
         class="margin-large-bottom margin-medium-top"
         v-model="params.geographic"
       />
+      <hr>
       <filter-determinations
         class="margin-large-bottom"
         v-model="params.determination"/>
+      <hr>
       <filter-identifiers
         class="margin-large-bottom"
         v-model="params.identifier"
       />
+      <hr>
       <filter-collectors
         class="margin-large-bottom"
         v-model="params.collectors"
@@ -44,21 +48,26 @@
         param-people="collector_id"
         param-any="collector_ids_or"
       />
+      <hr>
       <filter-material
         class="margin-large-bottom"
         v-model="params.types"
       />
+      <hr>
       <filter-keywords
         class="margin-large-bottom"
         target="CollectingEvent"
         v-model="params.keywords"
       />
+      <hr>
       <users-component
         class="margin-large-bottom"
         v-model="params.user"
       />
+      <hr>
       <filter-attributes
         v-model="params.collectingEvents"/>
+      <hr>
       <with-component
         class="margin-large-bottom"
         v-for="(item, key) in params.byRecordsWith"

@@ -3,7 +3,7 @@
   padding-left: $standard_padding;
   padding-right: $standard_padding;
   align-items: center;
-  background-color: $color-header;
+  background-color: var(--navbar-color);
   height: 60px;
 
   #taxonworks {

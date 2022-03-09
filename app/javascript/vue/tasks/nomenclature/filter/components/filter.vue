@@ -22,60 +22,77 @@
         @click="searchForTaxonNames(parseParams)">
         Search
       </button>
+      <hr>
       <taxon-name-component
         class="margin-medium-bottom"
         v-model="params.taxon"/>
+      <hr>
       <precision-component
         class="margin-medium-bottom"
         v-model="params.base.exact" />
+      <hr>
       <authors-component
         class="margin-medium-bottom"
         v-model="params.authors"/>
+      <hr>
       <scope-component
         class="margin-medium-bottom"
         :autocomplete-params="{ no_leaves: true }"
         v-model="params.base.taxon_name_id"/>
+      <hr>
       <related-component
         class="margin-medium-bottom"
         v-model="params.includes"
         :taxon-name="params.base.taxon_name_id"/>
+      <hr>
       <rank-component
         class="margin-medium-bottom"
         v-model="params.base.nomenclature_group"/>
+      <hr>
       <code-component
         class="margin-medium-bottom"
         v-model="params.base.nomenclature_code"/>
+      <hr>
       <validity-component
         class="margin-medium-bottom"
         v-model="params.base.validity" />
+      <hr>
       <taxon-name-type-component
         class="margin-medium-bottom"
         v-model="params.base.taxon_name_type"/>
+      <hr>
       <relationships-component
         class="margin-medium-bottom"
         v-model="params.base.taxon_name_relationship"
         :nomenclature-code="params.base.nomenclature_code"/>
+      <hr>
       <status-component
         class="margin-medium-bottom"
         v-model="params.base.taxon_name_classification"
         :nomenclature-code="params.base.nomenclature_code"/>
+      <hr>
       <in-relationship-component
         class="margin-medium-bottom"
         v-model="params.base.taxon_name_relationship_type"
         :nomenclature-code="params.base.nomenclature_code"/>
+      <hr>
       <tags-component
         class="margin-medium-bottom"
         target="TaxonName"
         v-model="params.keywords"/>
+      <hr>
       <users-component
         class="margin-medium-bottom"
         v-model="params.user"/>
+      <hr>
       <updated-component
         class="margin-medium-bottom"
         v-model="params.base.updated_since"/>
+      <hr>
       <citations-component
         class="margin-medium-bottom"
         v-model="params.base.citations"/>
+      <hr>
       <with-component
         v-for="(param, key) in params.with"
         :key="key"

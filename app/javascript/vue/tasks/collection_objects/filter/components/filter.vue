@@ -31,27 +31,35 @@
         @click="searchForCollectionObjects(parseParams)">
         Search
       </button>
+      <hr>
       <geographic-component
         class="margin-large-bottom margin-medium-top"
         v-model="params.geographic"/>
+      <hr>
       <otu-component
         class="margin-large-bottom"
         v-model="params.determination"/>
+        <hr>
       <repository-component
         class="margin-large-bottom"
         v-model="params.repository.repository_id"/>
+        <hr>
       <identifier-component
         class="margin-large-bottom"
         v-model="params.identifier"/>
+        <hr>
       <preparation-types
         class="margin-large-bottom"
         v-model="params.preparation_type_id"/>
+        <hr>
       <biocurations-component
         class="margin-large-bottom"
         v-model="params.biocurations.biocuration_class_ids"/>
+        <hr>
       <collecting-event
         class="margin-large-bottom"
         v-model="params.collectingEvents"/>
+        <hr>
       <collectors-component
         class="margin-large-bottom"
         role="Collector"
@@ -60,27 +68,34 @@
         param-people="collector_id"
         param-any="collector_ids_or"
         v-model="params.collectors"/>
+        <hr>
       <keywords-component
         class="margin-large-bottom"
         v-model="params.keywords"
         target="CollectionObject" />
+        <hr>
       <types-component
         class="margin-large-bottom"
         v-model="params.types"/>
+        <hr>
       <in-relationship
         class="margin-large-bottom"
         v-model="params.relationships.biological_relationship_ids"/>
+        <hr>
       <loan-component
         class="margin-large-bottom"
         v-model="params.loans"/>
+        <hr>
       <user-component
         class="margin-large-bottom"
         @onUserslist="usersList = $event"
         v-model="params.user"/>
+      <hr>
       <buffered-component v-model="params.buffered"/>
+      <hr>
       <with-component
-        class="margin-large-bottom"
         v-for="(item, key) in params.byRecordsWith"
+        class="margin-large-bottom"
         :key="key"
         :title="key.replace('with_', '')"
         :param="key"
