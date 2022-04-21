@@ -383,7 +383,14 @@ class DatasetRecord::DarwinCore::Occurrence < DatasetRecord::DarwinCore
     institution_code = get_field_value(:institutionCode)
     if institution_code
       repository = Repository.find_by(acronym: institution_code)
-      raise DarwinCore::InvalidData.new({ "institutionCode": ["Unknown #{institution_code} repository. If valid please register it using '#{institution_code}' as acronym."] }) unless repository
+
+      # Some repositories may not have acronyms, in that case search by name as well
+      unless repository
+        repository_results = Repository.where(Repository.arel_table['name'].matches(Repository.sanitize_sql_like(institution_code)))
+        raise DarwinCore::InvalidData.new({ "institutionCode": ["Multiple repositories match the name #{institution_code}. Please use the acronym instead."] }) if repository_results.count > 1
+        repository = repository_results.first
+      end
+      raise DarwinCore::InvalidData.new({ "institutionCode": ["Unknown #{institution_code} repository. If valid please register it using '#{institution_code}' as acronym or name."] }) unless repository
       Utilities::Hashes::set_unless_nil(res[:specimen], :repository, repository)
     end
 
@@ -406,10 +413,10 @@ class DatasetRecord::DarwinCore::Occurrence < DatasetRecord::DarwinCore
     # basisOfRecord: [Check it is 'PreservedSpecimen', 'FossilSpecimen']
     basis = get_field_value(:basisOfRecord)
     if 'FossilSpecimen'.casecmp(basis) == 0
-      fossil_biocuration = BiocurationClass.find_by(uri: 'http://rs.tdwg.org/dwc/terms/FossilSpecimen')
+      fossil_biocuration = BiocurationClass.find_by(uri: DWC_FOSSIL_URI)
 
       raise DarwinCore::InvalidData.new(
-        { 'basisOfRecord' => ["Biocuration class http://rs.tdwg.org/dwc/terms/FossilSpecimen is not present in project"] }
+        { 'basisOfRecord' => ["Biocuration class #{DWC_FOSSIL_URI} is not present in project"] }
       ) if fossil_biocuration.nil?
 
       Utilities::Hashes::set_unless_nil(res[:specimen], :biocuration_classifications, [BiocurationClassification.new(biocuration_class: fossil_biocuration)])
@@ -457,8 +464,13 @@ class DatasetRecord::DarwinCore::Occurrence < DatasetRecord::DarwinCore
     sex = get_field_value(:sex)
     if sex
       raise DarwinCore::InvalidData.new({ "sex": ["Only single-word controlled vocabulary supported at this time."] }) if sex =~ /\s/
-      group   = BiocurationGroup.where(project_id: Current.project_id).where('name ILIKE ?', 'sex').first
-      group ||= BiocurationGroup.create!(name: 'Sex', definition: 'The sex of the individual(s) [CREATED FROM DWC-A IMPORT]')
+      group   = BiocurationGroup.find_by(project_id: Current.project_id, uri: DWC_ATTRIBUTE_URIS[:sex])
+      group ||= BiocurationGroup.where(project_id: Current.project_id).where('name ILIKE ?', 'sex').first
+      group ||= BiocurationGroup.create!(
+        name: 'Sex',
+        definition: 'The sex of the individual(s) [CREATED FROM DWC-A IMPORT]',
+        uri: DWC_ATTRIBUTE_URIS[:sex]
+      )
       # TODO: BiocurationGroup.biocuration_classes not returning AR relation
       sex_biocuration = group.biocuration_classes.detect { |c| c.name.casecmp(sex) == 0 }
       unless sex_biocuration
@@ -565,10 +577,16 @@ class DatasetRecord::DarwinCore::Occurrence < DatasetRecord::DarwinCore
     Utilities::Hashes::set_unless_nil(collecting_event, :start_date_day, day)
 
     # eventTime: time_start_*
-    /(?<hour>\d+)(:(?<minute>\d+))?(:(?<second>\d+))?/ =~ get_field_value(:eventTime)
-    Utilities::Hashes::set_unless_nil(collecting_event, :time_start_hour, hour)
-    Utilities::Hashes::set_unless_nil(collecting_event, :time_start_minute, minute)
-    Utilities::Hashes::set_unless_nil(collecting_event, :time_start_second, second)
+    %r{^
+      (?<start_hour>\d+)(:(?<start_minute>\d+))?(:(?<start_second>\d+))?
+      (/(?<end_hour>\d+))?(:(?<end_minute>\d+))?(:(?<end_second>\d+))?
+    $}x =~ get_field_value(:eventTime)
+    Utilities::Hashes::set_unless_nil(collecting_event, :time_start_hour, start_hour)
+    Utilities::Hashes::set_unless_nil(collecting_event, :time_start_minute, start_minute)
+    Utilities::Hashes::set_unless_nil(collecting_event, :time_start_second, start_second)
+    Utilities::Hashes::set_unless_nil(collecting_event, :time_end_hour, end_hour)
+    Utilities::Hashes::set_unless_nil(collecting_event, :time_end_minute, end_minute)
+    Utilities::Hashes::set_unless_nil(collecting_event, :time_end_second, end_second)
 
     endDayOfYear = get_integer_field_value(:endDayOfYear)
 

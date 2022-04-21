@@ -16,11 +16,13 @@
     <g
       ref="svggroup"
       :class="iconColor"
+      stroke-width="2"
+      :fill="selectedColor"
     >
       <path
         v-for="(path, index) in iconPaths"
         :key="index"
-        :d="path.d"
+        v-bind="path"
       />
     </g>
   </svg>
@@ -29,7 +31,7 @@
 <script>
 
 import mixinSizes from '../mixins/sizes.js'
-import { Icons } from './icons.js'
+import * as Icons from './icons.js'
 
 export default {
   name: 'VIcon',
@@ -102,8 +104,17 @@ export default {
 
       if (refGroup) {
         const groupSize = refGroup.getBBox()
+        const strokePaths = this.iconPaths.map(path => path['stroke-width']).filter(stroke => stroke)
+        const strokeWidth = strokePaths.length
+          ? Math.max(...strokePaths)
+          : 0
 
-        return [groupSize.x, groupSize.y, groupSize.width, groupSize.height].join(' ')
+        return [
+          groupSize.x - strokeWidth / 2,
+          groupSize.y - strokeWidth / 2,
+          groupSize.width + strokeWidth,
+          groupSize.height + strokeWidth
+        ].join(' ')
       } else {
         return '0 0 12 12'
       }
