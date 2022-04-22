@@ -116,8 +116,8 @@ import ListEntrys from './listEntrys.vue'
 import ListCommon from './commonList.vue'
 import Autocomplete from 'components/ui/Autocomplete.vue'
 import getRankGroup from '../helpers/getRankGroup'
-import SwitchComponent from 'components/switch'
-import BlockLayout from 'components/layout/BlockLayout'
+import SwitchComponent from 'components/switch.vue'
+import BlockLayout from 'components/layout/BlockLayout.vue'
 
 const FILTER_RELATIONSHIPS = [
   TAXON_RELATIONSHIP_CURRENT_COMBINATION,

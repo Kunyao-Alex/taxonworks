@@ -157,10 +157,10 @@
 
 <script>
 
-import Autocomplete from 'components/ui/Autocomplete'
-import ModalComponent from 'components/ui/Modal'
+import Autocomplete from 'components/ui/Autocomplete.vue'
+import ModalComponent from 'components/ui/Modal.vue'
 import DefaultPin from './getDefaultPin.vue'
-import AjaxCall from 'helpers/ajaxCall'
+import AjaxCall from 'helpers/ajaxCall.js'
 
 export default {
   components: {

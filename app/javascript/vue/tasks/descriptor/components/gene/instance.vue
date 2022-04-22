@@ -92,7 +92,7 @@
 
 <script>
 
-import PrimerComponent from './primer'
+import PrimerComponent from './primer.vue'
 import Draggable from 'vuedraggable'
 
 export default {
@@ -356,7 +356,7 @@ export default {
   }
 
   .warning-message {
-    color: red
+    color: red;
   }
 
   .warning-box {

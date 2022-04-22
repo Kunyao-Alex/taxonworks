@@ -63,9 +63,9 @@
 
 <script>
 
-import Autocomplete from 'components/ui/Autocomplete'
+import Autocomplete from 'components/ui/Autocomplete.vue'
 import TableList from 'components/table_list'
-import SwitchComponent from 'components/switch'
+import SwitchComponent from 'components/switch.vue'
 
 import AjaxCall from 'helpers/ajaxCall.js'
 

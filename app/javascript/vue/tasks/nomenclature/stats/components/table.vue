@@ -70,7 +70,7 @@
 <script>
 
 import { GetterNames } from '../store/getters/getters'
-import SpinnerComponent from 'components/spinner'
+import SpinnerComponent from 'components/spinner.vue'
 import CsvButton from 'components/csvButton'
 import { RouteNames } from 'routes/routes'
 

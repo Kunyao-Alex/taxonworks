@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import ModalComponent from 'components/ui/Modal'
+import ModalComponent from 'components/ui/Modal.vue'
 import FormKeyword from 'components/Form/FormKeyword.vue'
 import VBtn from 'components/ui/VBtn/index.vue'
 import { ref } from 'vue'

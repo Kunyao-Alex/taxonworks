@@ -39,9 +39,9 @@
 
 <script>
 
-import SmartSelector from 'components/switch'
-import RolePicker from 'components/role_picker'
-import Autocomplete from 'components/ui/Autocomplete'
+import SmartSelector from 'components/switch.vue'
+import RolePicker from 'components/role_picker.vue'
+import Autocomplete from 'components/ui/Autocomplete.vue'
 import { GetterNames } from '../store/getters/getters.js'
 import { MutationNames } from '../store/mutations/mutations.js'
 

@@ -22,13 +22,13 @@
 </template>
 <script>
 
-  import { GetMatrixColumnMetadata } from '../../request/resources'
+  import { GetMatrixColumnMetadata } from '../../request/resources.js'
   import SmartSelector from '../shared/smartSelector.vue'
   import pinboardComponent from './batchView.vue'
   import keywordsComponent from './keywordView.vue'
   import searchComponent from './search.vue'
-  import FromAnotherMatrixComponent from './copyDescriptors'
-  import { GetterNames } from '../../store/getters/getters'
+  import FromAnotherMatrixComponent from './copyDescriptors.vue'
+  import { GetterNames } from '../../store/getters/getters.js'
 
   export default {
     components: {

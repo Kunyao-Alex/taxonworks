@@ -64,11 +64,11 @@ import RadialMenu from 'components/radials/RadialMenu.vue'
 import Modal from 'components/ui/Modal.vue'
 import Spinner from 'components/spinner.vue'
 
-import CRUD from './request/crud'
+import CRUD from './request/crud.js'
 import Icons from './images/icons.js'
 
 import RecentComponent from './components/recent.vue'
-import DestroyConfirmation from './components/DestroyConfirmation'
+import DestroyConfirmation from './components/DestroyConfirmation.vue'
 import all_tasksComponent from './components/allTasks.vue'
 
 import { PinboardItem } from 'routes/endpoints'

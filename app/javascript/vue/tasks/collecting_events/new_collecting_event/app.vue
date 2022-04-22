@@ -142,12 +142,12 @@
 <script>
 
 import { RouteNames } from 'routes/routes'
-import Autocomplete from 'components/ui/Autocomplete'
+import Autocomplete from 'components/ui/Autocomplete.vue'
 
 import RecentComponent from './components/Recent'
 
-import RadialAnnotator from 'components/radials/annotator/annotator'
-import RadialObject from 'components/radials/navigation/radial'
+import RadialAnnotator from 'components/radials/annotator/annotator.vue'
+import RadialObject from 'components/radials/navigation/radial.vue'
 import platformKey from 'helpers/getPlatformKey'
 import SetParam from 'helpers/setParam'
 
@@ -159,7 +159,7 @@ import ParseData from './components/parseData'
 import CollectingEventForm from './components/CollectingEventForm'
 import CollectionObjectsTable from './components/CollectionObjectsTable.vue'
 import NavigateComponent from './components/Navigate'
-import SpinnerComponent from 'components/spinner'
+import SpinnerComponent from 'components/spinner.vue'
 
 import { ActionNames } from './store/actions/actions'
 import { GetterNames } from './store/getters/getters'

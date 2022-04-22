@@ -55,11 +55,11 @@
 </template>
 <script>
 
-import Autocomplete from 'components/ui/Autocomplete';
+import Autocomplete from 'components/ui/Autocomplete.vue';
 import RadialAnnotator from 'components/radials/annotator/annotator.vue';
 import PinComponent from 'components/ui/Pinboard/VPin.vue'
 import RadialObject from 'components/radials/navigation/radial.vue'
-import DefaultSource from 'components/getDefaultPin'
+import DefaultSource from 'components/getDefaultPin.vue'
 import PdfButton from 'components/pdfButton.vue'
 import { Source } from 'routes/endpoints'
 

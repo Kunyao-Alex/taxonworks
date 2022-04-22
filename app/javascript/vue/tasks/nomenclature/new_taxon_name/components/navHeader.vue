@@ -49,11 +49,11 @@
 
 import SaveTaxonName from './saveTaxonName.vue'
 import CreateNewButton from './createNewButton.vue'
-import CloneTaxonName from './cloneTaxon'
-import NavBar from 'components/layout/NavBar'
-import Autosave from './autosave'
-import { GetterNames } from '../store/getters/getters'
-import { RouteNames } from 'routes/routes'
+import CloneTaxonName from './cloneTaxon.vue'
+import NavBar from 'components/layout/NavBar.vue'
+import Autosave from './autosave.vue'
+import { GetterNames } from '../store/getters/getters.js'
+import { RouteNames } from 'routes/routes.js'
 
 export default {
   components: {

@@ -24,8 +24,8 @@
 
 <script>
 
-import ModalComponent from 'components/ui/Modal'
-import SmartSelector from 'components/ui/SmartSelector'
+import ModalComponent from 'components/ui/Modal.vue'
+import SmartSelector from 'components/ui/SmartSelector.vue'
 import { CollectingEvent } from 'routes/endpoints'
 
 export default {

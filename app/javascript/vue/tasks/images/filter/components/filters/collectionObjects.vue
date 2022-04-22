@@ -27,7 +27,7 @@
 
 <script>
 
-import Autocomplete from 'components/ui/Autocomplete'
+import Autocomplete from 'components/ui/Autocomplete.vue'
 import { CollectionObject } from 'routes/endpoints'
 import { URLParamsToJSON } from 'helpers/url/parse.js'
 

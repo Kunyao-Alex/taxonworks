@@ -1,4 +1,4 @@
-import ajaxCall from 'helpers/ajaxCall'
+import ajaxCall from 'helpers/ajaxCall.js'
 
 const GetCitationTypes = () => ajaxCall('get', '/sources/citation_object_types.json')
 

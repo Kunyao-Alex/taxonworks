@@ -1,5 +1,4 @@
 import { convertToUnit } from 'helpers/style'
-import SIZE_MAP from 'assets/styles/variables/_sizes.scss'
 
 export default {
   props: {
@@ -30,7 +29,7 @@ export default {
 
     size: {
       type: [Number, String],
-      default: SIZE_MAP.default
+      default: 'default'
     }
   },
 
@@ -51,8 +50,8 @@ export default {
       return this.explicitSize || 'default'
     },
 
-    elementSize () {
-      return (this.explicitSize && SIZE_MAP[this.explicitSize]) || convertToUnit(this.size)
+    classSize () {
+      return `icon-${this.semanticSize}-size`
     }
   }
 }

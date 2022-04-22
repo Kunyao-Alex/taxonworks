@@ -56,7 +56,7 @@
 
 import { CollectionObject } from 'routes/endpoints'
 import { GetterNames } from '../../store/getters/getters'
-import ModalComponent from 'components/ui/Modal'
+import ModalComponent from 'components/ui/Modal.vue'
 
 export default {
   components: { ModalComponent },

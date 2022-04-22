@@ -97,13 +97,13 @@
 
 <script>
 
-import ModalComponent from 'components/ui/Modal'
-import SpinnerComponent from 'components/spinner'
-import getPagination from 'helpers/getPagination'
+import ModalComponent from 'components/ui/Modal.vue'
+import SpinnerComponent from 'components/spinner.vue'
+import getPagination from 'helpers/getPagination.js'
 
-import { ActionNames } from '../../store/actions/actions'
-import { GetterNames } from '../../store/getters/getters'
-import { GetMatrixObservationRows } from '../../request/resources'
+import { ActionNames } from '../../store/actions/actions.js'
+import { GetterNames } from '../../store/getters/getters.js'
+import { GetMatrixObservationRows } from '../../request/resources.js'
 import {
   ObservationMatrix,
   ObservationMatrixRowItem

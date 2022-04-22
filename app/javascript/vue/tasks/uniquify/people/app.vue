@@ -52,15 +52,15 @@
 
 import SettingsNavbar from './components/SettingsNavbar.vue'
 import FilterPanel from './components/Filter/FilterPanel.vue'
-import FoundPeople from './components/FoundPeople'
-import MatchPeople from './components/MatchPeople'
+import FoundPeople from './components/FoundPeople.vue'
+import MatchPeople from './components/MatchPeople.vue'
 import CompareTable from './components/CompareTable.vue'
 import VSpinner from 'components/spinner.vue'
 import URLComponent from './components/URLComponent.vue'
 
-import { ActionNames } from './store/actions/actions'
-import { GetterNames } from './store/getters/getters'
-import { MutationNames } from './store/mutations/mutations'
+import { ActionNames } from './store/actions/actions.js'
+import { GetterNames } from './store/getters/getters.js'
+import { MutationNames } from './store/mutations/mutations.js'
 
 export default {
   name: 'UniquifyPeople',

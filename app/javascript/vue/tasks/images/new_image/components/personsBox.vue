@@ -24,9 +24,9 @@
 
 <script>
 
-import SwitchComponent from 'components/switch'
-import RolePicker from 'components/role_picker'
-import Autocomplete from 'components/ui/Autocomplete'
+import SwitchComponent from 'components/switch.vue'
+import RolePicker from 'components/role_picker.vue'
+import Autocomplete from 'components/ui/Autocomplete.vue'
 
 export default {
   components: {

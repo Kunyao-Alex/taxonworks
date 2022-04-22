@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import RadialAnnotator from 'components/radials/annotator/annotator'
+import RadialAnnotator from 'components/radials/annotator/annotator.vue'
 import AddToProject from 'components/addToProjectSource'
 import PinComponent from 'components/ui/Pinboard/VPin.vue'
 

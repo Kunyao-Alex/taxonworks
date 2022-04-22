@@ -38,8 +38,8 @@
 
 <script>
 
-import Autocomplete from 'components/ui/Autocomplete'
-import ModalComponent from 'components/ui/Modal'
+import Autocomplete from 'components/ui/Autocomplete.vue'
+import ModalComponent from 'components/ui/Modal.vue'
 import { RouteNames } from 'routes/routes'
 import { ObservationMatrix } from 'routes/endpoints'
 

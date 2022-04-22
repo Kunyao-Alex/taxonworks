@@ -145,13 +145,13 @@
 <script setup>
 
 import { ref, watch, computed, onBeforeMount, onBeforeUnmount } from 'vue'
-import SwitchComponents from 'components/switch'
-import AjaxCall from 'helpers/ajaxCall'
-import Autocomplete from 'components/ui/Autocomplete'
-import OrderSmart from 'helpers/smartSelector/orderSmartSelector'
-import SelectFirst from 'helpers/smartSelector/selectFirstSmartOption'
-import DefaultPin from 'components/getDefaultPin'
-import OtuPicker from 'components/otu/otu_picker/otu_picker'
+import SwitchComponents from 'components/switch.vue'
+import AjaxCall from 'helpers/ajaxCall.js'
+import Autocomplete from 'components/ui/Autocomplete.vue'
+import OrderSmart from 'helpers/smartSelector/orderSmartSelector.js'
+import SelectFirst from 'helpers/smartSelector/selectFirstSmartOption.js'
+import DefaultPin from 'components/getDefaultPin.vue'
+import OtuPicker from 'components/otu/otu_picker/otu_picker.vue'
 import DOMPurify from 'dompurify'
 import { shorten } from 'helpers/strings.js'
 

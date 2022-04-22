@@ -40,7 +40,7 @@
 
 <script>
 
-import RadialAnnotator from 'components/radials/annotator/annotator'
+import RadialAnnotator from 'components/radials/annotator/annotator.vue'
 import ConfidenceButton from 'components/defaultConfidence.vue'
 import extendedRow from './extendedRow.js'
 import { COMBINATION } from 'constants/index.js'

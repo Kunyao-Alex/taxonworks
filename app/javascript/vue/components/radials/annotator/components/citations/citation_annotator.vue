@@ -73,8 +73,8 @@ import TableList from './table.vue'
 import CitationNew from './new.vue'
 import CitationEdit from './edit.vue'
 import CitationTopicComponent from './topic.vue'
-import TopicPages from './pagesUpdate'
-import HandleCitations from './handleOriginalModal'
+import TopicPages from './pagesUpdate.vue'
+import HandleCitations from './handleOriginalModal.vue'
 import { Citation, CitationTopic } from 'routes/endpoints'
 
 const EXTEND_PARAMS = ['source', 'citation_topics']

@@ -63,7 +63,7 @@
 <script>
 
 import TitleComponent from './filters/title'
-import SpinnerComponent from 'components/spinner'
+import SpinnerComponent from 'components/spinner.vue'
 import platformKey from 'helpers/getPlatformKey.js'
 import AuthorsComponent from './filters/authors'
 import DateComponent from './filters/date'

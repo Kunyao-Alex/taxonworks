@@ -78,7 +78,7 @@
 
 <script>
 
-import RadialAnnotator from 'components/radials/annotator/annotator'
+import RadialAnnotator from 'components/radials/annotator/annotator.vue'
 import CitationCount from './citationsCount'
 import { RouteNames } from 'routes/routes'
 import SoftValidation from 'components/soft_validations/objectValidation.vue'

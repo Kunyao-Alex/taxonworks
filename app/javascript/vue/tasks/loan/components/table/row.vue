@@ -63,7 +63,7 @@ import { GetterNames } from '../../store/getters/getters'
 import { MutationNames } from '../../store/mutations/mutations'
 import statusList from '../../const/status.js'
 import PinComponent from 'components/ui/Pinboard/VPin.vue'
-import RadialAnnotator from 'components/radials/annotator/annotator'
+import RadialAnnotator from 'components/radials/annotator/annotator.vue'
 import RadialNavigator from 'components/radials/navigation/radial.vue'
 
 export default {

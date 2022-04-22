@@ -56,7 +56,7 @@
 import { GetterNames } from '../../store/getters/getters'
 import { MutationNames } from '../../store/mutations/mutations'
 import { ActionNames } from '../../store/actions/actions'
-import ModalComponent from 'components/ui/Modal'
+import ModalComponent from 'components/ui/Modal.vue'
 import CatalogNumberRow from './CatalogNumberRow'
 import ContainerizeCheckbox from './Containerize'
 import RestrictToNomenclatureCheckbox from './RestrictToNomenclature'

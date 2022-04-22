@@ -1,5 +1,5 @@
 import { GetterNames } from '../store/getters/getters'
-import SpinnerComponent from 'components/spinner'
+import SpinnerComponent from 'components/spinner.vue'
 
 export default {
   components: { SpinnerComponent },

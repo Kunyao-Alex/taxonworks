@@ -34,8 +34,8 @@
 
 import SmartSelector from 'components/ui/SmartSelector.vue'
 import componentExtend from './mixins/componentExtend'
-import RolePicker from 'components/role_picker'
-import BlockLayout from 'components/layout/BlockLayout'
+import RolePicker from 'components/role_picker.vue'
+import BlockLayout from 'components/layout/BlockLayout.vue'
 import makePerson from 'factory/Person'
 import LockComponent from 'components/ui/VLock/index.vue'
 import { findRole } from 'helpers/people/people.js'

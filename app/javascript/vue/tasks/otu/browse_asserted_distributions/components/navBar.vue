@@ -47,8 +47,8 @@
 <script>
 
 import { Otu } from 'routes/endpoints'
-import RadialAnnotator from 'components/radials/annotator/annotator'
-import RadialObject from 'components/radials/navigation/radial'
+import RadialAnnotator from 'components/radials/annotator/annotator.vue'
+import RadialObject from 'components/radials/navigation/radial.vue'
 import OtuRadial from 'components/radials/object/radial'
 
 export default {

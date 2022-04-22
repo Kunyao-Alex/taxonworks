@@ -78,7 +78,7 @@ import SevenSlotLayout from './layouts/seven_slot'
 import LepStageLayout from './layouts/lep_stage'
 import LepStage2Layout from './layouts/lep_stage2'
 import VerticalSplitLayout from './layouts/vertical_split'
-import SpinnerComponent from 'components/spinner'
+import SpinnerComponent from 'components/spinner.vue'
 
 import TagsComponent from '../sqed/tags'
 import DataAttributes from '../dataAttributes'

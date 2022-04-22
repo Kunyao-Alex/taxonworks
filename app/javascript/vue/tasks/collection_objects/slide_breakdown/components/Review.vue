@@ -69,12 +69,12 @@
 
 <script>
 
-import RadialAnnotator from 'components/radials/annotator/annotator'
-import RadialNavigation from 'components/radials/navigation/radial'
+import RadialAnnotator from 'components/radials/annotator/annotator.vue'
+import RadialNavigation from 'components/radials/navigation/radial.vue'
 import RadialObject from 'components/radials/object/radial'
 import { Report } from '../request/resource'
 import { GetterNames } from '../store/getters/getters'
-import SpinnerComponent from 'components/spinner'
+import SpinnerComponent from 'components/spinner.vue'
 
 export default {
   components: {

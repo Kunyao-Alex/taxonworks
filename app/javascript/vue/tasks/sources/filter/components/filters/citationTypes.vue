@@ -17,8 +17,8 @@
 
 <script>
 
-import { GetCitationTypes } from '../../request/resources'
-import Decamelize from 'helpers/decamelize'
+import { GetCitationTypes } from '../../request/resources.js'
+import Decamelize from 'helpers/decamelize.js'
 import { URLParamsToJSON } from 'helpers/url/parse.js'
 
 export default {

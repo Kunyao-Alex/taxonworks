@@ -41,7 +41,7 @@
 
 <script>
 
-import ModalComponent from 'components/ui/Modal'
+import ModalComponent from 'components/ui/Modal.vue'
 import scrollToTop from '../../utils/scrollToTop.js'
 import { GetterNames } from '../../store/getters/getters'
 import { MutationNames } from '../../store/mutations/mutations'

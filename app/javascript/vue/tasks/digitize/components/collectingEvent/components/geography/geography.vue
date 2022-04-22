@@ -80,7 +80,7 @@ import { MutationNames } from '../../../../store/mutations/mutations.js'
 import { GeographicArea } from 'routes/endpoints'
 
 import convertDMS from 'helpers/parseDMS.js'
-import ModalComponent from 'components/ui/Modal'
+import ModalComponent from 'components/ui/Modal.vue'
 import extendCE from '../../mixins/extendCE.js'
 
 export default {

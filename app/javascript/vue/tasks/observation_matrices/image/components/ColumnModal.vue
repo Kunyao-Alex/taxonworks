@@ -37,7 +37,7 @@
 <script>
 
 import ModalComponent from 'components/ui/Modal.vue'
-import SpinnerComponent from 'components/spinner'
+import SpinnerComponent from 'components/spinner.vue'
 import { ObservationMatrixColumnItem, Descriptor } from 'routes/endpoints'
 
 export default {

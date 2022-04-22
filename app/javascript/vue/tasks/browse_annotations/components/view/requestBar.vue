@@ -22,7 +22,7 @@
 
 <script>
 
-import CsvButton from 'components/csvButton'
+import CsvButton from 'components/csvButton.vue'
 
 export default {
   components: { CsvButton },

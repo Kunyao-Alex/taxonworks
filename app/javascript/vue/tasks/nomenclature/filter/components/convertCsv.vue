@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { parse } from 'json2csv'
+import { parse } from 'json2csv/dist/json2csv.umd.js'
 
 const fields = [
   'id',

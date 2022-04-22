@@ -68,11 +68,11 @@
 
 <script>
 
-import ModalComponent from 'components/ui/Modal'
-import SpinnerComponent from 'components/spinner'
-import ClipboardButton from 'components/clipboardButton'
+import ModalComponent from 'components/ui/Modal.vue'
+import SpinnerComponent from 'components/spinner.vue'
+import ClipboardButton from 'components/clipboardButton.vue'
 
-import { GetBibliography, GetBibtexStyle, GetBibtex } from '../request/resources'
+import { GetBibliography, GetBibtexStyle, GetBibtex } from '../request/resources.js'
 import { downloadTextFile } from 'helpers/files.js'
 
 export default {

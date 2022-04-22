@@ -39,13 +39,13 @@
 
 <script>
 
-import SmartSelector from 'components/ui/SmartSelector'
+import SmartSelector from 'components/ui/SmartSelector.vue'
 import componentExtend from './mixins/componentExtend'
 import LockComponent from 'components/ui/VLock/index.vue'
 import { GetterNames } from '../store/getters/getters'
 import { MutationNames } from '../store/mutations/mutations'
 import { Repository } from 'routes/endpoints'
-import BlockLayout from 'components/layout/BlockLayout'
+import BlockLayout from 'components/layout/BlockLayout.vue'
 
 export default {
   mixins: [componentExtend],

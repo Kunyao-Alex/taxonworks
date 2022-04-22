@@ -23,7 +23,7 @@
 
 import { GetterNames } from '../../store/getters/getters'
 import SwitchComponent from 'components/switch.vue'
-import BlockLayout from 'components/layout/BlockLayout'
+import BlockLayout from 'components/layout/BlockLayout.vue'
 import AuthorPerson from './AuthorPeople.vue'
 import AuthorSource from './AuthorSource.vue'
 import AuthorVerbatim from './AuthorVerbatim.vue'

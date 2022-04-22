@@ -103,11 +103,11 @@ import {
   ATTRIBUTION_COPYRIGHT_HOLDER,
   ROLE_COLLECTOR
 } from 'constants/index.js'
-import RolePicker from 'components/role_picker'
+import RolePicker from 'components/role_picker.vue'
 import SwitchComponent from 'components/switch.vue'
-import OrganizationPicker from 'components/organizationPicker'
-import DisplayList from 'components/displayList'
-import SmartSelector from 'components/ui/SmartSelector'
+import OrganizationPicker from 'components/organizationPicker.vue'
+import DisplayList from 'components/displayList.vue'
+import SmartSelector from 'components/ui/SmartSelector.vue'
 import LicenseInput from './licenseInput.vue'
 import VBtn from 'components/ui/VBtn/index.vue'
 

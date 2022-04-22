@@ -33,7 +33,7 @@
 
 <script>
 
-import SpinnerComponent from 'components/spinner'
+import SpinnerComponent from 'components/spinner.vue'
 import { CollectionObject, PreparationType } from 'routes/endpoints'
 import { chunkArray } from 'helpers/arrays'
 

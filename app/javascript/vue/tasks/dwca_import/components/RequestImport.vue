@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import SpinnerComponent from 'components/spinner'
+import SpinnerComponent from 'components/spinner.vue'
 import { GetterNames } from '../store/getters/getters'
 import { ActionNames } from '../store/actions/actions'
 import { disableStatus } from '../const/datasetStatus.js'

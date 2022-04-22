@@ -138,8 +138,8 @@
 
 import TableAnnotations from './Table/TableAnnotations.vue'
 import TablePersonRoles from './Table/TableDescription.vue'
-import RadialAnnotator from 'components/radials/annotator/annotator'
-import SwitchComponent from 'components/switch'
+import RadialAnnotator from 'components/radials/annotator/annotator.vue'
+import SwitchComponent from 'components/switch.vue'
 import ConfirmationModal from 'components/ConfirmationModal.vue'
 import TableGrid from 'components/layout/Table/TableGrid.vue'
 import { capitalize, humanize } from 'helpers/strings'

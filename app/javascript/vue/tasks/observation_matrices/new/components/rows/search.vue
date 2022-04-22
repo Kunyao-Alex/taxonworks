@@ -42,7 +42,7 @@ import Autocomplete from 'components/ui/Autocomplete.vue'
 import { GetterNames } from '../../store/getters/getters'
 import { ActionNames } from '../../store/actions/actions'
 import ObservationTypes from '../../const/types.js'
-import OtuPicker from 'components/otu/otu_picker/otu_picker'
+import OtuPicker from 'components/otu/otu_picker/otu_picker.vue'
 import { 
   COLLECTION_OBJECT,
   OTU,

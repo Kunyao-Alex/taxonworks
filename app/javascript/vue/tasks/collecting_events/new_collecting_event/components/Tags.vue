@@ -23,8 +23,8 @@
 
 <script>
 
-import SmartSelector from 'components/ui/SmartSelector'
-import DisplayList from 'components/displayList'
+import SmartSelector from 'components/ui/SmartSelector.vue'
+import DisplayList from 'components/displayList.vue'
 
 export default {
   components: {

@@ -45,7 +45,7 @@ import { ActionNames } from '../store/actions/actions'
 import { GetterNames } from '../store/getters/getters'
 import { MutationNames } from '../store/mutations/mutations'
 import DisplayList from 'components/displayList.vue'
-import BlockLayout from 'components/layout/BlockLayout'
+import BlockLayout from 'components/layout/BlockLayout.vue'
 import ClassificationMain from './Classification/ClassificationMain.vue'
 
 const store = useStore()

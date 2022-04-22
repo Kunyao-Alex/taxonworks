@@ -46,9 +46,9 @@
 
 <script>
 
-import AjaxCall from 'helpers/ajaxCall'
+import AjaxCall from 'helpers/ajaxCall.js'
 import { URLParamsToJSON } from 'helpers/url/parse.js'
-import RowItem from '../shared/RowItem'
+import RowItem from '../shared/RowItem.vue'
 
 export default {
   components: { RowItem },

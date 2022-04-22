@@ -27,7 +27,7 @@
 
 <script>
 
-import SmartSelector from 'components/ui/SmartSelector'
+import SmartSelector from 'components/ui/SmartSelector.vue'
 import { MutationNames } from '../../store/mutations/mutations'
 import { GetterNames } from '../../store/getters/getters'
 import { GetCollectingEvent } from '../../request/resource'

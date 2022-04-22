@@ -121,7 +121,7 @@ import QualitativeComponent from './components/character/character.vue'
 import UnitComponent from './components/units/units.vue'
 import PreviewComponent from './components/preview/preview.vue'
 import GeneComponent from './components/gene/gene.vue'
-import setParam from 'helpers/setParam'
+import setParam from 'helpers/setParam.js'
 import VBtn from 'components/ui/VBtn/index.vue'
 import makeDescriptor from 'factory/Descriptor.js'
 import MatrixComponent from './components/matrix/Matrix.vue'
@@ -144,7 +144,7 @@ export default {
     DefinitionComponent,
     ContinuousComponent: UnitComponent,
     SampleComponent: UnitComponent,
-    PreviewComponent,
+     PreviewComponent,
     GeneComponent,
     Spinner,
     Autocomplete,

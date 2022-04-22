@@ -65,8 +65,8 @@
             :url="selectedType.url"
             label="label_html"
             :placeholder="`Select a ${selectedType.label.toLowerCase()}`"
-            :clear-after="true"
-            @getItem="selectedObject = $event"
+            clear-after
+            @get-item="selectedObject = $event"
             param="term"
           />
           <otu-picker
@@ -150,39 +150,16 @@
         >
         Is data depiction
       </label>
-      <table class="full_width">
-        <thead>
-          <tr>
-            <th>Image</th>
-            <th>Is data</th>
-            <th />
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            v-for="item in list"
-            :key="item.id"
-          >
-            <td v-html="item.object_tag" />
-            <td>{{ item.is_metadata_depiction }}</td>
-            <td>
-              <div class="horizontal-right-content middle">
-                <radial-annotator
-                  default-view="attributioan"
-                  :global-id="item.image.global_id"
-                />
-                <span
-                  class="button circle-button btn-edit button-submit"
-                  @click="depiction = item" />
-                <span
-                  @click="confirmDelete(item)"
-                  class="button circle-button btn-delete"
-                />
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+
+      <TableList
+        class="full_width"
+        :list="list"
+        :headers="['Image', 'Is data']"
+        :attributes="['object_tag', 'is_metadata_depiction']"
+        edit
+        @edit="depiction = $event"
+        @delete="confirmDelete"
+      />
     </div>
   </div>
 </template>
@@ -191,14 +168,16 @@
 import CRUD from '../request/crud.js'
 import Dropzone from 'components/dropzone.vue'
 import annotatorExtend from '../components/annotatorExtend.js'
-import Autocomplete from 'components/ui/Autocomplete'
-import OtuPicker from 'components/otu/otu_picker/otu_picker'
-import RadialAnnotator from 'components/radials/annotator/annotator.vue'
-import FilterImage from 'tasks/images/filter/components/filter'
-import SmartSelector from 'components/ui/SmartSelector'
+import Autocomplete from 'components/ui/Autocomplete.vue'
+import OtuPicker from 'components/otu/otu_picker/otu_picker.vue'
+import FilterImage from 'tasks/images/filter/components/filter.vue'
+import SmartSelector from 'components/ui/SmartSelector.vue'
+import TableList from 'components/table_list.vue'
 import { Depiction } from 'routes/endpoints'
 
 export default {
+  name: 'DepictionAnnotator',
+
   mixins: [CRUD, annotatorExtend],
 
   components: {
@@ -206,8 +185,8 @@ export default {
     Autocomplete,
     FilterImage,
     OtuPicker,
-    RadialAnnotator,
-    SmartSelector
+    SmartSelector,
+    TableList
   },
 
   computed: {
@@ -260,10 +239,6 @@ export default {
       selectedObject: undefined,
       filterList: []
     }
-  },
-
-  mounted () {
-    this.$options.components.RadialAnnotator = RadialAnnotator
   },
 
   methods: {

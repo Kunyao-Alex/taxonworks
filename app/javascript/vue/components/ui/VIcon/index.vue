@@ -1,8 +1,7 @@
 <template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    :width="elementSize"
-    :height="elementSize"
+    :class="classSize"
     :viewBox="viewbox"
     :aria-labelledby="name"
     role="presentation"
@@ -17,7 +16,6 @@
       ref="svggroup"
       :class="iconColor"
       stroke-width="2"
-      :fill="selectedColor"
     >
       <path
         v-for="(path, index) in iconPaths"
@@ -94,7 +92,9 @@ export default {
 
   mounted () {
     this.$nextTick(() => {
+      setTimeout(() => {
       this.viewbox = this.getViewboxSize()
+      }, 1000)
     })
   },
 

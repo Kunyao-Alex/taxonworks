@@ -38,8 +38,8 @@
 
 <script>
 
-import DisplayList from 'components/displayList'
-import ModalComponent from 'components/ui/Modal'
+import DisplayList from 'components/displayList.vue'
+import ModalComponent from 'components/ui/Modal.vue'
 
 export default {
   components: {

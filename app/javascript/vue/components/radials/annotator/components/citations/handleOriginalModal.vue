@@ -32,7 +32,7 @@
 
 <script>
 
-import ModalComponent from 'components/ui/Modal'
+import ModalComponent from 'components/ui/Modal.vue'
 import CRUD from '../../request/crud.js'
 
 export default {

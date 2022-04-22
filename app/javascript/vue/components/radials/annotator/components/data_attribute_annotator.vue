@@ -85,7 +85,7 @@
 import CRUD from '../request/crud.js'
 import AnnotatorExtend from '../components/annotatorExtend.js'
 import Autocomplete from 'components/ui/Autocomplete.vue'
-import TableList from './shared/tableList'
+import TableList from './shared/tableList.vue'
 
 export default {
   mixins: [CRUD, AnnotatorExtend],

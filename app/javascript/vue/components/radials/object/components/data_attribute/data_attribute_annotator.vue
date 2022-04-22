@@ -42,7 +42,7 @@
 
 import CRUD from '../../request/crud.js'
 import AnnotatorExtend from '../../components/annotatorExtend.js'
-import TableList from '../shared/tableList'
+import TableList from '../../../annotator/components/shared/tableList.vue'
 
 export default {
   mixins: [CRUD, AnnotatorExtend],
@@ -105,7 +105,7 @@ export default {
       }))
 
       promises.push(this.getList('/project_preferences.json').then(response => {
-        this.customPredicate = response.body.model_predicate_sets[this.metadata.object_type]
+        this.customPredicate = response.body.model_predicate_sets[this.metadata.object_type] || []
       }))
 
       Promise.all(promises).then(() => {

@@ -35,7 +35,7 @@
 
 import LockComponent from 'components/ui/VLock/index.vue'
 import componentExtend from './mixins/componentExtend'
-import BlockLayout from 'components/layout/BlockLayout'
+import BlockLayout from 'components/layout/BlockLayout.vue'
 import DateFields from 'components/ui/Date/DateFields.vue'
 import DateNow from 'components/ui/Date/DateToday.vue'
 

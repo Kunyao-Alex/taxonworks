@@ -54,7 +54,7 @@
 
 import Modal from 'components/ui/Modal.vue'
 import Spinner from 'components/spinner.vue'
-import OtuRadial from 'components/radials/object/radial'
+import OtuRadial from 'components/radials/object/radial.vue'
 import { Otu, TaxonName } from 'routes/endpoints'
 
 export default {

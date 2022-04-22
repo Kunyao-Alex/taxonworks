@@ -33,15 +33,15 @@
 </template>
 
 <script>
-import RadialAnnotator from 'components/radials/annotator/annotator'
-import RadialNavigation from 'components/radials/navigation/radial'
+import RadialAnnotator from 'components/radials/annotator/annotator.vue'
+import RadialNavigation from 'components/radials/navigation/radial.vue'
 import RemainingComponent from './components/Remaining'
 import EliminatedComponent from './components/Eliminated'
 import DescriptorsView from './components/DescriptorsView'
 import { ActionNames } from './store/actions/actions'
 import MenuBar from './components/MenuBar'
 import { GetterNames } from './store/getters/getters'
-import SpinnerComponent from 'components/spinner'
+import SpinnerComponent from 'components/spinner.vue'
 import { MutationNames } from './store/mutations/mutations'
 
 export default {

@@ -7,7 +7,7 @@
         v-if="item.hasOwnProperty(display)"
         type="button"
         :value="item.type"
-        @click="selectItem(item)"
+        @click="emit('selected', item)"
         :disabled="((item.disabled || !!alreadyCreated(item)) || isForThisRank(item))"
         class="button button-submit normal-input">
         {{ item[display] }}
@@ -25,87 +25,68 @@
   </ul>
 </template>
 
-<script>
+<script setup>
+import { computed } from 'vue'
 import RecursiveList from './recursiveList.vue'
 
-export default {
-  name: 'RecursiveList',
-
-  components: { RecursiveList },
-
-  props: {
-    objectList: {
-      type: Object,
-      required: true
-    },
-
-    display: {
-      type: String,
-      required: true
-    },
-
-    validProperty: {
-      type: String,
-      required: true
-    },
-
-    createdList: {
-      type: Array,
-      default: () => []
-    },
-
-    taxonRank: {
-      type: String,
-      required: true
-    }
+const props = defineProps({
+  objectList: {
+    type: Object,
+    required: true
   },
 
-  emits: ['selected'],
-
-  computed: {
-    orderList () {
-      const sortable = []
-      const sortableObject = {}
-
-      for (const key in this.objectList) {
-        sortable.push([key, this.objectList[key]])
-      }
-
-      sortable.sort((a, b) => {
-        if (a[1][this.display] > b[1][this.display]) {
-          return 1
-        }
-        if (a[1][this.display] < b[1][this.display]) {
-          return -1
-        }
-        return 0
-      })
-
-      sortable.forEach(item => {
-        sortableObject[item[0]] = item[1]
-      })
-
-      return sortableObject
-    }
+  display: {
+    type: String,
+    required: true
   },
 
-  methods: {
-    selectItem (optionSelected) {
-      this.$emit('selected', optionSelected)
-    },
+  validProperty: {
+    type: String,
+    required: true
+  },
 
-    alreadyCreated (status) {
-      return this.createdList.find(element => element.type === status.type)
-    },
+  createdList: {
+    type: Array,
+    default: () => []
+  },
 
-    isForThisRank (item) {
-      return item[this.validProperty] && !(item[this.validProperty].includes(this.taxonRank))
-    },
-
-    isObject (item) {
-      return typeof item === 'object'
-    }
+  taxonRank: {
+    type: String,
+    required: true
   }
-}
+})
+
+const emit = defineEmits(['selected'])
+
+const orderList = computed(() => {
+  const sortable = []
+  const sortableObject = {}
+
+  for (const key in props.objectList) {
+    sortable.push([key, props.objectList[key]])
+  }
+
+  sortable.sort((a, b) => {
+    if (a[1][props.display] > b[1][props.display]) {
+      return 1
+    }
+    if (a[1][props.display] < b[1][props.display]) {
+      return -1
+    }
+    return 0
+  })
+
+  sortable.forEach(item => {
+    sortableObject[item[0]] = item[1]
+  })
+
+  return sortableObject
+})
+
+const alreadyCreated = status => props.createdList.find(element => element.type === status.type)
+
+const isForThisRank = item => item[props.validProperty] && !(item[props.validProperty].includes(props.taxonRank))
+
+const isObject = item => typeof item === 'object'
 
 </script>

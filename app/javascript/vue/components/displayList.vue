@@ -35,7 +35,7 @@
         <span
           v-if="edit"
           class="circle-button btn-edit"
-          @click="$emit('edit', Object.assign({}, item))">Edit
+          @click="emit('edit', Object.assign({}, item))">Edit
         </span>
         <span
           v-if="remove"
@@ -47,126 +47,118 @@
     </li>
   </transition-group>
 </template>
-<script>
+<script setup>
 
-import RadialAnnotator from 'components/radials/annotator/annotator.vue'
 import RadialObject from 'components/radials/navigation/radial.vue'
 import SoftValidation from 'components/soft_validations/objectValidation.vue'
+import RadialAnnotator from 'components/radials/annotator/annotator.vue'
 
-export default {
-  components: {
-    RadialAnnotator,
-    SoftValidation
+const props = defineProps({
+  list: {
+    type: Array,
+    default: () => []
   },
-
-  props: {
-    list: {
-      type: Array,
-      default: () => []
-    },
-    download: {
-      type: String,
-      default: undefined
-    },
-    label: {
-      type: [String, Array],
-      default: undefined
-    },
-    setKey: {
-      type: String,
-      default: undefined
-    },
-    edit: {
-      type: Boolean,
-      default: false
-    },
-    remove: {
-      type: Boolean,
-      default: true
-    },
-    annotator: {
-      type: Boolean,
-      default: false
-    },
-    radialObject: {
-      type: Boolean,
-      default: false
-    },
-    highlight: {
-      type: Object,
-      default: undefined
-    },
-    deleteWarning: {
-      type: Boolean,
-      default: true
-    },
-    validations: {
-      type: Boolean,
-      default: false
-    },
-    softDelete: {
-      type: Boolean,
-      default: false
-    }
+  download: {
+    type: String,
+    default: undefined
   },
-
-  emits: ['delete', 'edit', 'deleteIndex'],
-
-  beforeCreate () {
-    this.$options.components['RadialAnnotator'] = RadialAnnotator
-    this.$options.components['RadialObject'] = RadialObject
+  label: {
+    type: [String, Array],
+    default: undefined
   },
+  setKey: {
+    type: String,
+    default: undefined
+  },
+  edit: {
+    type: Boolean,
+    default: false
+  },
+  remove: {
+    type: Boolean,
+    default: true
+  },
+  annotator: {
+    type: Boolean,
+    default: false
+  },
+  radialObject: {
+    type: Boolean,
+    default: false
+  },
+  highlight: {
+    type: Object,
+    default: undefined
+  },
+  deleteWarning: {
+    type: Boolean,
+    default: true
+  },
+  validations: {
+    type: Boolean,
+    default: false
+  },
+  softDelete: {
+    type: Boolean,
+    default: false
+  }
+})
 
-  methods: {
-    displayName (item) {
-      if (!this.label) return item
-      if (typeof this.label === 'string') {
-        return item[this.label]
-      } else {
-        let tmp = item
-        this.label.forEach(function (label) {
-          tmp = tmp[label]
-        })
-        return tmp
-      }
-    },
+const emit = defineEmits([
+  'delete',
+  'deleteIndex',
+  'edit'
+])
 
-    checkHighlight (item) {
-      if (this.highlight) {
-        if (this.highlight.key) {
-          return item[this.highlight.key] == this.highlight.value
-        } else {
-          return item == this.highlight.value
-        }
-      }
-      return false
-    },
+const displayName = item => {
+  if (!props.label) return item
+  if (typeof props.label === 'string') {
+    return item[props.label]
+  } else {
+    let tmp = item
 
-    deleteItem (item, index) {
-      if(this.deleteWarning) {
-        if(window.confirm(`You're trying to delete this record. Are you sure want to proceed?`)) {
-          this.$emit('delete', item)
-          this.$emit('deleteIndex', index)
-        }
-      }
-      else {
-        this.$emit('delete', item)
-        this.$emit('deleteIndex', index)
-      }
-    },
-    getPropertyValue (item, stringPath) {
-      let keys = stringPath.split('.')
-      if(keys.length === 1) {
-        return item[stringPath]
-      }
-      else {
-        let value = item
-        keys.forEach(key => {
-          value = value[key]
-        })
-        return value
-      }
-    }
+    props.label.forEach(label => {
+      tmp = tmp[label]
+    })
+
+    return tmp
   }
 }
+
+const checkHighlight = item => {
+  if (props.highlight) {
+    return props.highlight.key 
+      ? item[props.highlight.key] == props.highlight.value
+      : item == props.highlight.value
+  }
+
+  return false
+}
+
+const deleteItem = (item, index) => {
+  if(props.deleteWarning) {
+    if(window.confirm(`You're trying to delete this record. Are you sure want to proceed?`)) {
+      emit('delete', item)
+      emit('deleteIndex', index)
+    }
+  } else {
+    emit('delete', item)
+    emit('deleteIndex', index)
+  }
+}
+
+const getPropertyValue = (item, stringPath) => {
+  let keys = stringPath.split('.')
+
+  if (keys.length === 1) {
+    return item[stringPath]
+  } else {
+    let value = item
+    
+    keys.forEach(key => { value = value[key] })
+
+    return value
+  }
+}
+
 </script>

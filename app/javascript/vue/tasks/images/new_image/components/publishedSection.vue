@@ -11,8 +11,8 @@
 
 <script>
 
-import SmartSelector from 'components/switch'
-import RolePicker from 'components/role_picker'
+import SmartSelector from 'components/switch.vue'
+import RolePicker from 'components/role_picker.vue'
 
 export default {
   components: {

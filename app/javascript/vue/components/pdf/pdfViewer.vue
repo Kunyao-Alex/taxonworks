@@ -78,8 +78,8 @@
 
 <script>
 
-import PdfViewer from './components/pdfComponent'
-import ResizeHandle from '../resizeHandle'
+import PdfViewer from './components/pdfComponent.vue'
+import ResizeHandle from '../resizeHandle.vue'
 import IndexedDBStorage from 'storage/indexddb.js'
 import { blobToArrayBuffer } from 'helpers/files.js'
 

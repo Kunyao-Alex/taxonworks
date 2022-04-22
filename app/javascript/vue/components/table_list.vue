@@ -32,7 +32,7 @@
               <span
                 v-if="edit"
                 class="circle-button btn-edit"
-                @click="$emit('edit', Object.assign({}, item))"/>
+                @click="emit('edit', Object.assign({}, item))"/>
               <span
                 v-if="destroy"
                 class="circle-button btn-delete"
@@ -45,100 +45,92 @@
     </table>
   </div>
 </template>
-<script>
+<script setup>
 
+import PdfComponent from 'components/pdfButton.vue'
 import RadialAnnotator from 'components/radials/annotator/annotator.vue'
-import PdfComponent from 'components/pdfButton'
 
-export default {
-  components: {
-    RadialAnnotator,
-    PdfComponent
+const props = defineProps({
+  list: {
+    type: Array,
+    default: () => []
   },
-  props: {
-    list: {
-      type: Array,
-      default: () => {
-        return []
+
+  attributes: {
+    type: Array,
+    required: true
+  },
+
+  header: {
+    type: Array,
+    default: () => []
+  },
+
+  rowKey: {
+    type: String,
+    default: undefined
+  },
+
+  destroy: {
+    type: Boolean,
+    default: true
+  },
+
+  deleteWarning: {
+    type: Boolean,
+    default: true
+  },
+
+  annotator: {
+    type: Boolean,
+    default: true
+  },
+
+  edit: {
+    type: Boolean,
+    default: false
+  },
+
+  pdf: {
+    type: Boolean,
+    default: false
+  }
+})
+
+const emit = defineEmits(['delete', 'edit'])
+
+const getValue = (object, attributes) => {
+  if (Array.isArray(attributes)) {
+    let obj = object
+
+    for (var i = 0; i < attributes.length; i++) {
+      if (obj.hasOwnProperty(attributes[i])) {
+        obj = obj[attributes[i]]
+      } else {
+        return null
       }
-    },
-    attributes: {
-      type: Array,
-      required: true
-    },
-    header: {
-      type: Array,
-      default: () => {
-        return []
-      }
-    },
-    rowKey: {
-      type: String,
-      default: undefined
-    },
-    destroy: {
-      type: Boolean,
-      default: true
-    },
-    deleteWarning: {
-      type: Boolean,
-      default: true
-    },
-    annotator: {
-      type: Boolean,
-      default: true
-    },
-    edit: {
-      type: Boolean,
-      default: false
-    },
-    pdf: {
-      type: Boolean,
-      default: false
     }
-  },
 
-  emits: ['delete'],
-
-  created () {
-    this.$options.components['RadialAnnotator'] = RadialAnnotator
-  },
-
-  methods: {
-    getValue (object, attributes) {
-      if (Array.isArray(attributes)) {
-        let obj = object
-
-        for (var i = 0; i < attributes.length; i++) {
-          if (obj.hasOwnProperty(attributes[i])) {
-            obj = obj[attributes[i]]
-          }
-          else {
-            return null
-          }
-        }
-        return obj
-      }
-      else {
-        if (attributes.substr(0,1) === "@") {
-          return attributes.substr(1, attributes.length)
-        }
-      }
-      return object[attributes]
-    },
-
-    deleteItem (item) {
-      if (this.deleteWarning) {
-        if (window.confirm(`You're trying to delete this record. Are you sure want to proceed?`)) {
-          this.$emit('delete', item)
-        }
-      }
-      else {
-        this.$emit('delete', item)
-      }
+    return obj
+  } else {
+    if (attributes.substr(0,1) === "@") {
+      return attributes.substr(1, attributes.length)
     }
   }
+  return object[attributes]
 }
+
+const deleteItem = item => {
+  if (props.deleteWarning) {
+    if (window.confirm(`You're trying to delete this record. Are you sure want to proceed?`)) {
+      emit('delete', item)
+    }
+  }
+  else {
+    emit('delete', item)
+  }
+}
+
 </script>
 <style lang="scss">
   .vue-table-container {

@@ -181,7 +181,7 @@
 
 <script>
 
-import ModalComponent from 'components/ui/Modal'
+import ModalComponent from 'components/ui/Modal.vue'
 import VBtn from 'components/ui/VBtn/index.vue'
 import { downloadTextFile } from 'helpers/files.js'
 

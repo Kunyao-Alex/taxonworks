@@ -23,7 +23,7 @@
 </template>
 <script>
 
-import SmartSelector from 'components/ui/SmartSelector'
+import SmartSelector from 'components/ui/SmartSelector.vue'
 import { ActionNames } from '../../store/actions/actions'
 import { GetterNames } from '../../store/getters/getters'
 import ObservationTypes from '../../const/types.js'

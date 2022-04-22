@@ -15,25 +15,26 @@
 
 import CRUD from '../request/crud.js'
 import annotatorExtend from '../components/annotatorExtend.js'
-import autocomplete from 'components/ui/Autocomplete.vue'
 import displayList from './displayList.vue'
 
 export default {
   mixins: [CRUD, annotatorExtend],
-  components: {
-    displayList
-  },
+
+  components: { displayList },
+
   computed: {
     validateFields () {
       return this.note.text
     }
   },
-  data: function () {
+
+  data () {
     return {
       list: [],
       note: this.newNote()
     }
   },
+
   methods: {
     newNote () {
       return {
@@ -41,12 +42,14 @@ export default {
         annotated_global_entity: decodeURIComponent(this.globalId)
       }
     },
+
     createNew () {
       this.create('/notes', { note: this.note }).then(response => {
         this.list.push(response.body)
         this.note = this.newNote()
       })
     },
+
     updateNote () {
       this.update(`/notes/${this.note.id}`, { note: this.note }).then(response => {
         const index = this.list.findIndex(element => element.id === this.note.id)

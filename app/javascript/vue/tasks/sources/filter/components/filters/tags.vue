@@ -51,8 +51,8 @@
 
 <script>
 
-import SmartSelector from 'components/ui/SmartSelector'
-import RowItem from './shared/RowItem'
+import SmartSelector from 'components/ui/SmartSelector.vue'
+import RowItem from './shared/RowItem.vue'
 import { ControlledVocabularyTerm } from 'routes/endpoints'
 import { URLParamsToJSON } from 'helpers/url/parse.js'
 

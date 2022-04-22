@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import SmartSelector from 'components/ui/SmartSelector'
+import SmartSelector from 'components/ui/SmartSelector.vue'
 
 export default {
   components: { SmartSelector },

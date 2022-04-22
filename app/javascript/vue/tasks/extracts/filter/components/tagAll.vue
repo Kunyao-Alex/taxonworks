@@ -17,7 +17,7 @@
 <script>
 
 import { Tag } from 'routes/endpoints'
-import SpinnerComponent from 'components/spinner'
+import SpinnerComponent from 'components/spinner.vue'
 
 export default {
   components: {

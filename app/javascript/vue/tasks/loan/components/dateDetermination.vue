@@ -48,7 +48,7 @@ import DateFields from 'components/ui/Date/DateFields.vue'
 import { TaxonDetermination } from 'routes/endpoints'
 import { MutationNames } from '../store/mutations/mutations'
 import rolePicker from 'components/role_picker.vue'
-import OtuPicker from 'components/otu/otu_picker/otu_picker'
+import OtuPicker from 'components/otu/otu_picker/otu_picker.vue'
 
 export default {
   components: {

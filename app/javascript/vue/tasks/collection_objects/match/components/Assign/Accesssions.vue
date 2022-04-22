@@ -35,7 +35,7 @@
 
 <script>
 
-import SpinnerComponent from 'components/spinner'
+import SpinnerComponent from 'components/spinner.vue'
 import { CollectionObject } from 'routes/endpoints'
 
 export default {

@@ -101,19 +101,19 @@
 </template>
 <script>
 
-import showForThisGroup from '../helpers/showForThisGroup'
-import BlockLayout from 'components/layout/BlockLayout'
+import showForThisGroup from '../helpers/showForThisGroup.js'
+import BlockLayout from 'components/layout/BlockLayout.vue'
 
-import { ActionNames } from '../store/actions/actions'
-import { GetterNames } from '../store/getters/getters'
-import { MutationNames } from '../store/mutations/mutations'
+import { ActionNames } from '../store/actions/actions.js'
+import { GetterNames } from '../store/getters/getters.js'
+import { MutationNames } from '../store/mutations/mutations.js'
 import { TypeMaterial } from 'routes/endpoints'
 import TreeDisplay from './treeDisplay.vue'
 import ListEntrys from './listEntrys.vue'
 import ListCommon from './commonList.vue'
-import getRankGroup from '../helpers/getRankGroup'
-import childOfParent from '../helpers/childOfParent'
-import QuickTaxonName from './quickTaxonName'
+import getRankGroup from '../helpers/getRankGroup.js'
+import childOfParent from '../helpers/childOfParent.js'
+import QuickTaxonName from './quickTaxonName.vue'
 import platformKey from 'helpers/getPlatformKey.js'
 import SwitchComponent from 'components/switch.vue'
 

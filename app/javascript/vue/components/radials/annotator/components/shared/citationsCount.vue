@@ -17,7 +17,9 @@
         :edit="false">
         <template #options="slotProps">
           <div>
-            <display-source :source="slotProps.item.source"/>
+            <display-source 
+              v-if="slotProps.item.source"
+              :source="slotProps.item.source"/>
           </div>
         </template>
       </display-list>
@@ -28,8 +30,8 @@
 <script>
 
 import CRUD from '../../request/crud.js'
-import DisplayList from 'components/displayList'
-import DisplaySource from './displaySource'
+import DisplayList from 'components/displayList.vue'
+import DisplaySource from './displaySource.vue'
 
 export default {
   mixins: [CRUD],

@@ -17,7 +17,7 @@
 
 <script>
 
-import ModalComponent from 'components/ui/Modal'
+import ModalComponent from 'components/ui/Modal.vue'
 import { SoftValidation } from 'routes/endpoints'
 
 export default {

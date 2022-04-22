@@ -76,8 +76,8 @@
 
 <script>
 
-import ModalComponent from 'components/ui/Modal'
-import SwitchComponent from 'components/switch'
+import ModalComponent from 'components/ui/Modal.vue'
+import SwitchComponent from 'components/switch.vue'
 
 import { GetDWC } from '../request/resources'
 import { CollectingEvent } from 'routes/endpoints'

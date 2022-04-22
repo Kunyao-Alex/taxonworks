@@ -20,8 +20,8 @@
 import { GetterNames } from '../store/getters/getters'
 import { MutationNames } from '../store/mutations/mutations'
 import { Source } from 'routes/endpoints'
-import DisplayList from 'components/displayList'
-import SpinnerComponent from 'components/spinner'
+import DisplayList from 'components/displayList.vue'
+import SpinnerComponent from 'components/spinner.vue'
 
 export default {
   components: {

@@ -17,10 +17,9 @@
           <td>
             <span
               :class="{ originalCitation: item.is_original }"
-              v-html="item.object_tag"/>
-            <soft-validation
-              class="margin-small-left"
-              :global-id="item.global_id"/>
+              v-html="item.object_tag"
+            />
+            <soft-validation :global-id="item.global_id"/>
           </td>
           <td>
             <div class="horizontal-right-content middle">
@@ -46,43 +45,31 @@
     </table>
   </div>
 </template>
-<script>
+<script setup>
 
-import RadialAnnotator from 'components/radials/annotator/annotator.vue'
 import PdfButton from 'components/pdfButton.vue'
-import SoftValidation from 'components/soft_validations/objectValidation'
+import SoftValidation from 'components/soft_validations/objectValidation.vue'
+import RadialAnnotator from 'components/radials/annotator/annotator.vue'
 
-export default {
-  components: {
-    RadialAnnotator,
-    SoftValidation,
-    PdfButton
-  },
+defineProps({
+  list: {
+    type: Array,
+    default: () => []
+  }
+})
 
-  props: {
-    list: {
-      type: Array,
-      default: () => []
-    }
-  },
+const emit = defineEmits([
+  'delete',
+  'edit'
+])
 
-  emits: [
-    'delete',
-    'edit'
-  ],
 
-  mounted () {
-    this.$options.components['RadialAnnotator'] = RadialAnnotator
-  },
-
-  methods: {
-    deleteItem (item) {
-      if (window.confirm('You\'re trying to delete this record. Are you sure want to proceed?')) {
-        this.$emit('delete', item)
-      }
-    }
+const deleteItem = item => {
+  if (window.confirm('You\'re trying to delete this record. Are you sure want to proceed?')) {
+    emit('delete', item)
   }
 }
+
 </script>
 
 <style lang="scss" scoped>

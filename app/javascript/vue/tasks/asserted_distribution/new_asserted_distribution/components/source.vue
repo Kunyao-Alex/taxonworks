@@ -61,7 +61,7 @@
 
 <script>
 
-import SmartSelector from 'components/ui/SmartSelector'
+import SmartSelector from 'components/ui/SmartSelector.vue'
 import RadialAnnotator from 'components/radials/annotator/annotator.vue'
 import { Source } from 'routes/endpoints'
 

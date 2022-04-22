@@ -72,8 +72,8 @@
 </template>
 
 <script>
-import Autocomplete from 'components/ui/Autocomplete'
-import showForThisGroup from './helpers/showForThisGroup'
+import Autocomplete from 'components/ui/Autocomplete.vue'
+import showForThisGroup from './helpers/showForThisGroup.js'
 import AuthorSection from './components/Author/Author.vue'
 import RelationshipSection from './components/relationshipPicker.vue'
 import StatusSection from './components/statusPicker.vue'
@@ -85,17 +85,17 @@ import CheckChanges from './components/checkChanges.vue'
 import TypeSection from './components/type.vue'
 import TaxonSection from './components/basicInformation.vue'
 import OriginalcombinationSection from './components/pickOriginalCombination.vue'
-import ManagesynonymySection from './components/manageSynonym'
+import ManagesynonymySection from './components/manageSynonym.vue'
 import ClassificationSection from './components/classification.vue'
 import SoftValidation from 'components/soft_validations/panel.vue'
 import SubsequentCombinationSection from './components/Combination/CombinationMain.vue'
 import Spinner from 'components/spinner.vue'
-import platformKey from 'helpers/getPlatformKey'
+import platformKey from 'helpers/getPlatformKey.js'
 
 import { convertType } from 'helpers/types.js'
-import { GetterNames } from './store/getters/getters'
-import { MutationNames } from './store/mutations/mutations'
-import { ActionNames } from './store/actions/actions'
+import { GetterNames } from './store/getters/getters.js'
+import { MutationNames } from './store/mutations/mutations.js'
+import { ActionNames } from './store/actions/actions.js'
 
 export default {
   name: 'NewTaxonName',

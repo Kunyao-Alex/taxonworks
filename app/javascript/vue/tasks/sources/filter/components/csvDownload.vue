@@ -13,9 +13,9 @@
 
 <script>
 
-import { parse } from 'json2csv'
-import AjaxCall from 'helpers/ajaxCall'
-import SpinnerComponent from 'components/spinner'
+import { parse } from 'json2csv/dist/json2csv.umd.js'
+import AjaxCall from 'helpers/ajaxCall.js'
+import SpinnerComponent from 'components/spinner.vue'
 
 export default {
   components: {

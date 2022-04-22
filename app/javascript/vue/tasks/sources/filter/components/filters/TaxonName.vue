@@ -35,7 +35,7 @@
 
 <script>
 
-import Autocomplete from 'components/ui/Autocomplete'
+import Autocomplete from 'components/ui/Autocomplete.vue'
 import { URLParamsToJSON } from 'helpers/url/parse.js'
 import { TaxonName } from 'routes/endpoints'
 

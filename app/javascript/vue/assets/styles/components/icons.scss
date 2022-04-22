@@ -44,6 +44,13 @@
       cursor: pointer;
     }
 
+    @each $key, $value in $tw-input-sizes {
+      .icon-#{$key}-size {
+        height: #{$value};
+        width: #{$value};
+      }
+    }
+
     .icon-color-primary {
       fill: var(--primary-color);
     }

@@ -25,7 +25,7 @@
 
 <script>
 
-import SwitchComponent from 'components/switch'
+import SwitchComponent from 'components/switch.vue'
 
 export default {
   components: { SwitchComponent },

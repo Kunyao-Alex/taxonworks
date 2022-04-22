@@ -6,7 +6,7 @@
 
 <script>
 
-import SoftValidations from 'components/soft_validations/panel'
+import SoftValidations from 'components/soft_validations/panel.vue'
 import { SoftValidation } from 'routes/endpoints'
 
 export default {

@@ -77,7 +77,7 @@ import RadialMenu from 'components/radials/RadialMenu.vue'
 import modal from 'components/ui/Modal.vue'
 import spinner from 'components/spinner.vue'
 
-import CRUD from './request/crud'
+import CRUD from './request/crud.js'
 
 import confidencesAnnotator from './components/confidence_annotator.vue'
 import depictionsAnnotator from './components/depiction_annotator.vue'
@@ -92,9 +92,9 @@ import protocol_relationshipsAnnotator from './components/protocol_annotator.vue
 import attributionAnnotator from './components/attribution/main.vue'
 import verifiersAnnotator from './components/verifiers/Verifiers.vue'
 
-import ContextMenu from './components/contextMenu'
+import ContextMenu from './components/contextMenu.vue'
 import Icons from './images/icons.js'
-import shortcutsMixin from '../mixins/shortcuts'
+import shortcutsMixin from '../mixins/shortcuts.js'
 import { Tag } from 'routes/endpoints'
 
 const MIDDLE_RADIAL_BUTTON = 'circleButton'

@@ -30,7 +30,7 @@
 
 <script>
 import { Repository } from 'routes/endpoints'
-import SmartSelector from 'components/ui/SmartSelector'
+import SmartSelector from 'components/ui/SmartSelector.vue'
 import LockComponent from 'components/ui/VLock/index.vue'
 import SmartSelectorItem from 'components/ui/SmartSelectorItem.vue'
 

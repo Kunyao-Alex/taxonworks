@@ -39,7 +39,7 @@ import { MutationNames } from '../../store/mutations/mutations'
 import { findRole } from 'helpers/people/people.js'
 import makePerson from 'factory/Person.js'
 import RolePicker from 'components/role_picker.vue'
-import SmartSelector from 'components/ui/SmartSelector'
+import SmartSelector from 'components/ui/SmartSelector.vue'
 import { ROLE_SOURCE_EDITOR } from 'constants/index.js'
 
 export default {

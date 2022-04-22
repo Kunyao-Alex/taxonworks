@@ -90,7 +90,7 @@
 
 <script>
 
-import SmartSelector from 'components/ui/SmartSelector'
+import SmartSelector from 'components/ui/SmartSelector.vue'
 import CRUD from '../../request/crud'
 import annotatorExtend from '../annotatorExtend'
 import Draggable from 'vuedraggable'

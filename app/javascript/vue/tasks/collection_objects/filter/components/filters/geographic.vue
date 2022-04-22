@@ -60,8 +60,8 @@
 
 <script>
 
-import SwitchComponent from 'components/switch'
-import Autocomplete from 'components/ui/Autocomplete'
+import SwitchComponent from 'components/switch.vue'
+import Autocomplete from 'components/ui/Autocomplete.vue'
 import GeoreferenceMap from 'components/georeferences/map'
 import { GeographicArea } from 'routes/endpoints'
 import { URLParamsToJSON } from 'helpers/url/parse.js'

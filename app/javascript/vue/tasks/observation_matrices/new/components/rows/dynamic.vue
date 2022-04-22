@@ -62,19 +62,19 @@
 </template>
 <script>
 
-import smartSelector from '../shared/smartSelector'
+import smartSelector from '../shared/smartSelector.vue'
 import {
   default as quickComponent,
   default as recentComponent,
   default as pinboardComponent
-} from '../shared/tag_list'
+} from '../shared/tag_list.vue'
 
-import smartTaxonList from './dynamic/smartList'
-import Autocomplete from 'components/ui/Autocomplete'
-import SpinnerComponent from 'components/spinner'
-import { GetSmartSelector } from '../../request/resources'
-import { ActionNames } from '../../store/actions/actions'
-import { GetterNames } from '../../store/getters/getters'
+import smartTaxonList from './dynamic/smartList.vue'
+import Autocomplete from 'components/ui/Autocomplete.vue'
+import SpinnerComponent from 'components/spinner.vue'
+import { GetSmartSelector } from '../../request/resources.js'
+import { ActionNames } from '../../store/actions/actions.js'
+import { GetterNames } from '../../store/getters/getters.js'
 import ObservationTypes from '../../const/types.js'
 import { TAXON_NAME, CONTROLLED_VOCABULARY_TERM } from 'constants/index.js'
 

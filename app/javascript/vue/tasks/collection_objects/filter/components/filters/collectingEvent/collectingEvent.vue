@@ -57,7 +57,7 @@
 <script>
 
 import { URLParamsToJSON } from 'helpers/url/parse.js'
-import SmartSelector from 'components/ui/SmartSelector'
+import SmartSelector from 'components/ui/SmartSelector.vue'
 import AddField from './addFields'
 import { CollectingEvent } from 'routes/endpoints'
 

@@ -70,7 +70,7 @@
 <script>
 
 import HeaderBar from './components/HeaderBar'
-import SpinnerComponent from 'components/spinner'
+import SpinnerComponent from 'components/spinner.vue'
 import ImageGallery from './components/gallery/Main'
 import ContentComponent from './components/Content'
 import AssertedDistribution from './components/AssertedDistribution'
@@ -84,7 +84,7 @@ import TypeSection from './components/TypeSection.vue'
 import CommonNames from './components/CommonNames'
 import DescriptionComponent from './components/Description.vue'
 import Descendants from './components/descendants'
-import Autocomplete from 'components/ui/Autocomplete'
+import Autocomplete from 'components/ui/Autocomplete.vue'
 import SearchOtu from './components/SearchOtu'
 import Draggable from 'vuedraggable'
 import SelectOtu from './components/selectOtu'

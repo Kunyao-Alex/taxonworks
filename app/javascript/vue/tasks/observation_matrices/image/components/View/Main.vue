@@ -97,7 +97,7 @@
 
 <script>
 
-import SpinnerComponent from 'components/spinner'
+import SpinnerComponent from 'components/spinner.vue'
 import CellHeader from './CellHeader.vue'
 import RadialObject from 'components/radials/object/radial'
 import TableGrid from 'components/layout/Table/TableGrid.vue'

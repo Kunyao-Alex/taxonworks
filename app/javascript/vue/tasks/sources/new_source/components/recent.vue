@@ -23,8 +23,8 @@
 <script>
 
 import TableList from 'components/table_list'
-import SpinnerComponent from 'components/spinner'
-import ModalComponent from 'components/ui/Modal'
+import SpinnerComponent from 'components/spinner.vue'
+import ModalComponent from 'components/ui/Modal.vue'
 import { ActionNames } from '../store/actions/actions'
 import { Source } from 'routes/endpoints'
 

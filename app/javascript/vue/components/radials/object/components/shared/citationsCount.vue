@@ -39,8 +39,8 @@
 <script>
 
 import CRUD from '../../request/crud.js'
-import DisplayList from 'components/displayList'
-import ModalComponent from 'components/ui/Modal'
+import DisplayList from 'components/displayList.vue'
+import ModalComponent from 'components/ui/Modal.vue'
 
 export default {
   mixins: [CRUD],

@@ -117,12 +117,12 @@
 <script>
 
 import MapComponent from 'components/georeferences/map'
-import SpinnerComponent from 'components/spinner'
+import SpinnerComponent from 'components/spinner.vue'
 import DisplayList from './list'
 import convertDMS from 'helpers/parseDMS.js'
 import ManuallyComponent from 'components/georeferences/manuallyComponent'
 import GeolocateComponent from './geolocate'
-import ModalComponent from 'components/ui/Modal'
+import ModalComponent from 'components/ui/Modal.vue'
 import extendCE from '../../mixins/extendCE'
 import WktComponent from './wkt'
 import DateComponent from 'components/ui/Date/DateFields.vue'

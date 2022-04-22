@@ -25,7 +25,7 @@
 
 <script>
 
-import { RadialAnnotator } from 'components/radials/annotator/annotator'
+import { RadialAnnotator } from 'components/radials/annotator/annotator.vue'
 import { RadialObject } from 'components/radials/object/radial'
 
 export default {

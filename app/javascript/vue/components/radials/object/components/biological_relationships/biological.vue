@@ -23,7 +23,7 @@
 
 <script>
 
-import SmartSelector from 'components/ui/SmartSelector'
+import SmartSelector from 'components/ui/SmartSelector.vue'
 import CRUD from '../../request/crud.js'
 
 export default {

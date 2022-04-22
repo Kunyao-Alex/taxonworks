@@ -92,20 +92,20 @@
 <script>
 
   //TODO: Make a main filter component and move each annotator filter there.
-import AnnotationTypes from './components/annotation_types'
-import AnnotationOn from './components/annotation_on'
-import AnnotationFor from './components/annotation_for'
-import AnnotationDates from './components/annotation_dates'
-import AnnotationLogic from './components/annotation_logic'
-import AnnotationBy from './components/annotation_by'
+import AnnotationTypes from './components/annotation_types.vue'
+import AnnotationOn from './components/annotation_on.vue'
+import AnnotationFor from './components/annotation_for.vue'
+import AnnotationDates from './components/annotation_dates.vue'
+import AnnotationLogic from './components/annotation_logic.vue'
+import AnnotationBy from './components/annotation_by.vue'
 //
 import ViewList from './components/view/list.vue'
 import RequestBar from './components/view/requestBar.vue'
 
 import Spinner from 'components/spinner.vue'
-import AjaxCall from 'helpers/ajaxCall'
-import PaginationComponent from 'components/pagination'
-import GetPagination from 'helpers/getPagination'
+import AjaxCall from 'helpers/ajaxCall.js'
+import PaginationComponent from 'components/pagination.vue'
+import GetPagination from 'helpers/getPagination.js'
 
 export default {
   components: {

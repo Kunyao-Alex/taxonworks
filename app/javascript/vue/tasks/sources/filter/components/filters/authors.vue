@@ -41,8 +41,8 @@
 
 <script>
 
-import SmartSelector from 'components/ui/SmartSelector'
-import DisplayList from 'components/displayList'
+import SmartSelector from 'components/ui/SmartSelector.vue'
+import DisplayList from 'components/displayList.vue'
 import { URLParamsToJSON } from 'helpers/url/parse.js'
 import { People } from 'routes/endpoints'
 

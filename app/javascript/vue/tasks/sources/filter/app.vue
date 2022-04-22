@@ -123,13 +123,13 @@
 <script>
 
 import FilterComponent from './components/filter.vue'
-import ListComponent from './components/list'
-import CsvButton from 'components/csvButton'
-import PaginationComponent from 'components/pagination'
-import GetPagination from 'helpers/getPagination'
-import BibtexButton from './components/bibtex'
+import ListComponent from './components/list.vue'
+import CsvButton from 'components/csvButton.vue'
+import PaginationComponent from 'components/pagination.vue'
+import GetPagination from 'helpers/getPagination.js'
+import BibtexButton from './components/bibtex.vue'
 import BibliographyButton from './components/bibliography.vue'
-import PlatformKey from 'helpers/getPlatformKey'
+import PlatformKey from 'helpers/getPlatformKey.js'
 
 export default {
   components: {

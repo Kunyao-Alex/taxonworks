@@ -36,7 +36,7 @@ import { GetterNames } from '../../store/getters/getters'
 import { MutationNames } from '../../store/mutations/mutations'
 import { Language } from 'routes/endpoints'
 import LockComponent from 'components/ui/VLock/index.vue'
-import SmartSelector from 'components/ui/SmartSelector'
+import SmartSelector from 'components/ui/SmartSelector.vue'
 
 export default {
   components: {

@@ -23,7 +23,7 @@
 
 import Pin from 'components/ui/Pinboard/VPin.vue'
 import AddToProject from 'components/addToProjectSource'
-import RadialObject from 'components/radials/navigation/radial'
+import RadialObject from 'components/radials/navigation/radial.vue'
 
 export default {
   components: {

@@ -79,14 +79,14 @@
 
 <script>
 
-import RadialNavigation from 'components/radials/navigation/radial'
-import RadialAnnotator from 'components/radials/annotator/annotator'
-import TagAll from 'tasks/collection_objects/filter/components/tagAll'
-import PdfButton from 'components/pdfButton'
-import AddToProject from 'components/addToProjectSource'
+import RadialNavigation from 'components/radials/navigation/radial.vue'
+import RadialAnnotator from 'components/radials/annotator/annotator.vue'
+import TagAll from 'tasks/collection_objects/filter/components/tagAll.vue'
+import PdfButton from 'components/pdfButton.vue'
+import AddToProject from 'components/addToProjectSource.vue'
 import PinComponent from 'components/ui/Pinboard/VPin.vue'
 import { sortArray } from 'helpers/arrays.js'
-import { vResizeColumn } from 'directives/resizeColumn'
+import { vResizeColumn } from 'directives/resizeColumn.js'
 
 export default {
   components: {

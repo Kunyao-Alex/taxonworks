@@ -46,59 +46,48 @@
     </template>
   </block-layout>
 </template>
-<script>
+<script setup>
 
 import Autocomplete from 'components/ui/Autocomplete.vue'
 import BlockLayout from 'components/layout/BlockLayout.vue'
 import VBtn from 'components/ui/VBtn/index.vue'
 import VIcon from 'components/ui/VIcon/index.vue'
-import DefaultPin from 'components/getDefaultPin'
+import DefaultPin from 'components/getDefaultPin.vue'
 import { ObservationMatrix } from 'routes/endpoints'
+import { computed } from 'vue'
 
-export default {
-  components: {
-    Autocomplete,
-    BlockLayout,
-    DefaultPin,
-    VBtn,
-    VIcon
+const props = defineProps({
+  modelValue: {
+    type: String,
+    default: undefined
+  }
+})
+
+const emit = defineEmits(['update:modelValue'])
+
+const matrix = computed({
+  get () {
+    return props.modelValue
   },
+  set (value) {
+    emit('update:modelValue', value)
+  }
+})
 
-  props: {
-    modelValue: {
-      type: String,
-      default: undefined
-    }
-  },
 
-  emits: ['update:modelValue'],
-
-  computed: {
-    matrix: {
-      get () {
-        return this.modelValue
-      },
-      set (value) {
-        this.$emit('update:modelValue', value)
-      }
-    }
-  },
-
-  created () {
     const urlParams = new URLSearchParams(window.location.search)
     const matrixId = urlParams.get('observation_matrix_id')
 
     if (/^\d+$/.test(matrixId)) {
-      this.loadMatrix(matrixId)
+      loadMatrix(matrixId)
     }
-  },
 
-  methods: {
-    loadMatrix (id) {
+
+
+const loadMatrix  = id => {
       ObservationMatrix.find(id).then(response => {
-        this.matrix = response.body
+        matrix.value = response.body
       })
     }
-  }
-}
+
 </script>

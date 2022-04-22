@@ -63,7 +63,7 @@
 
 <script>
 
-import SmartSelector from 'components/ui/SmartSelector'
+import SmartSelector from 'components/ui/SmartSelector.vue'
 import { Namespace } from 'routes/endpoints'
 import { URLParamsToJSON } from 'helpers/url/parse.js'
 

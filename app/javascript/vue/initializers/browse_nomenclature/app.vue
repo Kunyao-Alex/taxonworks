@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import NomenclatureSearch from 'tasks/nomenclature/browse/components/search'
+import NomenclatureSearch from 'tasks/nomenclature/browse/components/search.vue'
 export default {
   components: {
     NomenclatureSearch

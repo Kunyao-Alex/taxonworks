@@ -78,7 +78,7 @@
 
 <script>
 
-import ModalComponent from 'components/ui/Modal'
+import ModalComponent from 'components/ui/Modal.vue'
 import CharacterState from './Character'
 import { GetDescriptorDepictions } from '../../../request/resources.js'
 import { chunkArray } from 'helpers/arrays.js'

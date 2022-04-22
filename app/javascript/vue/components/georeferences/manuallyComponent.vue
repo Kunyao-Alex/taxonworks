@@ -51,7 +51,7 @@
 
 <script setup>
 
-import ModalComponent from 'components/ui/Modal'
+import ModalComponent from 'components/ui/Modal.vue'
 import convertDMS from 'helpers/parseDMS.js'
 import { computed, ref, watch } from 'vue'
 

@@ -85,17 +85,17 @@
 <style src="./QualitativeDescriptor.styl" lang="stylus"></style>
 
 <script>
-import { ActionNames } from '../../store/actions/actions'
-import { GetterNames } from '../../store/getters/getters'
-import { MutationNames } from '../../store/mutations/mutations'
-import ObservationTypes from '../../store/helpers/ObservationTypes'
-import makeObservation from '../../store/helpers/makeObservation'
+import { ActionNames } from '../../store/actions/actions.js'
+import { GetterNames } from '../../store/getters/getters.js'
+import { MutationNames } from '../../store/mutations/mutations.js'
+import ObservationTypes from '../../store/helpers/ObservationTypes.js'
+import makeObservation from '../../store/helpers/makeObservation.js'
 import summaryView from '../SummaryView/SummaryView.vue'
-import FilterImage from 'tasks/images/filter/components/filter'
-import SmartSelector from 'components/ui/SmartSelector'
-import DropzoneComponent from 'components/dropzone'
+import FilterImage from 'tasks/images/filter/components/filter.vue'
+import SmartSelector from 'components/ui/SmartSelector.vue'
+import DropzoneComponent from 'components/dropzone.vue'
 import ImageViewer from 'components/ui/ImageViewer/ImageViewer.vue'
-import RadialAnnotator from 'components/radials/annotator/annotator'
+import RadialAnnotator from 'components/radials/annotator/annotator.vue'
 import TimeFields from '../Time/TimeFields.vue'
 
 export default {

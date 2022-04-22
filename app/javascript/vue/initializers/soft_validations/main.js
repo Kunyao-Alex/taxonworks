@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import SoftValidation from 'tasks/nomenclature/browse/components/validations'
+import SoftValidation from 'tasks/nomenclature/browse/components/validations.vue'
 
 function initValidations (element) {
   const softValidationElements = Array.from(document.querySelectorAll('#data-validation-panel [data-global-id]'))

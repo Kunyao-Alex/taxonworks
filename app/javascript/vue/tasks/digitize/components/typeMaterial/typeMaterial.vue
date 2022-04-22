@@ -102,8 +102,8 @@ import ActionNames from '../../store/actions/actionNames.js'
 import TypeSelector from './TypeSelector.vue'
 import BlockLayout from 'components/layout/BlockLayout.vue'
 import SmartSelector from 'components/ui/SmartSelector.vue'
-import RadialAnnotator from 'components/radials/annotator/annotator'
-import VIcon from 'components/ui/VIcon/index'
+import RadialAnnotator from 'components/radials/annotator/annotator.vue'
+import VIcon from 'components/ui/VIcon/index.vue'
 import platformKey from 'helpers/getPlatformKey'
 
 export default {

@@ -55,13 +55,13 @@
 
 <script>
 
-import { GetterNames } from '../store/getters/getters'
-import { MutationNames } from '../store/mutations/mutations'
-import ActionNames from '../store/actions/actionNames'
+import { GetterNames } from '../store/getters/getters.js'
+import { MutationNames } from '../store/mutations/mutations.js'
+import ActionNames from '../store/actions/actionNames.js'
 
 import BlockLayout from 'components/layout/BlockLayout.vue'
 import Expand from './expand.vue'
-import RowItem from './table/row'
+import RowItem from './table/row.vue'
 
 export default {
   components: {

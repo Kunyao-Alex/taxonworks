@@ -21,7 +21,7 @@
 import { GetterNames } from '../store/getters/getters'
 import { MutationNames } from '../store/mutations/mutations'
 import MarkdownEditor from 'components/markdown-editor.vue'
-import BlockLayout from'components/layout/BlockLayout'
+import BlockLayout from'components/layout/BlockLayout.vue'
 
 export default {
   components: {

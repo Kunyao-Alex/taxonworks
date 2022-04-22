@@ -56,7 +56,7 @@
 
 <script>
 
-import ModalComponent from 'components/ui/Modal'
+import ModalComponent from 'components/ui/Modal.vue'
 import { ActionNames } from '../../store/actions/actions'
 
 export default {

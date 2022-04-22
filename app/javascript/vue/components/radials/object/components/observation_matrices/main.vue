@@ -62,8 +62,8 @@
 
 import CRUD from '../../request/crud'
 import annotatorExtend from '../annotatorExtend'
-import SpinnerComponent from 'components/spinner'
-import DefaultPin from 'components/getDefaultPin'
+import SpinnerComponent from 'components/spinner.vue'
+import DefaultPin from 'components/getDefaultPin.vue'
 import { ObservationMatrix, ObservationMatrixRow, ObservationMatrixRowItem } from 'routes/endpoints'
 import { OBSERVATION_MATRIX_ROW_SINGLE } from 'constants/index'
 

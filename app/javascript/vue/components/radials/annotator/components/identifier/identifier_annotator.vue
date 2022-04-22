@@ -146,7 +146,7 @@ import CRUD from '../../request/crud.js'
 import AnnotatorExtend from '../../components/annotatorExtend.js'
 import Modal from 'components/ui/Modal.vue'
 import TableList from 'components/table_list.vue'
-import NamespaceComponent from './namespace'
+import NamespaceComponent from './namespace.vue'
 import SpinnerComponent from 'components/spinner.vue'
 
 export default {

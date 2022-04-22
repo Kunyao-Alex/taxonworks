@@ -1,7 +1,7 @@
 import { createStore } from 'vuex'
-import { GetterFunctions } from './getters/getters'
-import { MutationFunctions } from './mutations/mutations'
-import { ActionFunctions } from './actions/actions'
+import { GetterFunctions } from './getters/getters.js'
+import { MutationFunctions } from './mutations/mutations.js'
+import { ActionFunctions } from './actions/actions.js'
 
 function makeInitialState () {
   return {

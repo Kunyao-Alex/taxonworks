@@ -123,7 +123,7 @@ import PreparationTypes from './filters/preparationTypes'
 import CollectorsComponent from './filters/shared/people'
 import { chunkArray } from 'helpers/arrays.js'
 
-import SpinnerComponent from 'components/spinner'
+import SpinnerComponent from 'components/spinner.vue'
 import platformKey from 'helpers/getPlatformKey.js'
 import { URLParamsToJSON } from 'helpers/url/parse.js'
 import { CollectionObject } from 'routes/endpoints'

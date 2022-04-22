@@ -69,10 +69,10 @@
 
 import TableComponent from './table.vue'
 
-import { SortRows, SortColumns } from '../../request/resources'
-import { GetterNames } from '../../store/getters/getters'
-import { ActionNames } from '../../store/actions/actions'
-import PaginationComponent from 'components/pagination'
+import { SortRows, SortColumns } from '../../request/resources.js'
+import { GetterNames } from '../../store/getters/getters.js'
+import { ActionNames } from '../../store/actions/actions.js'
+import PaginationComponent from 'components/pagination.vue'
 
 export default {
   components: {

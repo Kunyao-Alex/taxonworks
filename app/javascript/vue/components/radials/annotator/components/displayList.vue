@@ -23,7 +23,7 @@
         <span
           v-if="edit"
           class="circle-button btn-edit"
-          @click="$emit('edit', Object.assign({}, item))"
+          @click="emit('edit', Object.assign({}, item))"
         >
           Edit
         </span>
@@ -35,79 +35,67 @@
     </li>
   </transition-group>
 </template>
-<script>
+<script setup>
 
 import PdfButton from 'components/pdfButton.vue'
-import RadialAnnotator from '../annotator.vue'
+import RadialAnnotator from 'components/radials/annotator/annotator.vue'
 
-export default {
-  components: {
-    PdfButton,
-    RadialAnnotator
+const props = defineProps({
+  list: {
+    type: Array,
+    default: () => []
   },
 
-  props: {
-    list: {
-      type: Array,
-      default: () => []
-    },
-
-    label: {
-      type: [String, Array],
-      required: true
-    },
-
-    edit: {
-      type: Boolean,
-      default: false
-    },
-
-    pdf: {
-      type: Boolean,
-      default: false
-    },
-
-    annotator: {
-      type: Boolean,
-      default: false
-    }
+  label: {
+    type: [String, Array],
+    required: true
   },
 
-  emits: [
-    'delete',
-    'edit'
-  ],
-
-  mounted() {
-    this.$options.components['RadialAnnotator'] = RadialAnnotator
+  edit: {
+    type: Boolean,
+    default: false
   },
 
-  methods: {
-    displayName (item) {
-      if (typeof this.label === 'string') {
-        return item[this.label]
-      } else {
-        let tmp = item
+  pdf: {
+    type: Boolean,
+    default: false
+  },
 
-        this.label.forEach(function (label) {
-          tmp = tmp[label]
-        })
+  annotator: {
+    type: Boolean,
+    default: false
+  }
+})
 
-        return tmp
-      }
-    },
+const emit = defineEmits([
+  'delete',
+  'edit'
+])
 
-    deleteItem (item) {
-      if (window.confirm('You\'re trying to delete this record. Are you sure want to proceed?')) {
-        this.$emit('delete', item)
-      }
-    },
+const displayName = item => {
+  if (typeof props.label === 'string') {
+    return item[props.label]
+  } else {
+    let tmp = item
 
-    pdfExist (item) {
-      return item?.target_document || item?.document
-    }
+    props.label.forEach(label => {
+      tmp = tmp[label]
+    })
+
+    return tmp
   }
 }
+
+const deleteItem = item => {
+  if (window.confirm('You\'re trying to delete this record. Are you sure want to proceed?')) {
+    emit('delete', item)
+  }
+}
+
+const pdfExist = item => {
+  return item?.target_document || item?.document
+}
+
 </script>
 <style lang="scss">
 

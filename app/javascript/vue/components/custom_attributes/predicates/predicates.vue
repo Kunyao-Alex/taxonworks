@@ -27,7 +27,7 @@
 
 <script>
 
-import SpinnerComponent from 'components/spinner'
+import SpinnerComponent from 'components/spinner.vue'
 import PredicateRow from './components/predicateRow'
 import {
   Project,

@@ -78,8 +78,8 @@
 
 import { Depiction } from 'routes/endpoints'
 import Modal from 'components/ui/Modal.vue'
-import RadialAnnotator from 'components/radials/annotator/annotator'
-import RadialNavigation from 'components/radials/navigation/radial'
+import RadialAnnotator from 'components/radials/annotator/annotator.vue'
+import RadialNavigation from 'components/radials/navigation/radial.vue'
 import MarkdownEditor from 'components/markdown-editor.vue'
 
 const Tabs = {

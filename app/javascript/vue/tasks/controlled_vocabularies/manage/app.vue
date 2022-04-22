@@ -57,7 +57,7 @@ import { ControlledVocabularyTerm } from 'routes/endpoints'
 
 import SwitchComponent from 'components/switch.vue'
 import ListComponent from './components/List.vue'
-import SpinnerComponent from 'components/spinner'
+import SpinnerComponent from 'components/spinner.vue'
 import FormKeyword from 'components/Form/FormKeyword.vue'
 
 import CloneFromObject from 'helpers/cloneFromObject'

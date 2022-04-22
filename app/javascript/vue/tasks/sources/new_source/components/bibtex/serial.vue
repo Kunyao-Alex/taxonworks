@@ -50,8 +50,8 @@ import { MutationNames } from '../../store/mutations/mutations'
 import { Serial } from 'routes/endpoints'
 
 import LockComponent from 'components/ui/VLock/index.vue'
-import SmartSelector from 'components/ui/SmartSelector'
-import RadialObject from 'components/radials/navigation/radial'
+import SmartSelector from 'components/ui/SmartSelector.vue'
+import RadialObject from 'components/radials/navigation/radial.vue'
 
 export default {
   components: {

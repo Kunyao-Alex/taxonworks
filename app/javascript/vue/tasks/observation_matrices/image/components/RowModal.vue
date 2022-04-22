@@ -31,7 +31,7 @@
 
 import ModalComponent from 'components/ui/Modal.vue'
 import OtuPicker from 'components/otu/otu_picker/otu_picker.vue'
-import SpinnerComponent from 'components/spinner'
+import SpinnerComponent from 'components/spinner.vue'
 import { ObservationMatrixRowItem } from 'routes/endpoints'
 import { 
   COLLECTION_OBJECT,

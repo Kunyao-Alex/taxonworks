@@ -32,7 +32,7 @@
 
 <script>
 
-import VIcon from 'components/ui/VIcon/index'
+import VIcon from 'components/ui/VIcon/index.vue'
 
 export default {
   components: { VIcon },

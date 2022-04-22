@@ -109,21 +109,21 @@
 
 <script>
 
-import NewMatrix from './components/newMatrix/newMatrix'
-import TablesComponent from './components/tables/view'
-import RowsFixed from './components/rows/fixed'
-import columnsFixed from './components/columns/fixed'
-import RadialAnnotator from 'components/radials/annotator/annotator'
+import NewMatrix from './components/newMatrix/newMatrix.vue'
+import TablesComponent from './components/tables/view.vue'
+import RowsFixed from './components/rows/fixed.vue'
+import columnsFixed from './components/columns/fixed.vue'
+import RadialAnnotator from 'components/radials/annotator/annotator.vue'
 import PinComponent from 'components/ui/Pinboard/VPin.vue'
-import SpinnerComponent from 'components/spinner'
-import RadialNavigation from 'components/radials/navigation/radial'
+import SpinnerComponent from 'components/spinner.vue'
+import RadialNavigation from 'components/radials/navigation/radial.vue'
 
-import RowsDynamic from './components/rows/dynamic'
-import ColumnsDynamic from './components/columns/dynamic'
+import RowsDynamic from './components/rows/dynamic.vue'
+import ColumnsDynamic from './components/columns/dynamic.vue'
 
-import { SortMatrixByNomenclature } from './request/resources'
-import { GetterNames } from './store/getters/getters'
-import { ActionNames } from './store/actions/actions'
+import { SortMatrixByNomenclature } from './request/resources.js'
+import { GetterNames } from './store/getters/getters.js'
+import { ActionNames } from './store/actions/actions.js'
 import { RouteNames } from 'routes/routes'
 
 export default {

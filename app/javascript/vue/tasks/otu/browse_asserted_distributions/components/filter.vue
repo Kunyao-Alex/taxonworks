@@ -25,7 +25,7 @@
 
 import OtuComponent from './filters/otu'
 import NavBarComponent from './navBar'
-import SpinnerComponent from 'components/spinner'
+import SpinnerComponent from 'components/spinner.vue'
 import { AssertedDistribution } from 'routes/endpoints'
 
 export default {

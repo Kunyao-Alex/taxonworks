@@ -82,7 +82,7 @@
 
 <script>
 
-import SpinnerComponent from 'components/spinner'
+import SpinnerComponent from 'components/spinner.vue'
 import platformKey from 'helpers/getPlatformKey.js'
 
 import FilterIdentifiers from 'tasks/collection_objects/filter/components/filters/identifier'

@@ -72,7 +72,7 @@ import { People } from 'routes/endpoints'
 import { ActionNames } from '../store/actions/actions'
 import { GetterNames } from '../store/getters/getters'
 import { MutationNames } from '../store/mutations/mutations'
-import Autocomplete from 'components/ui/Autocomplete'
+import Autocomplete from 'components/ui/Autocomplete.vue'
 import getRoles from '../utils/getRoles.js'
 
 export default {

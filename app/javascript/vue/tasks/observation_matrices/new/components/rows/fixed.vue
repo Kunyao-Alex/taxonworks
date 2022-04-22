@@ -21,13 +21,13 @@
 </template>
 <script>
 
-  import { GetMatrixRowMetadata } from '../../request/resources'
-  import { GetterNames } from '../../store/getters/getters'
+  import { GetMatrixRowMetadata } from '../../request/resources.js'
+  import { GetterNames } from '../../store/getters/getters.js'
   import SmartSelector from '../shared/smartSelector.vue'
   import pinboardComponent from './batchView.vue'
   import keywordsComponent from './keywordView.vue'
   import searchComponent from './search.vue'
-  import FromAnotherMatrixComponent from './copyRows'
+  import FromAnotherMatrixComponent from './copyRows.vue'
 
   export default {
     components: {

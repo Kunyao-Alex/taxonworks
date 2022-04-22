@@ -21,12 +21,12 @@
 
 <script>
 
-import { GetterNames } from '../store/getters/getters'
-import CreateObject from './CreateObject'
-import CreateTag from './CreateTag'
-import CreatePinboard from './CreatePinboard'
+import { GetterNames } from '../store/getters/getters.js'
+import CreateObject from './CreateObject.vue'
+import CreateTag from './CreateTag.vue'
+import CreatePinboard from './CreatePinboard.vue'
 import ExpandComponent from './expand.vue'
-import SwitchComponent from 'components/switch'
+import SwitchComponent from 'components/switch.vue'
 import BlockLayout from 'components/layout/BlockLayout.vue'
 
 const typeList = [

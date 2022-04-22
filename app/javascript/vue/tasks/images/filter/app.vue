@@ -110,10 +110,10 @@
 <script>
 
 import FilterComponent from './components/filter.vue'
-import ListComponent from './components/list'
-import PaginationComponent from 'components/pagination'
-import getPagination from 'helpers/getPagination'
-import PlatformKey from 'helpers/getPlatformKey'
+import ListComponent from './components/list.vue'
+import PaginationComponent from 'components/pagination.vue'
+import getPagination from 'helpers/getPagination.js'
+import PlatformKey from 'helpers/getPlatformKey.js'
 import TagAll from 'tasks/collection_objects/filter/components/tagAll.vue'
 import SelectAll from 'tasks/collection_objects/filter/components/selectAll.vue'
 import AttributionComponent from './components/attributions/main.vue'

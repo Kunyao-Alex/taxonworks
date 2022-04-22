@@ -95,7 +95,7 @@ import OtuComponent from './components/otu'
 import GeographicArea from './components/geographicArea'
 import TableComponent from './components/table'
 import LockComponent from 'components/ui/VLock/index.vue'
-import SpinnerComponent from 'components/spinner'
+import SpinnerComponent from 'components/spinner.vue'
 import NavBarComponent from 'components/layout/NavBar'
 import platformKey from 'helpers/getPlatformKey'
 

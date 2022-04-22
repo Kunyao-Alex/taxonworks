@@ -58,7 +58,7 @@
 
 import InputComponent from './components/InputComponent'
 import LineComponent from './components/LineComponent'
-import SpinnerComponent from 'components/spinner'
+import SpinnerComponent from 'components/spinner.vue'
 import NavbarComponent from 'components/layout/NavBar'
 import { TaxonName } from 'routes/endpoints'
 

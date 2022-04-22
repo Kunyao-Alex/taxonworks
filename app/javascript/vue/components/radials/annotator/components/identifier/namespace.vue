@@ -14,7 +14,7 @@
 <script>
 
 import CRUD from '../../request/crud.js'
-import SmartSelector from 'components/ui/SmartSelector'
+import SmartSelector from 'components/ui/SmartSelector.vue'
 
 export default {
   mixins: [CRUD],

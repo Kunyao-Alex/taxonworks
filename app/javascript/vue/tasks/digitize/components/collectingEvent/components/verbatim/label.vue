@@ -45,7 +45,7 @@ import { GetterNames } from '../../../../store/getters/getters'
 import { MutationNames } from '../../../../store/mutations/mutations'
 import { CollectingEvent } from 'routes/endpoints'
 import CloneLabel from './cloneLabel'
-import ModalComponent from 'components/ui/Modal'
+import ModalComponent from 'components/ui/Modal.vue'
 import extendCE from '../../mixins/extendCE.js'
 
 export default {

@@ -105,13 +105,13 @@
 
 <script>
 
-import RolePicker from 'components/role_picker'
+import RolePicker from 'components/role_picker.vue'
 import SwitchComponent from 'components/switch.vue'
 import CRUD from '../../request/crud.js'
 import AnnotatorExtended from '../annotatorExtend.js'
-import OrganizationPicker from 'components/organizationPicker'
-import DisplayList from 'components/displayList'
-import SmartSelector from 'components/ui/SmartSelector'
+import OrganizationPicker from 'components/organizationPicker.vue'
+import DisplayList from 'components/displayList.vue'
+import SmartSelector from 'components/ui/SmartSelector.vue'
 import { findRole } from 'helpers/people/people.js'
 
 export default {

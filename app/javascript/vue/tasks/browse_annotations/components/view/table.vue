@@ -33,14 +33,10 @@
 </template>
 <script>
 
-import RadialAnnotator from 'components/radials/annotator/annotator.vue'
-import RadialObject from 'components/radials/navigation/radial'
+import RadialObject from 'components/radials/navigation/radial.vue'
 
 export default {
-  components: {
-    RadialAnnotator,
-    RadialObject
-  },
+  components: { RadialObject },
 
   props: {
     list: {
@@ -59,8 +55,8 @@ export default {
 
   emits: ['edit', 'delete'],
 
-  mounted () {
-    this.$options.components['RadialAnnotator'] = RadialAnnotator
+  beforeCreate () {
+    this.$options.components['RadialAnnotator'] = import('components/radials/annotator/annotator.vue')
   },
 
   methods: {

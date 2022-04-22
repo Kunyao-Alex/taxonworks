@@ -67,9 +67,9 @@
 
 <script>
 
-import ModalComponent from 'components/ui/Modal'
-import SpinnerComponent from 'components/spinner'
-import DefaultPin from 'components/getDefaultPin'
+import ModalComponent from 'components/ui/Modal.vue'
+import SpinnerComponent from 'components/spinner.vue'
+import DefaultPin from 'components/getDefaultPin.vue'
 import {
   ObservationMatrix,
   ObservationMatrixRow,

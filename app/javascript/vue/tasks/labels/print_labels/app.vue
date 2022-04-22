@@ -60,7 +60,7 @@
 
 <script>
 
-import BlockLayout from 'components/layout/BlockLayout'
+import BlockLayout from 'components/layout/BlockLayout.vue'
 import StyleSelector from './components/StyleSelector'
 import LayoutComponent from './components/Layout'
 import TableComponent from './components/Table/TableComponent'

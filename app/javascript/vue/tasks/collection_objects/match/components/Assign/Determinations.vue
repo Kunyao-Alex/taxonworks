@@ -12,7 +12,7 @@
 
 <script>
 
-import ListComponent from 'components/displayList'
+import ListComponent from 'components/displayList.vue'
 import TaxonDeterminationForm from 'components/TaxonDetermination/TaxonDeterminationForm.vue'
 import { TaxonDetermination } from 'routes/endpoints'
 

@@ -44,7 +44,7 @@
 
 <script>
 
-import SpinnerComponent from 'components/spinner'
+import SpinnerComponent from 'components/spinner.vue'
 import ImageDropzone from './components/images/imageDropzone'
 import ApplyAttributes from './components/applyAttributes'
 import PersonsSection from './components/personsSection'

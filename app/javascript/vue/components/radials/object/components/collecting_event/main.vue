@@ -55,10 +55,10 @@
 
 import CRUD from '../../request/crud.js'
 import annotatorExtend from '../../components/annotatorExtend.js'
-import TableList from 'components/table_list'
-import CeSection from './ceSection'
-import TextComponent from './label/TextLabel'
-import QRCodeComponent from './label/QRCode'
+import TableList from 'components/table_list.vue'
+import CeSection from './ceSection.vue'
+import TextComponent from './label/TextLabel.vue'
+import QRCodeComponent from './label/QRCode.vue'
 import {
   LABEL,
   LABEL_QR_CODE,

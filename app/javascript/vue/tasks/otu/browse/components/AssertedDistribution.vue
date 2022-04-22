@@ -94,7 +94,7 @@
 <script>
 
 import SectionPanel from './shared/sectionPanel'
-import ModalComponent from 'components/ui/Modal'
+import ModalComponent from 'components/ui/Modal.vue'
 import extendSection from './shared/extendSections'
 import { GetterNames } from '../store/getters/getters'
 import { getUnique } from 'helpers/arrays'

@@ -16,8 +16,8 @@
 
 <script>
 
-import SmartSelector from 'components/ui/SmartSelector'
-import SpinnerComponent from 'components/spinner'
+import SmartSelector from 'components/ui/SmartSelector.vue'
+import SpinnerComponent from 'components/spinner.vue'
 import { CollectionObject } from 'routes/endpoints'
 
 export default {

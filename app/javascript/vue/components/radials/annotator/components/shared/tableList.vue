@@ -40,82 +40,72 @@
     </table>
   </div>
 </template>
-<script>
+<script setup>
 
-  import RadialAnnotator from '../../annotator.vue'
-  import CitationsCount from './citationsCount.vue'
+import CitationsCount from './citationsCount.vue'
+import RadialAnnotator from 'components/radials/annotator/annotator.vue'
 
-  export default {
-    components: {
-      RadialAnnotator,
-      CitationsCount
-    },
-    props: {
-      list: {
-        type: Array,
-        default: () => {
-          return []
-        }
-      },
-      attributes: {
-        type: Array,
-        required: true
-      },
-      header: {
-        type: Array,
-        default: () => {
-          return []
-        }
-      },
-      destroy: {
-        type: Boolean,
-        default: true
-      },
-      annotator: {
-        type: Boolean,
-        default: false
-      },
-      edit: {
-        type: Boolean,
-        default: false
-      },
-      targetCitations: {
-        type: String,
-        required: true
+defineProps({
+  list: {
+    type: Array,
+    default: () => {
+      return []
+    }
+  },
+  attributes: {
+    type: Array,
+    required: true
+  },
+  header: {
+    type: Array,
+    default: () => []
+  },
+  destroy: {
+    type: Boolean,
+    default: true
+  },
+  annotator: {
+    type: Boolean,
+    default: false
+  },
+  edit: {
+    type: Boolean,
+    default: false
+  },
+  targetCitations: {
+    type: String,
+    required: true
+  }
+})
+
+const getValue = (object, attributes) => {
+  if (Array.isArray(attributes)) {
+    let obj = object
+
+    for (var i = 0; i < attributes.length; i++) {
+      if(obj.hasOwnProperty(attributes[i])) {
+        obj = obj[attributes[i]]
       }
-    },
-    mounted() {
-      this.$options.components['RadialAnnotator'] = RadialAnnotator
-    },
-    methods: {
-      getValue(object, attributes) {
-        if (Array.isArray(attributes)) {
-          let obj = object
-
-          for (var i = 0; i < attributes.length; i++) {
-            if(obj.hasOwnProperty(attributes[i])) {
-              obj = obj[attributes[i]]
-            }
-            else {
-              return null
-            }
-          }
-          return obj
-        }
-        else {
-          if(attributes.substr(0,1) === "@") {
-            return attributes.substr(1, attributes.length)
-          }
-        }
-        return object[attributes]
-      },
-      deleteItem(item) {
-        if(window.confirm(`You're trying to delete this record. Are you sure want to proceed?`)) {
-          this.$emit('delete', item)
-        }
+      else {
+        return null
       }
     }
+    return obj
   }
+  else {
+    if(attributes.substr(0,1) === "@") {
+      return attributes.substr(1, attributes.length)
+    }
+  }
+  return object[attributes]
+}
+
+const deleteItem = (item) => {
+  if(window.confirm(`You're trying to delete this record. Are you sure want to proceed?`)) {
+    this.$emit('delete', item)
+  }
+}
+
 </script>
 <style lang="scss" scoped>
   .vue-table-container-shared {

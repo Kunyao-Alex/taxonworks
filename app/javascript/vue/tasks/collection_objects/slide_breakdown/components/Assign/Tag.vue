@@ -26,8 +26,8 @@
 
 <script>
 
-import SmartSelector from 'components/ui/SmartSelector'
-import ListComponent from 'components/displayList'
+import SmartSelector from 'components/ui/SmartSelector.vue'
+import ListComponent from 'components/displayList.vue'
 import { GetterNames } from '../../store/getters/getters'
 import { MutationNames } from '../../store/mutations/mutations'
 import SharedComponent from '../shared/lock.js'

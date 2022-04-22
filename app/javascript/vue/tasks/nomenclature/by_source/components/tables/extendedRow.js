@@ -1,4 +1,4 @@
-import RadialAnnotator from 'components/radials/annotator/annotator'
+import RadialAnnotator from 'components/radials/annotator/annotator.vue'
 import OtuRadial from 'components/otu/otu'
 import { Citation } from 'routes/endpoints'
 

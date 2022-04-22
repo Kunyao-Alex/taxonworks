@@ -28,7 +28,7 @@
 
 import { GetterNames } from '../../store/getters/getters'
 import { MutationNames } from '../../store/mutations/mutations'
-import ListComponent from 'components/displayList'
+import ListComponent from 'components/displayList.vue'
 import SharedComponent from '../shared/lock.js'
 
 export default {

@@ -82,9 +82,9 @@
 <script>
 
 import PdfButton from 'components/pdfButton.vue'
-import SpinnerComponent from 'components/spinner'
-import RadialAnnotator from 'components/radials/annotator/annotator'
-import SwitchComponent from 'components/switch'
+import SpinnerComponent from 'components/spinner.vue'
+import RadialAnnotator from 'components/radials/annotator/annotator.vue'
+import SwitchComponent from 'components/switch.vue'
 import PickComponent from './documents/pick'
 import DropComponent from './documents/drop.vue'
 import VIcon from 'components/ui/VIcon/index.vue'

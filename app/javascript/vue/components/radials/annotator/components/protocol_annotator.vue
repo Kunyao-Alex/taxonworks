@@ -23,7 +23,7 @@
 import CRUD from '../request/crud.js'
 import annotatorExtend from '../components/annotatorExtend.js'
 import autocomplete from 'components/ui/Autocomplete.vue'
-import ListItems from './shared/listItems'
+import ListItems from './shared/listItems.vue'
 
 export default {
   mixins: [CRUD, annotatorExtend],

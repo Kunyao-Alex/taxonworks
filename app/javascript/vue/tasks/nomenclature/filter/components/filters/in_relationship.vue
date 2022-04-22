@@ -58,9 +58,9 @@
 
 <script>
 
-import SmartSelector from 'components/switch'
+import SmartSelector from 'components/switch.vue'
 import TreeDisplay from '../treeDisplay'
-import Autocomplete from 'components/ui/Autocomplete'
+import Autocomplete from 'components/ui/Autocomplete.vue'
 import DisplayList from 'components/displayList.vue'
 import { URLParamsToJSON } from 'helpers/url/parse.js'
 import { TaxonNameRelationship } from 'routes/endpoints'

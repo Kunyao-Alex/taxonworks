@@ -66,12 +66,12 @@
 
 <script>
 
-import ModalComponent from 'components/ui/Modal'
-import CharacterState from './Character'
+import ModalComponent from 'components/ui/Modal.vue'
+import CharacterState from './Character.vue'
 import { Descriptor } from 'routes/endpoints'
 import { chunkArray } from 'helpers/arrays.js'
-import { GetterNames } from '../../store/getters/getters'
-import { MutationNames } from '../../store/mutations/mutations'
+import { GetterNames } from '../../store/getters/getters.js'
+import { MutationNames } from '../../store/mutations/mutations.js'
 
 export default {
   components: {

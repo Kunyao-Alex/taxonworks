@@ -13,7 +13,7 @@
 </template>
 <script>
 
-import { GetterNames } from '../../store/getters/getters'
+import { GetterNames } from '../../store/getters/getters.js'
 import TagItem from 'components/tag_item.vue'
 
 export default {

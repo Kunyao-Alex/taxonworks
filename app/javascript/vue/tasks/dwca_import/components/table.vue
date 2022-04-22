@@ -69,7 +69,7 @@ import { MutationNames } from '../store/mutations/mutations'
 import { ActionNames } from '../store/actions/actions'
 import { UpdateColumnField } from '../request/resources'
 import VirtualScroller from './VirtualScroller.vue'
-import SpinnerComponent from 'components/spinner'
+import SpinnerComponent from 'components/spinner.vue'
 
 import RowComponent from './row'
 import ColumnFilter from './ColumnFilter'

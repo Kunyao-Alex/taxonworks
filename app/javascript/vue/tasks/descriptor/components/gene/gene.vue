@@ -10,7 +10,7 @@
 </template>
 <script>
 
-import InstanceComponent from './instance'
+import InstanceComponent from './instance.vue'
 
 export default {
   components: { InstanceComponent },

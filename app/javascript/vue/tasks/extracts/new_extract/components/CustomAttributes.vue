@@ -21,7 +21,7 @@
 import { GetterNames } from '../store/getters/getters'
 import CustomAttributes from 'components/custom_attributes/predicates/predicates'
 import componentExtend from './mixins/componentExtend'
-import BlockLayout from 'components/layout/BlockLayout'
+import BlockLayout from 'components/layout/BlockLayout.vue'
 
 export default {
   mixins: [componentExtend],

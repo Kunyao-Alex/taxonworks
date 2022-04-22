@@ -65,60 +65,11 @@
       </button>
     </div>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Filename</th>
-          <th>Is public</th>
-          <th>Updated at</th>
-          <th />
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          v-for="(item, index) in list"
-          :key="item.id"
-        >
-          <td><span v-html="item.document.object_tag" /></td>
-          <td>
-            <input
-              type="checkbox"
-              :checked="item.document.is_public"
-              @click="changeIsPublicState(index, item)"
-            >
-          </td>
-          <td>{{ item.updated_at }}</td>
-          <td>
-            <div class="horizontal-right-content">
-              <radial-annotator :global-id="item.global_id"/>
-              <pdf-button :pdf="item.document"/>
-              <v-btn
-                circle
-                class="circle-button"
-                color="primary"
-                :download="item.document.object_tag"
-                :href="item.document.file_url">
-                <v-icon
-                  color="white"
-                  x-small
-                  name="download"/>
-              </v-btn>
-              <v-btn
-                circle
-                class="circle-button"
-                color="destroy"
-                @click="confirmDelete(item)"
-              >
-                <v-icon
-                  name="trash"
-                  x-small
-                />
-              </v-btn>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <documentation-list 
+      :list="list"
+      @update="changeIsPublicState"
+      @delete="confirmDelete"
+    />
   </div>
 </template>
 <script>
@@ -127,10 +78,7 @@ import CRUD from '../request/crud.js'
 import annotatorExtend from '../components/annotatorExtend.js'
 import Autocomplete from 'components/ui/Autocomplete.vue'
 import Dropzone from 'components/dropzone.vue'
-import PdfButton from 'components/pdfButton.vue'
-import RadialAnnotator from 'components/radials/annotator/annotator'
-import VIcon from 'components/ui/VIcon/index'
-import VBtn from 'components/ui/VBtn/index'
+import DocumentationList from './Documentation/DocumentationList.vue'
 
 export default {
   mixins: [
@@ -139,12 +87,9 @@ export default {
   ],
 
   components: {
-    RadialAnnotator,
     Autocomplete,
-    PdfButton,
     Dropzone,
-    VBtn,
-    VIcon
+    DocumentationList
   },
 
   computed: {
@@ -174,10 +119,6 @@ export default {
     }
   },
 
-  created () {
-    this.$options.components['RadialAnnotator'] = RadialAnnotator
-  },
-
   methods: {
     newDocumentation () {
       return {
@@ -203,12 +144,8 @@ export default {
       if (this.isPublic) { formData.append('documentation[document_attributes][is_public]', this.isPublic) }
     },
 
-    changeIsPublicState (index, documentation) {
-      const data = {
-        id: documentation.document_id,
-        is_public: !documentation.document.is_public
-      }
-      this.update(`/documents/${data.id}.json`, { document: data }).then(response => {
+    changeIsPublicState ({ index, payload }) {
+      this.update(`/documents/${payload.id}.json`, { document: payload }).then(response => {
         this.list[index].is_public = response.body.is_public
       })
     },

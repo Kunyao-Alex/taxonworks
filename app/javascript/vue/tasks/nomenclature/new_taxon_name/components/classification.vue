@@ -81,7 +81,7 @@
 import { ActionNames } from '../store/actions/actions'
 import { GetterNames } from '../store/getters/getters'
 import { MutationNames } from '../store/mutations/mutations'
-import BlockLayout from 'components/layout/BlockLayout'
+import BlockLayout from 'components/layout/BlockLayout.vue'
 import ListEntrys from './listEntrys.vue'
 import Autocomplete from 'components/ui/Autocomplete.vue'
 

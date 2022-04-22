@@ -84,9 +84,9 @@ import componentExtend from './mixins/componentExtend'
 import SelectType from './Identifiers/SelectType'
 import NamespaceComponent from './Identifiers/Namespace'
 import IdentifierComponent from './Identifiers/Identifier'
-import DisplayList from 'components/displayList'
+import DisplayList from 'components/displayList.vue'
 import LockComponent from 'components/ui/VLock/index.vue'
-import BlockLayout from 'components/layout/BlockLayout'
+import BlockLayout from 'components/layout/BlockLayout.vue'
 
 export default {
   mixins: [componentExtend],

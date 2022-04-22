@@ -58,7 +58,7 @@
 
 <script>
 
-import ModalComponent from 'components/ui/Modal'
+import ModalComponent from 'components/ui/Modal.vue'
 import { BiologicalRelationship } from 'routes/endpoints'
 
 export default {

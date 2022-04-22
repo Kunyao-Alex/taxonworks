@@ -71,7 +71,7 @@
 <script>
 
 import Autocomplete from 'components/ui/Autocomplete.vue'
-import MatchTaxonName from './matchTaxonNames'
+import MatchTaxonName from './matchTaxonNames.vue'
 import { Otu } from 'routes/endpoints'
 
 export default {

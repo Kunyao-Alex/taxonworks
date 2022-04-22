@@ -7,7 +7,7 @@
     @click="sendDefault"
   >
     <v-icon
-      small
+      x-small
       color="white"
       name="pin"
     />

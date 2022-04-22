@@ -35,8 +35,8 @@
 <script>
 
 import BUTTON_LINKS from './buttonLinks.js'
-import ModalComponent from 'components/ui/Modal'
-import SmartSelector from 'components/ui/SmartSelector'
+import ModalComponent from 'components/ui/Modal.vue'
+import SmartSelector from 'components/ui/SmartSelector.vue'
 
 export default {
   components: {

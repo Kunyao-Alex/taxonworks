@@ -25,7 +25,7 @@
 <script>
 
 import BlockLayout from 'components/layout/BlockLayout.vue'
-import TYPES from '../../const/types'
+import TYPES from '../../const/types.js'
 
 export default {
   components: { BlockLayout },

@@ -50,10 +50,10 @@
 
 <script>
 
-import SmartSelector from 'components/ui/SmartSelector'
-import SwitchComponent from 'components/switch'
+import SmartSelector from 'components/ui/SmartSelector.vue'
+import SwitchComponent from 'components/switch.vue'
 import LockComponent from 'components/ui/VLock/index.vue'
-import BlockLayout from 'components/layout/BlockLayout'
+import BlockLayout from 'components/layout/BlockLayout.vue'
 import componentExtend from './mixins/componentExtend'
 import { GetterNames } from '../store/getters/getters'
 import { MutationNames } from '../store/mutations/mutations'

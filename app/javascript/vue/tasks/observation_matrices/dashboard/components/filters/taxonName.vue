@@ -28,7 +28,7 @@
 
 <script>
 
-import Autocomplete from 'components/ui/Autocomplete'
+import Autocomplete from 'components/ui/Autocomplete.vue'
 import { TaxonName } from 'routes/endpoints'
 import { MutationNames } from '../../store/mutations/mutations'
 import { URLParamsToJSON } from 'helpers/url/parse.js'

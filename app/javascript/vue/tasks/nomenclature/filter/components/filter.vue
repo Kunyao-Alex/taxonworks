@@ -123,7 +123,7 @@ import TagsComponent from 'tasks/sources/filter/components/filters/tags'
 import WithComponent from 'tasks/sources/filter/components/filters/with'
 import AuthorsComponent from './filters/authors.vue'
 
-import SpinnerComponent from 'components/spinner'
+import SpinnerComponent from 'components/spinner.vue'
 import platformKey from 'helpers/getPlatformKey.js'
 import { URLParamsToJSON } from 'helpers/url/parse.js'
 import { TaxonName } from 'routes/endpoints'

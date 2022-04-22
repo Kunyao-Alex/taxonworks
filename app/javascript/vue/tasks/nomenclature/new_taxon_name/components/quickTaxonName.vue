@@ -57,9 +57,9 @@
 
 <script>
 
-import Autocomplete from 'components/ui/Autocomplete'
-import ModalComponent from 'components/ui/Modal'
-import { GetterNames } from '../store/getters/getters'
+import Autocomplete from 'components/ui/Autocomplete.vue'
+import ModalComponent from 'components/ui/Modal.vue'
+import { GetterNames } from '../store/getters/getters.js'
 import { TaxonName } from 'routes/endpoints'
 
 export default {

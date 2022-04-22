@@ -111,7 +111,7 @@
 
 import Autocomplete from 'components/ui/Autocomplete.vue'
 import Draggable from 'vuedraggable'
-import DefaultPin from './getDefaultPin'
+import DefaultPin from './getDefaultPin.vue'
 import { People } from 'routes/endpoints'
 
 export default {

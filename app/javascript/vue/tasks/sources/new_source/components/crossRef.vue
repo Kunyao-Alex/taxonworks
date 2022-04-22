@@ -49,8 +49,8 @@
 <script>
 
 import AjaxCall from 'helpers/ajaxCall'
-import SpinnerComponent from 'components/spinner'
-import ModalComponent from 'components/ui/Modal'
+import SpinnerComponent from 'components/spinner.vue'
+import ModalComponent from 'components/ui/Modal.vue'
 import { MutationNames } from '../store/mutations/mutations'
 import { Serial } from 'routes/endpoints'
 import { ActionNames } from '../store/actions/actions'

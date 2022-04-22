@@ -21,7 +21,7 @@
 
 <script>
 
-import SmartSelector from 'components/ui/SmartSelector'
+import SmartSelector from 'components/ui/SmartSelector.vue'
 import SequencePicker from 'components/sequence/sequence_picker/sequence_picker.vue'
 
 export default {

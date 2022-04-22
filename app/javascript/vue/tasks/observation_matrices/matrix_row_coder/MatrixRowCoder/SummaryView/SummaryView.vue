@@ -47,8 +47,8 @@
 import { GetterNames } from '../../store/getters/getters'
 import SpinnerComponent from 'components/spinner.vue'
 import SaveCountdown from '../SaveCountdown/SaveCountdown.vue'
-import RadialAnnotator from 'components/radials/annotator/annotator'
-import RadialObject from 'components/radials/navigation/radial'
+import RadialAnnotator from 'components/radials/annotator/annotator.vue'
+import RadialObject from 'components/radials/navigation/radial.vue'
 import DescriptorModal from '../DepictionModal/DepictionsContainer.vue'
 
 export default {

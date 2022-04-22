@@ -13,7 +13,7 @@
 
 <script>
 
-import SwitchComponent from 'components/switch'
+import SwitchComponent from 'components/switch.vue'
 import TagComponent from './Assign/Tags'
 import DeterminationComponent from './Assign/Determinations'
 import LoanComponent from './Assign/Loans'

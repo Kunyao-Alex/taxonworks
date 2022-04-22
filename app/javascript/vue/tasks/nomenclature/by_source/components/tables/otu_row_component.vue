@@ -25,7 +25,7 @@
 <script>
 
 import { RouteNames } from 'routes/routes'
-import RadialAnnotator from 'components/radials/annotator/annotator'
+import RadialAnnotator from 'components/radials/annotator/annotator.vue'
 import OtuRadial from 'components/otu/otu'
 
 export default {

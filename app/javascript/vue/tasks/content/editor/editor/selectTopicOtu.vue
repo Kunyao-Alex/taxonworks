@@ -25,7 +25,7 @@
 
 <script>
 
-import { GetterNames } from '../store/getters/getters'
+import { GetterNames } from '../store/getters/getters.js'
 import Modal from 'components/ui/Modal.vue'
 import TopicModal from '../components/Topic/TopicModal.vue'
 import OtuModal from '../components/Otu/OtuModal.vue'
