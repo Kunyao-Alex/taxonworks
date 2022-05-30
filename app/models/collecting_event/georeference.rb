@@ -1,17 +1,27 @@
 module CollectingEvent::Georeference
-
   extend ActiveSupport::Concern
 
   included do
     has_many :georeferences, dependent: :destroy, class_name: '::Georeference', inverse_of: :collecting_event
 
     has_one :verbatim_data_georeference, class_name: '::Georeference::VerbatimData'
-    has_one :preferred_georeference, -> { order(:position) }, class_name: '::Georeference', foreign_key: :collecting_event_id
 
     has_many :error_geographic_items, through: :georeferences, source: :error_geographic_item
     has_many :geographic_items, through: :georeferences # See also all_geographic_items, the union
     has_many :geo_locate_georeferences, class_name: '::Georeference::GeoLocate', dependent: :destroy
     has_many :gpx_georeferences, class_name: '::Georeference::GPX', dependent: :destroy
+
+    accepts_nested_attributes_for :verbatim_data_georeference
+    accepts_nested_attributes_for :geo_locate_georeferences
+    accepts_nested_attributes_for :gpx_georeferences
+
+    def preferred_georeference
+      georeferences.order(:position).first
+    end
+
+    def preferred_georeference_geographic_item_id
+      georeferences.order(:position).limit(1).pluck(:geographic_item_id).first
+    end
   end
 
   # @param [Float] delta_z, will be used to fill in the z coordinate of the point
@@ -36,7 +46,6 @@ module CollectingEvent::Georeference
   def longitude
     verbatim_map_center.try(:x)
   end
-
 
   # TODO: Helper method
   # @return [CollectingEvent]
@@ -85,7 +94,7 @@ module CollectingEvent::Georeference
 
   # @return [Symbol, nil]
   #   the name of the method that will return an Rgeo object that represent
-  #   the "preferred" centroid for this collecting event
+  #   the "preferred" centroid for this collecing event
   def map_center_method
     return :preferred_georeference if preferred_georeference # => { georeferenceProtocol => ?  }
     return :verbatim_map_center if verbatim_map_center # => { }
@@ -140,12 +149,11 @@ module CollectingEvent::Georeference
     false
   end
 
-
   # @return [Symbol, nil]
   #   Prioritizes and identifies the source of the latitude/longitude values that
-  #   will be calculated for DWCA  and primary display
+  #   will be calculated for DWCA and primary display
   def dwc_georeference_source
-    if preferred_georeference
+    if !preferred_georeference.nil?
       :georeference
     elsif verbatim_latitude && verbatim_longitude
       :verbatim
@@ -155,6 +163,5 @@ module CollectingEvent::Georeference
       nil
     end
   end
-
 
 end

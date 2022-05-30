@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_09_144200) do
+ActiveRecord::Schema.define(version: 2022_04_21_212203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 2021_11_09_144200) do
     t.index ["biological_relationship_id"], name: "index_biological_associations_on_biological_relationship_id"
     t.index ["created_by_id"], name: "index_biological_associations_on_created_by_id"
     t.index ["project_id"], name: "index_biological_associations_on_project_id"
+    t.index ["updated_at"], name: "index_biological_associations_on_updated_at"
     t.index ["updated_by_id"], name: "index_biological_associations_on_updated_by_id"
   end
 
@@ -312,6 +313,10 @@ ActiveRecord::Schema.define(version: 2021_11_09_144200) do
     t.date "accessioned_at"
     t.string "deaccession_reason"
     t.date "deaccessioned_at"
+    t.integer "current_repository_id"
+    t.index ["buffered_collecting_event"], name: "index_collection_objects_on_buffered_collecting_event"
+    t.index ["buffered_determinations"], name: "index_collection_objects_on_buffered_determinations"
+    t.index ["buffered_other_labels"], name: "index_collection_objects_on_buffered_other_labels"
     t.index ["collecting_event_id"], name: "index_collection_objects_on_collecting_event_id"
     t.index ["created_at"], name: "index_collection_objects_on_created_at"
     t.index ["created_by_id"], name: "index_collection_objects_on_created_by_id"
@@ -449,6 +454,7 @@ ActiveRecord::Schema.define(version: 2021_11_09_144200) do
     t.index ["project_id"], name: "index_contents_on_project_id"
     t.index ["revision_id"], name: "index_contents_on_revision_id"
     t.index ["topic_id"], name: "index_contents_on_topic_id"
+    t.index ["updated_at"], name: "index_contents_on_updated_at"
     t.index ["updated_by_id"], name: "index_contents_on_updated_by_id"
   end
 
@@ -492,6 +498,7 @@ ActiveRecord::Schema.define(version: 2021_11_09_144200) do
     t.index ["created_by_id"], name: "index_data_attributes_on_created_by_id"
     t.index ["project_id"], name: "index_data_attributes_on_project_id"
     t.index ["type"], name: "index_data_attributes_on_type"
+    t.index ["updated_at"], name: "index_data_attributes_on_updated_at"
     t.index ["updated_by_id"], name: "index_data_attributes_on_updated_by_id"
   end
 
@@ -979,6 +986,9 @@ ActiveRecord::Schema.define(version: 2021_11_09_144200) do
     t.integer "project_id", null: false
     t.boolean "is_undefined_z"
     t.boolean "is_median_z"
+    t.integer "year_georeferenced"
+    t.integer "month_georeferenced"
+    t.integer "day_georeferenced"
     t.index ["collecting_event_id"], name: "index_georeferences_on_collecting_event_id"
     t.index ["created_by_id"], name: "index_georeferences_on_created_by_id"
     t.index ["error_geographic_item_id"], name: "index_georeferences_on_error_geographic_item_id"
@@ -1138,8 +1148,10 @@ ActiveRecord::Schema.define(version: 2021_11_09_144200) do
     t.string "recipient_honorific"
     t.string "recipient_country"
     t.text "lender_address", null: false
+    t.boolean "is_gift"
     t.index ["created_by_id"], name: "index_loans_on_created_by_id"
     t.index ["project_id"], name: "index_loans_on_project_id"
+    t.index ["updated_at"], name: "index_loans_on_updated_at"
     t.index ["updated_by_id"], name: "index_loans_on_updated_by_id"
   end
 
@@ -1153,6 +1165,7 @@ ActiveRecord::Schema.define(version: 2021_11_09_144200) do
     t.integer "updated_by_id", null: false
     t.string "verbatim_short_name"
     t.string "delimiter"
+    t.boolean "is_virtual", default: false
     t.index ["created_at"], name: "index_namespaces_on_created_at"
     t.index ["created_by_id"], name: "index_namespaces_on_created_by_id"
     t.index ["updated_at"], name: "index_namespaces_on_updated_at"
@@ -1238,10 +1251,13 @@ ActiveRecord::Schema.define(version: 2021_11_09_144200) do
     t.datetime "updated_at", null: false
     t.integer "position"
     t.bigint "taxon_name_id"
+    t.integer "observation_object_id"
+    t.string "observation_object_type"
     t.index ["collection_object_id"], name: "omri_co_index"
     t.index ["controlled_vocabulary_term_id"], name: "omri_cvt_index"
     t.index ["created_by_id"], name: "index_observation_matrix_row_items_on_created_by_id"
     t.index ["observation_matrix_id"], name: "omri_om_index"
+    t.index ["observation_object_id", "observation_object_type"], name: "omrowitem_oo_polymorphic_index"
     t.index ["otu_id"], name: "index_observation_matrix_row_items_on_otu_id"
     t.index ["project_id"], name: "index_observation_matrix_row_items_on_project_id"
     t.index ["taxon_name_id"], name: "index_observation_matrix_row_items_on_taxon_name_id"
@@ -1261,9 +1277,12 @@ ActiveRecord::Schema.define(version: 2021_11_09_144200) do
     t.integer "reference_count"
     t.integer "cached_observation_matrix_row_item_id"
     t.string "name"
+    t.integer "observation_object_id"
+    t.string "observation_object_type"
     t.index ["collection_object_id"], name: "index_observation_matrix_rows_on_collection_object_id"
     t.index ["created_by_id"], name: "index_observation_matrix_rows_on_created_by_id"
     t.index ["observation_matrix_id"], name: "omr_om_index"
+    t.index ["observation_object_id", "observation_object_type"], name: "obmxrow_polymorphic_obj_index"
     t.index ["otu_id"], name: "index_observation_matrix_rows_on_otu_id"
     t.index ["project_id"], name: "index_observation_matrix_rows_on_project_id"
     t.index ["updated_by_id"], name: "index_observation_matrix_rows_on_updated_by_id"
@@ -1296,11 +1315,19 @@ ActiveRecord::Schema.define(version: 2021_11_09_144200) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "type", null: false
+    t.integer "observation_object_id"
+    t.string "observation_object_type"
+    t.integer "year_made"
+    t.integer "month_made"
+    t.integer "day_made"
+    t.time "time_made"
     t.index ["character_state_id"], name: "index_observations_on_character_state_id"
     t.index ["collection_object_id"], name: "index_observations_on_collection_object_id"
     t.index ["descriptor_id"], name: "index_observations_on_descriptor_id"
+    t.index ["observation_object_id", "observation_object_type"], name: "observation_polymorphic_index"
     t.index ["otu_id"], name: "index_observations_on_otu_id"
     t.index ["project_id"], name: "index_observations_on_project_id"
+    t.index ["updated_at"], name: "index_observations_on_updated_at"
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -1388,6 +1415,7 @@ ActiveRecord::Schema.define(version: 2021_11_09_144200) do
     t.index ["created_by_id"], name: "index_otus_on_created_by_id"
     t.index ["project_id"], name: "index_otus_on_project_id"
     t.index ["taxon_name_id"], name: "index_otus_on_taxon_name_id"
+    t.index ["updated_at"], name: "index_otus_on_updated_at"
     t.index ["updated_by_id"], name: "index_otus_on_updated_by_id"
   end
 
@@ -1406,7 +1434,9 @@ ActiveRecord::Schema.define(version: 2021_11_09_144200) do
     t.integer "year_died"
     t.integer "year_active_start"
     t.integer "year_active_end"
+    t.index ["cached"], name: "index_people_on_cached"
     t.index ["created_by_id"], name: "index_people_on_created_by_id"
+    t.index ["last_name"], name: "index_people_on_last_name"
     t.index ["type"], name: "index_people_on_type"
     t.index ["updated_by_id"], name: "index_people_on_updated_by_id"
   end
@@ -1601,6 +1631,7 @@ ActiveRecord::Schema.define(version: 2021_11_09_144200) do
     t.integer "project_id", null: false
     t.string "name"
     t.index ["created_by_id"], name: "index_sequences_on_created_by_id"
+    t.index ["updated_at"], name: "index_sequences_on_updated_at"
     t.index ["updated_by_id"], name: "index_sequences_on_updated_by_id"
   end
 
@@ -1835,6 +1866,8 @@ ActiveRecord::Schema.define(version: 2021_11_09_144200) do
     t.integer "descendant_id", null: false
     t.integer "generations", null: false
     t.index ["ancestor_id", "descendant_id", "generations"], name: "taxon_name_anc_desc_idx", unique: true
+    t.index ["ancestor_id", "descendant_id"], name: "index_taxon_name_hierarchies_on_ancestor_id_and_descendant_id"
+    t.index ["ancestor_id"], name: "index_taxon_name_hierarchies_on_ancestor_id"
     t.index ["descendant_id"], name: "taxon_name_desc_idx"
   end
 

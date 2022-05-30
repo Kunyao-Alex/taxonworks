@@ -36,20 +36,25 @@ module Export::Dwca
 
     attr_accessor :predicate_data
 
-    # core records and predicate data (and maybe more in future) joined together in one file
+    # @return Hash
+    # collection_object_predicate_id: [], collecting_event_predicate_id: []
+    attr_accessor :data_predicate_ids
+
+    # A Tempfile, core records and predicate data (and maybe more in future) joined together in one file
     attr_accessor :all_data
 
     # @param [Hash] args
-    def initialize(core_scope: nil, extension_scopes: {}, predicate_extension_params: [] )
+    def initialize(core_scope: nil, extension_scopes: {}, predicate_extension_params: {} )
       # raise ArgumentError, 'must pass a core_scope' if !record_core_scope.kind_of?( ActiveRecord::Relation )
       @core_scope = get_scope(core_scope)
       @biological_extension_scope = extension_scopes[:biological_extension_scope] #  = get_scope(core_scope)
 
-      if !predicate_extension_params.empty?
-        @data_predicate_ids = predicate_extension_params[:predicate_extension_params].transform_keys(&:to_sym)
-      else
-        @data_predicate_ids = {collection_object_predicate_id: [], collecting_event_predicate_id: []}
-      end
+      @data_predicate_ids = predicate_extension_params
+      @data_predicate_ids = {collection_object_predicate_id: [], collecting_event_predicate_id: []} if @data_predicate_ids.empty?
+    end
+
+    def predicate_options_present?
+      !data_predicate_ids[:collection_object_predicate_id].empty? || !data_predicate_ids[:collecting_event_predicate_id].empty?
     end
 
     def total
@@ -61,23 +66,13 @@ module Export::Dwca
     def csv
       ::Export::Download.generate_csv(
         core_scope.computed_columns,
+        # TODO: check to see if we nee dthis
         exclude_columns: ::DwcOccurrence.excluded_columns,
+        column_order: ::CollectionObject::DWC_OCCURRENCE_MAP.keys, # TODO: add other maps here
         trim_columns: true, # going to have to be optional
         trim_rows: false,
         header_converters: [:dwc_headers]
       )
-    end
-
-    # @return [Array]
-    #   use the temporarily written, and refined, CSV file to read off the existing headers
-    def csv_headers
-      return [] if no_records?
-      d = CSV.open(all_data, headers: true, col_sep: "\t")
-      d.read
-      h = d.headers
-      d.rewind
-      h.shift # get rid of id, it's special in meta
-      h
     end
 
     # @return [Boolean]
@@ -103,25 +98,22 @@ module Export::Dwca
       @data
     end
 
-
     def predicate_data
       return @predicate_data if @predicate_data
 
       # TODO maybe replace with select? not best practice to use pluck as input to other query
-      collection_object_ids = core_scope.pluck(:dwc_occurrence_object_id)
+      collection_object_ids = core_scope.select(:dwc_occurrence_object_id).pluck(:dwc_occurrence_object_id) # TODO: when AssertedDistributions are added we'll need to change this  pluck(:dwc_occurrence_object_id)
 
-
-      # do stuff
-      # not including where for project id, is it necessary given we supply specific CO ids?
+      # At this point we have specific CO ids, so we don't need project_id
       object_attributes = CollectionObject.left_joins(data_attributes: [:predicate])
-                                          .where(id: collection_object_ids)
-                                          .where(data_attributes: { controlled_vocabulary_term_id: @data_predicate_ids[:collection_object_predicate_id] })
-                                          .pluck(:id, 'controlled_vocabulary_terms.name', 'data_attributes.value')
+        .where(id: collection_object_ids)
+        .where(data_attributes: { controlled_vocabulary_term_id: @data_predicate_ids[:collection_object_predicate_id] })
+        .pluck(:id, 'controlled_vocabulary_terms.name', 'data_attributes.value')
 
       event_attributes = CollectionObject.left_joins(collecting_event: [data_attributes: [:predicate]])
-                                         .where(id: collection_object_ids)
-                                         .where(data_attributes: { controlled_vocabulary_term_id: @data_predicate_ids[:collecting_event_predicate_id] })
-                                         .pluck(:id, 'controlled_vocabulary_terms.name',  'data_attributes.value')
+        .where(id: collection_object_ids)
+        .where(data_attributes: { controlled_vocabulary_term_id: @data_predicate_ids[:collecting_event_predicate_id] })
+        .pluck(:id, 'controlled_vocabulary_terms.name',  'data_attributes.value')
 
       # Add TW prefix to names
       used_predicates = Set[]
@@ -146,7 +138,7 @@ module Export::Dwca
         return @predicate_data
       end
 
-      # create hash with key: co_id, value [[predicate_name, predicate_value], ...]
+      # Create hash with key: co_id, value [[predicate_name, predicate_value], ...]
       # prefill with empty values so we have the same number of rows as the main csv, even if some rows don't have
       # data attributes
       empty_hash = collection_object_ids.index_with { |_| []}
@@ -156,7 +148,6 @@ module Export::Dwca
       data = empty_hash.merge(data)
 
       # write rows to csv
-
       headers = CSV::Row.new(used_predicates, used_predicates, true)
 
       tbl = CSV::Table.new([headers])
@@ -183,7 +174,6 @@ module Export::Dwca
 
       content = tbl.to_csv(col_sep: "\t", encoding: Encoding::UTF_8)
 
-
       @predicate_data = Tempfile.new('predicate_data.csv')
       @predicate_data.write(content)
       @predicate_data.flush
@@ -191,17 +181,29 @@ module Export::Dwca
       @predicate_data
     end
 
+    # @return Tempfile
     def all_data
       return @all_data if @all_data
 
       @all_data = Tempfile.new('data.csv')
 
-      # only join files that aren't empty, prevents paste from adding an empty column header when empty
-      @all_data.write(`paste #{ [data, predicate_data].filter_map{|f| f.path if f.size > 0}.join(' ')}`)
+      join_data = [data]
+
+      if predicate_options_present?
+        join_data.push(predicate_data)
+      end
+
+      if join_data.size > 1
+        # TODO: might not need to check size at some point.
+        # Only join files that aren't empty, prevents paste from adding an empty column header when empty.
+        @all_data.write(`paste #{ join_data.filter_map{|f| f.path if f.size > 0}.join(' ')}`)
+      else
+        @all_data.write(data.read)
+      end
+
       @all_data.flush
       @all_data.rewind
       @all_data
-
     end
 
     # This is a stub, and only half-heartedly done. You should be using IPT for the time being.
@@ -220,20 +222,21 @@ module Export::Dwca
       identifier = SecureRandom.uuid
 
       # This should be build elsewhere, and ultimately derived from a TaxonWorks::Dataset model
-      builder = Nokogiri::XML::Builder.new do |xml|
+      # !! Order matters in these sections vs. validation !!
+      builder = Nokogiri::XML::Builder.new(encoding: 'utf-8', namespace_inheritance: false) do |xml|
         xml['eml'].eml(
           'xmlns:eml' => 'eml://ecoinformatics.org/eml-2.1.1',
           'xmlns:dc' => 'http://purl.org/dc/terms/',
           'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance',
-          'xsi:schemaLocation' => 'eml://ecoinformatics.org/eml-2.1.1 http://rs.gbif.org/schema/eml-gbif-profile/1.1/eml.xsd',
+          'xsi:schemaLocation' => 'eml://ecoinformatics.org/eml-2.1.1 http://rs.gbif.org/schema/eml-gbif-profile/1.1/eml-gbif-profile.xsd',
           'packageId' => identifier,
-          'system' => 'http://taxonworks.org',
-          'core_scope' => 'system',
-          'xml:lang' => 'eng'
+          'system' => 'https://taxonworks.org',
+          'scope' => 'system',
+          'xml:lang' => 'en'
         ) {
           xml.dataset {
-            xml.alternate_identifier identifier
-            xml.title('xml:lang' => 'eng').text 'STUB - YOUR TITLE HERE'
+            xml.alternateIdentifier identifier
+            xml.title("STUB YOUR TITLE HERE")['xmlns:lang'] = 'en'
             xml.creator {
               xml.individualName {
                 xml.givenName 'STUB'
@@ -245,31 +248,48 @@ module Export::Dwca
             xml.metadataProvider {
               xml.organizationName 'STUB'
               xml.electronicMailAddress 'EMAIL@EXAMPLE.COM'
-              xml.onlineURL 'STUB'
+              xml.onlineUrl 'STUB'
+            }
+            xml.associatedParty {
+              xml.organizationName 'STUB'
+              xml.address {
+                xml.deliveryPoint 'SEE address above for other fields'
+              }
+              xml.role 'distributor'
             }
             xml.pubDate Time.new.strftime('%Y-%m-%d')
             xml.language 'eng'
             xml.abstract {
               xml.para 'Abstract text here.'
             }
+            xml.intellectualRights {
+              xml.para 'STUB. License here.'
+            }
             # ...
             xml.contact {
               xml.organizationName 'STUB'
+              xml.address {
+                xml.deliveryPoint 'STUB'
+                xml.city 'STUB'
+                xml.administrativeArea 'STUB'
+                xml.postalCode 'STUB'
+                xml.country 'STUB'
+              }
               xml.electronicMailAddress 'EMAIL@EXAMPLE.COM'
-              xml.onlineURL 'STUB'
+              xml.onlineUrl 'STUB'
             }
             # ...
-            xml.additionalMetadata {
-              xml.metadata {
-                xml.gbif {
-                  xml.dateStamp
-                  xml.hierarchyLevel
-                  xml.citation(identifier: 'STUB').text 'DATASET CITATION STUB'
-                  xml.resourceLogoURL 'SOME RESOURCE LOGO URL'
-                  xml.formationPeriod 'SOME FORMAATION PERIOD'
-                  xml.livingTimePeriod 'SOME LIVINGI TIME PERIOD'
-                  xml[:dc].replaces 'PRIOR IDENTIFIER'
-                }
+          } # end dataset
+          xml.additionalMetadata {
+            xml.metadata {
+              xml.gbif {
+                xml.dateStamp DateTime.parse(Time.now.to_s).to_s
+                xml.hierarchyLevel 'dataset'
+                xml.citation("STUB DATASET")[:identifier] = 'Identifier STUB'
+                xml.resourceLogoUrl 'SOME RESOURCE LOGO URL'
+                xml.formationPeriod 'SOME FORMATION PERIOD'
+                xml.livingTimePeriod 'SOME LIVING TIME PERIOD'
+                xml[:dc].replaces 'PRIOR IDENTIFIER'
               }
             }
           }
@@ -304,6 +324,17 @@ module Export::Dwca
       @biological_resource_relationship
     end
 
+    # @return [Array]
+    #   use the temporarily written, and refined, CSV file to read off the existing headers
+    #   so we can use them in writing meta.yml
+    # id, and non-standard DwC colums are handled elsewhere
+    def meta_fields
+      return [] if no_records?
+      h = File.open(all_data, &:gets)&.strip&.split("\t")
+      h&.shift
+      h || []
+    end
+
     def meta
       return @meta if @meta
 
@@ -316,7 +347,7 @@ module Export::Dwca
               xml.location 'data.csv'
             }
             xml.id(index: 0)
-            csv_headers.each_with_index do |h,i|
+            meta_fields.each_with_index do |h,i|
               if h =~ /TW:/ # All TW headers have ':'
                 xml.field(index: i+1, term: h)
               else
@@ -354,8 +385,6 @@ module Export::Dwca
       @zipfile
     end
 
-    # File.read(@zipfile.path)
-
     # @return [String]
     # the name of zipfile
     def filename
@@ -374,15 +403,17 @@ module Export::Dwca
       eml.unlink
       data.close
       data.unlink
-      predicate_data.close
-      predicate_data.unlink
+      if predicate_options_present?
+        predicate_data.close
+        predicate_data.unlink
+      end
       all_data.close
       all_data.unlink
       true
     end
 
-    # params core_scope [String, ActiveRecord::Relation]
-    #   string is fully formed SQL
+    # !params core_scope [String, ActiveRecord::Relation]
+    #   String is fully formed SQL
     def get_scope(scope)
       if scope.kind_of?(String)
         DwcOccurrence.from('(' + scope + ') as dwc_occurrences')
@@ -402,5 +433,3 @@ module Export::Dwca
 
   end
 end
-
-
