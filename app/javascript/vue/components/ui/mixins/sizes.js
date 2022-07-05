@@ -1,5 +1,3 @@
-import { convertToUnit } from 'helpers/style'
-
 export default {
   props: {
     xSmall: {

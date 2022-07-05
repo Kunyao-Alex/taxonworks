@@ -26,6 +26,10 @@
           :href="getPropertyValue(item, download)"
           download
         />
+        <pdf-button
+          v-if="pdf && pdfExist(item)"
+          :pdf="pdfExist(item)"
+        />
         <radial-annotator
           v-if="annotator"
           :global-id="item.global_id"/>
@@ -101,6 +105,10 @@ const props = defineProps({
   softDelete: {
     type: Boolean,
     default: false
+  },
+  pdf: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -117,13 +125,12 @@ const displayName = item => {
   } else {
     let tmp = item
 
-    props.label.forEach(label => {
-      tmp = tmp[label]
-    })
+    props.label.forEach(label => { tmp = tmp[label] })
 
     return tmp
   }
 }
+  
 
 const checkHighlight = item => {
   if (props.highlight) {
@@ -154,11 +161,22 @@ const getPropertyValue = (item, stringPath) => {
     return item[stringPath]
   } else {
     let value = item
-    
+
     keys.forEach(key => { value = value[key] })
 
     return value
   }
+}
+
+const pdfExist = (item) => {
+  if (item.hasOwnProperty('target_document')) {
+    return item.target_document
+  }
+  if (item.hasOwnProperty('document')) {
+    return item.document
+  }
+
+  return 
 }
 
 </script>

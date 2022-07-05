@@ -21,7 +21,8 @@
         class="button button-default normal-input full_width"
         type="button"
         :disabled="emptyParams"
-        @click="searchCollectingEvents">
+        @click="searchCollectingEvents"
+      >
         Search
       </button>
       <hr>
@@ -32,7 +33,8 @@
       <hr>
       <filter-determinations
         class="margin-large-bottom"
-        v-model="params.determination"/>
+        v-model="params.determination"
+      />
       <hr>
       <filter-identifiers
         class="margin-large-bottom"
@@ -169,7 +171,7 @@ export default {
     getCollectingEvents (params) {
       this.searching = true
       this.$emit('newSearch')
-      CollectingEvent.where(params).then(response => {
+      CollectingEvent.where({ ...params, extend: ['roles'] }).then(response => {
         const urlParams = new URLSearchParams(response.request.responseURL.split('?')[1])
 
         this.$emit('result', response.body)
@@ -210,6 +212,7 @@ export default {
           determiner_id_or: [],
           determiner_id: [],
           otu_ids: [],
+          determiner_name_regex: undefined,
           current_determinations: undefined,
           ancestor_id: undefined,
           validity: undefined

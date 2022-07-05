@@ -285,6 +285,16 @@ const props = defineProps({
   shorten: {
     type: [Number, String],
     default: undefined
+  },
+
+  autofocus: {
+    type: Boolean,
+    default: false
+  },
+
+  extend: {
+    type: Array,
+    default: () => []
   }
 })
 
@@ -337,7 +347,7 @@ const getObject = id => {
     ? `${props.getUrl}${id}.json`
     : `/${props.model}/${id}.json`
 
-  AjaxCall('get', urlRequest).then(({ body }) => sendObject(body))
+  AjaxCall('get', urlRequest, { params: { extend: props.extend } }).then(({ body }) => sendObject(body))
 }
 
 const sendObject = item => {
@@ -357,8 +367,7 @@ const refresh = (forceUpdate = false) => {
   AjaxCall('get', `/${props.model}/select_options`, { params }).then(response => {
     lists.value = response.body
     addCustomElements()
-    options.value = Object.keys(lists.value).concat(props.addTabs)
-    options.value = OrderSmart(options.value)
+    options.value = OrderSmart(Object.keys(lists.value).concat(props.addTabs))
     view.value = SelectFirst(lists.value, options.value)
   }).catch(() => {
     options.value = []
@@ -400,11 +409,13 @@ const showLabel = label => props.shorten
   ? shorten(label, Number(props.shorten))
   : label
 
+defineExpose({
+  setFocus
+})
+
 </script>
 <style lang="scss" scoped>
 .smart__selector {
-
-  &__container {}
 
   &__ul {
     max-height: 140px;

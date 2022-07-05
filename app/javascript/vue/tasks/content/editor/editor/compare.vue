@@ -87,7 +87,7 @@ export default {
 
   methods: {
     loadContent () {
-      Content.where({ topic_id: this.topic.id }).then(({ body }) => {
+      Content.where({ topic_id: this.topic.id, extend: ['otu', 'topic'] }).then(({ body }) => {
         this.contents = this.content?.id
           ? body.filter(c => c.id !== this.content.id)
           : body

@@ -37,7 +37,10 @@
       <hr>
       <scope-component
         class="margin-medium-bottom"
-        :autocomplete-params="{ no_leaves: true }"
+        :autocomplete-params="{
+          type: 'Protonym',
+          valid: true
+        }"
         v-model="params.base.taxon_name_id"/>
       <hr>
       <related-component
@@ -97,8 +100,9 @@
         v-for="(param, key) in params.with"
         :key="key"
         :param="key"
-        :title="key.replaceAll('_', ' ')"
-        v-model="params.with[key]"/>
+        :title="withTitles[key] || key.replaceAll('_', ' ')"
+        v-model="params.with[key]"
+      />
     </div>
   </div>
 </template>
@@ -176,7 +180,11 @@ export default {
     return {
       params: this.initParams(),
       result: [],
-      searching: false
+      searching: false,
+      withTitles: {
+        type_metadata: 'Type information',
+        not_specified: 'Incomplete combination relationships'
+      }
     }
   },
 

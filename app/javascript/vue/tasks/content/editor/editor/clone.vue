@@ -4,7 +4,8 @@
       @click="showModal = !!contents.length"
       type="button"
       class="item flex-wrap-column middle menu-button"
-      :disabled="!contents.length">
+      :disabled="!contents.length"
+    >
       <span
         data-icon="clone"
         class="big-icon"
@@ -14,7 +15,8 @@
     <modal
       v-if="showModal"
       id="clone-modal"
-      @close="showModal = false">
+      @close="showModal = false"
+    >
       <template #header>
         <h3>Clone</h3>
       </template>
@@ -23,9 +25,12 @@
           <li
             v-for="item in contents"
             :key="item.id"
-            @click="cloneCitation(item.text)">
-            <div class="clone-content-text">{{ item.text }}</div>
-            <span v-html="item.object_tag"/>
+            @click="cloneCitation(item.text)"
+          >
+            <div class="clone-content-text">
+              {{ item.text }}
+            </div>
+            <span v-html="item.object_tag" />
           </li>
         </ul>
       </template>
@@ -79,7 +84,7 @@ export default {
     },
 
     otu (newVal) {
-      if (newVal?.id) {
+      if (newVal?.id && this.topic?.id) {
         this.loadContent()
       }
     }
@@ -87,7 +92,10 @@ export default {
 
   methods: {
     loadContent () {
-      Content.where({ topic_id: this.topic.id }).then(({ body }) => {
+      Content.where({
+        topic_id: this.topic.id,
+        extend: ['otu', 'topic']
+      }).then(({ body }) => {
         this.contents = this.content?.id
           ? body.filter(c => c.id !== this.content.id)
           : body
