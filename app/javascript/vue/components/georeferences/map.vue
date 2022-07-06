@@ -130,11 +130,13 @@ const leafletMap = ref(null)
 const tiles = {
   osm: L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-    maxZoom: 18
+    maxZoom: 18,
+    className: 'map-tiles'
   }),
   google: L.tileLayer('http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}', {
     attribution: 'Google',
-    maxZoom: 18
+    maxZoom: 18,
+    className: 'map-tiles'
   })
 }
 let observeMap
@@ -404,3 +406,8 @@ const zoomToFeature = e => {
 }
 
 </script>
+<style>
+.map-tiles {
+  filter:var(--map-tiles-filter, none);
+}
+</style>

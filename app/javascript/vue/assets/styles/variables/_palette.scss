@@ -5,10 +5,25 @@
   --card-application-defined-color: #C38A8A;
   --card-shared-color: #E5D2BE;
 
-  --background-color: #f7f8fc;
+  --background-color: #f5f7fb;
   --background-panel-color: #FFFFFF;
   --input-background-color: #FFFFFF;
   --input-border-color: #d5d5d5;
+
+  --btn-border-color: #e6e7e9;
+  --btn-hover-color: #FFFFFF;
+  --btn-active-hover-color: #5d99c6;
+  --btn-border-hover-color: #000000;
+  --btn-font-weight: 500;
+  --btn-font-size: 0.875rem;
+
+
+  --border-color: #e6e7e9;
+  --border-color-rgb: 230,231,233;
+  --border-color-light: #f2f3f4;
+  --border-color-light-rgb: 242,243,244;
+
+  --primary-color-rgb: 93, 153, 198;
 
   --primary-color: #5d99c6;
   --update-color: #8ac65d;
@@ -28,8 +43,9 @@
   --box-shadow-button: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
 
   --hover: #f3f4f6;
+  --radio-hover-border: #206bc4;
 
-  --input-background-color-active: #deecf9;
+  --input-background-color-active: rgba(32,107,196,.04);
   --input-background-color-active-text: #000000;
 
   --link-color: #5D9ECE;
@@ -101,12 +117,10 @@ $tw-colors: (
   'backgroundPanel': #FFFFFF,
   'charcoal': #36454F,
   'hover': rgba(65, 132, 228, 15%),
-  'active': rgba(65, 132, 228, 15%),
+  'active': rgba(32,107,196,.04),
   'textColor': #000000,
   'link': #5d99c6
 );
-
-
 
 $color-primary-4: #C38A8A;
 $color-secondary-1-3: #E5D2BE;

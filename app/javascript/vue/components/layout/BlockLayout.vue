@@ -84,8 +84,9 @@ const expanded = ref(true)
     border-bottom: 1px solid #f5f5f5;
 
     h3 {
-      font-size: var(--text-lg);
+      font-size: var(--text-md);
       font-weight: var(--font-light);
+      font-weight: var(--font-medium);
       margin: 0px;
     }
   }
