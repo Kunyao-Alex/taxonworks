@@ -50,14 +50,14 @@ module Export::Coldp::Files::Distribution
           end
 
           sources = ad.sources.load
-          reference_ids = sources.collect{|a| a.id}.join(',')
+          reference_ids = sources.collect{|a| a.id}
           csv << [
             o.id,
             area_id,
             area,
             gazetteer,
             nil,
-            reference_ids,
+            reference_ids.first,  # only 1 distribution reference allowed
             nil
           ]
 

@@ -60,9 +60,37 @@ module Export::Coldp::Files::Synonym
           #   .where(cached_valid_taxon_name_id: o[2]) # == .historical_taxon_names
           #   .where("( ((taxon_names.id != taxon_names.cached_valid_taxon_name_id) OR ((taxon_names.cached_original_combination != taxon_names.cached))) AND NOT (taxon_names.type = 'Combination' AND taxon_names.cached = ?))", o[1]) # see name.rb
 
-          c.pluck(:id, :cached, :cached_original_combination, :type)
+          c.pluck(:id, :cached, :cached_original_combination, :type, :rank_class, :cached_secondary_homonym)
             .each do |t|
               reified_id = ::Export::Coldp.reified_id(t[0], t[1], t[2])
+
+              # skips including parent binomial as a synonym of autonym trinomial
+              unless t[5].nil?
+                if !t[1].nil? and t[1].include? t[5] and (t[4].match(/::Subspecies$/) or t[4].match(/::Form$/) or t[4].match(/::Variety$/))
+                  next
+                end
+
+                if !t[2].nil? and t[2].include? t[5] and o[1].include? t[5] and t[4].match(/::Species$/)
+                  next
+                end
+              end
+
+              if t[1].include? 'Aphlebia tartara' or t[1].include? 'Phyllodromica (Lobolampra) tartara'
+                byebug
+              end
+
+              matches = t[1].match(/([A-Z][a-z]+) \(.+\) ([a-z]+)/)
+              if matches&.size == 3
+                if t[5] == "#{matches[1]} #{matches[2]}" and t[2] != t[5]
+                  # byebug
+                  next
+                end
+              end
+
+              # skips combinations including parent binomial as a synonym of autonym trinomial
+              if t[3] == 'Combination' and o[1].include? t[1]
+                next
+              end
 
               csv << [
                 o[0],           # taxonID attached to the current valid concept
