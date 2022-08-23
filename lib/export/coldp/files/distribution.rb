@@ -64,6 +64,25 @@ module Export::Coldp::Files::Distribution
           Export::Coldp::Files::Reference.add_reference_rows(sources, reference_csv) if reference_csv
         end
       end
+
+      otus.joins("INNER JOIN contents ON contents.otu_id = otus.id
+                  INNER JOIN controlled_vocabulary_terms ON controlled_vocabulary_terms.id = contents.topic_id")
+          .select("otus.*, contents.*, controlled_vocabulary_terms.*")
+          .where("controlled_vocabulary_terms.name = 'Distribution text'").distinct.each do |o|
+        gazetteer = 'text'
+        area_id = nil
+        area = o.text
+
+        csv << [
+          o.otu_id,
+          area_id,
+          area,
+          gazetteer,
+          nil,
+          nil,
+          nil
+        ]
+      end
     end
   end
 end
