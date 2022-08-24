@@ -67,17 +67,15 @@ module Export::Coldp::Files::Distribution
 
       otus.joins("INNER JOIN contents ON contents.otu_id = otus.id
                   INNER JOIN controlled_vocabulary_terms ON controlled_vocabulary_terms.id = contents.topic_id")
-          .select("otus.*, contents.*, controlled_vocabulary_terms.*")
+          .select("otus.id, contents.text")
           .where("controlled_vocabulary_terms.name = 'Distribution text'").distinct.each do |o|
-        gazetteer = 'text'
-        area_id = nil
         area = o.text
 
         csv << [
-          o.otu_id,
-          area_id,
+          o.id,
+          nil,
           area,
-          gazetteer,
+          'text',
           nil,
           nil,
           nil
