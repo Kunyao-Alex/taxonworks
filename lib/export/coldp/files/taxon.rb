@@ -11,10 +11,10 @@
 module Export::Coldp::Files::Taxon
 
   IRI_MAP = {
-    extinct: 'https://api.catalogue.life/datapackage#Taxon.extinct',                         # 1,0
-    temporal_range_end: 'https://api.catalogue.life/datapackage#Taxon.temporal_range_end',   # from https://api.catalogue.life/vocab/geotime
-    temporal_range_start: 'https://api.catalogue.life/datapackage#Taxon.temporal_range_end', # from https://api.catalogue.life/vocab/geotime
-    lifezone: 'https://api.catalogue.life/datapackage#Taxon.lifezone',                       # from https://api.catalogue.life/vocab/lifezone
+    extinct: 'https://api.checklistbank.org/datapackage#Taxon.extinct',                         # 1,0
+    temporal_range_end: 'https://api.checklistbank.org/datapackage#Taxon.temporal_range_end',   # from https://api.catalogue.life/vocab/geotime
+    temporal_range_start: 'https://api.checklistbank.org/datapackage#Taxon.temporal_range_end', # from https://api.catalogue.life/vocab/geotime
+    lifezone: 'https://api.checklistbank.org/datapackage#Taxon.lifezone',                       # from https://api.catalogue.life/vocab/lifezone
   }
 
   SKIPPED_RANKS = %w{
