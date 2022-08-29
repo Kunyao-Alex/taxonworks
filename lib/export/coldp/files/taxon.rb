@@ -43,6 +43,15 @@ module Export::Coldp::Files::Taxon
     nil
   end
 
+
+  # Name phrase is for appended phrases like senso stricto and senso lato
+  def self.name_phrase(otu, vocab_id)
+    da = DataAttribute.find_by(type: 'InternalAttribute',
+                               controlled_vocabulary_term_id: vocab_id,
+                               attribute_subject_id: otu.id)
+    da&.value
+  end
+
   # The scrutinizer concept is unused at present
   # We're looking for the canonical implementation of it
   # before we implement/extrapolate from data here.
@@ -116,6 +125,7 @@ module Export::Coldp::Files::Taxon
         ID
         parentID
         nameID
+        namePhrase
         provisional
         accordingToID
         scrutinizer
@@ -130,6 +140,16 @@ module Export::Coldp::Files::Taxon
         remarks
       }
 
+      if root_otu_id.nil?
+        project_id = Otus[0].project_id
+      else
+        project_id = Otu.find(root_otu_id).project_id
+      end
+
+      name_phrase_vocab_id =  Predicate.find_by(name: 'Name phrase',
+                                                definition: 'Catalogue of Life taxon namePhrase',
+                                                uri: 'https://github.com/catalogueoflife/coldp#namephrase',
+                                                project_id: project_id)
       otus.each do |o|
         # !! When a name is a synonmy (combination), but that combination has no OTU
         # !! then the parent of the name in the taxon table is nil
@@ -168,6 +188,7 @@ module Export::Coldp::Files::Taxon
           o.id,                                      # ID (Taxon)
           parent_id,                                 # parentID (Taxon)
           o.taxon_name.id,                           # nameID (Name)
+          name_phrase(o, name_phrase_vocab_id),      # namePhrase
           provisional(o),                            # provisional
           according_to_id(o),                        # accordingToID
           scrutinizer(o),                            # scrutinizer
